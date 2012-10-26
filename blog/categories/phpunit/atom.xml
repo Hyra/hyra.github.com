@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PHPUnit | Mindthecode Blog]]></title>
+  <link href="http://hyra.github.com/blog/categories/phpunit/atom.xml" rel="self"/>
+  <link href="http://hyra.github.com/"/>
+  <updated>2012-10-26T08:48:07+02:00</updated>
+  <id>http://hyra.github.com/</id>
+  <author>
+    <name><![CDATA[Stef van den Ham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Sessions in PHPUnit Tests with CakePHP]]></title>
+    <link href="http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp/"/>
+    <updated>2012-02-24T11:43:00+01:00</updated>
+    <id>http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp</id>
+    <content type="html"><![CDATA[<p>I was breaking my head over failing unit tests when trying to test a simple Controller that was saving a new record.</p>
+
+<p>Turned out it was failing only on the command line, while the webversion was passing all the tests.</p>
+
+<p>Luckily, the solution was simple ..</p>
+
+<!--more-->
+
+
+<p>The PHPUnit command line suite apparently outputs contents early, before the session gets initiated.</p>
+
+<h2>Solution 1</h2>
+
+<p>Add --stderr to the command line:</p>
+
+<pre><code>cake testsuite app Controller/YourFancyController --stderr
+</code></pre>
+
+<p>This will pass the tests again, as it doesn't output contents early to <code>STDOUT</code>. The only "problem" is you won't see the awesome green and red colors in the CLI output anymore.</p>
+
+<h2>Solution 2</h2>
+
+<p>This is the one I use, as it brings the colors back.</p>
+
+<p>As I'm using my self-contained PHPUnit Install, as found on Github @ <a href="https://github.com/hyra/PHPUnit-Cake2">PHPUnit-Cake2</a> I am able to edit the following file: <code>Vendor/PHPUnit/Autoload.php</code> At the very top of this file, initialize the session early:</p>
+
+<pre><code>session_start();
+</code></pre>
+
+<p>This will pass the tests again, and even better, bring back the colors!</p>
+
+<p>Maybe the session initialization can be done early by putting it in a file by CakePHP itself, but haven't found the right place yet. Any suggestions?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Loading external files in PHP the better way]]></title>
+    <link href="http://hyra.github.com/loading-external-files-in-php-the-better-way/"/>
+    <updated>2011-12-06T19:37:00+01:00</updated>
+    <id>http://hyra.github.com/loading-external-files-in-php-the-better-way</id>
+    <content type="html"><![CDATA[<p>Sometimes you run into "weird behavior" when using <code>file_get_contents</code> in your code when retrieving external data. I noticed this for instance when accessing the Facebook Graph API the other day. When using file_get_contents the results were so much different than when using cUrl.</p>
+
+<!--more-->
+
+
+<p>Sometimes even, it is disabled on your host for security reasons. So i'm making it a habbit to run everything through cUrl instead. Not just to get the "actual results", but also since it's a lot faster.</p>
+
+<h2>Faster you say?</h2>
+
+<p>Indeed! Take this benchmark for instance, <code>file_get_contents</code> vs <code>curl</code> on google.com:</p>
+
+<pre><code>[1] =&gt; Array   // 1 request to google.com
+(
+    [FGC] =&gt;  0.4955058 // 38.88% slower
+    [CURL] =&gt; 0.3582108
+)
+[5] =&gt; Array   // 5 requests to google.com
+(
+    [FGC] =&gt;  2.2415568 // 24.44% slower
+    [CURL] =&gt; 1.7973249
+)    
+[10] =&gt; Array  // 10 requests to google.com
+(
+    [FGC] =&gt;  4.7877922 // 29.46% slower
+    [CURL] =&gt; 3.6951289
+)    
+[25] =&gt; Array  // 25 requests to google.com
+(
+    [FGC] =&gt;  10.932404 // 10.18% slower
+    [CURL] =&gt; 9.9168329
+)    
+[50] =&gt; Array  // 50 requests to google.com
+(
+    [FGC] =&gt;  22.535982 // 24.74% slower
+    [CURL] =&gt; 18.068931
+)    
+[100] =&gt; Array // 100 requests to google.com
+(
+    [FGC] =&gt;  44.685283 // 18.57% slower
+    [CURL] =&gt; 37.688820
+)
+</code></pre>
+
+<p>Sure, it might not seem that big a difference. But imagine loading an external file being a big part of your (heavily) used application.</p>
+
+<h2>Got an example ?</h2>
+
+<p>Sure, no worries. Rather than calling:</p>
+
+<pre><code>$data = file_get_contents('http://whatever.com/sheep.jpg');
+</code></pre>
+
+<p>you could do:</p>
+
+<pre><code>function loadFile($url) {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    $data = curl_exec($ch);
+    curl_close($ch);
+
+    return $data;
+}
+
+$data = loadFile('http://whatever.com/sheep.jpg');
+</code></pre>
+
+<p>And you're done.</p>
+
+<h2>Thoughts?</h2>
+
+<p>Anyone else experiencing different results between cUrl and the builtin function? I've been googling what could cause this, but so far nothing conclusive.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHPUnit Installer updated to 3.6.4]]></title>
+    <link href="http://hyra.github.com/phpunit-installer-updated-to-3-6-4/"/>
+    <updated>2011-11-29T12:12:00+01:00</updated>
+    <id>http://hyra.github.com/phpunit-installer-updated-to-3-6-4</id>
+    <content type="html"><![CDATA[<p>Just a small update .. I updated the PHPUnit Installer Shell for CakePHP 2.0 to use version 3.6.4.</p>
+
+<p>All dependencies have been updated as well, so it's 23% more awesome.</p>
+]]></content>
+  </entry>
+  
+</feed>

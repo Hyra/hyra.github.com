@@ -1,11 +1,87 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://hyra.github.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/</loc>
+        <lastmod>2012-10-25T17:57:11+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/using-sass-in-your-next-cakephp-project/</loc>
+        <lastmod>2012-10-25T17:57:13+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/how-to-handle-multiple-domains-with-cakephp/</loc>
+        <lastmod>2012-10-25T17:57:15+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/how-to-remove-a-submodule-from-your-git-repository/</loc>
+        <lastmod>2012-10-25T17:57:18+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/using-markdown-in-cakephp/</loc>
+        <lastmod>2012-10-25T17:57:20+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/using-less-in-cakephp/</loc>
+        <lastmod>2012-10-25T18:05:50+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/use-gzip-with-php/</loc>
+        <lastmod>2012-10-25T17:57:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/installing-phpunit-manually-for-cakephp-2-0/</loc>
+        <lastmod>2012-10-25T17:57:26+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/phpunit-installer-updated-to-3-6-4/</loc>
+        <lastmod>2012-10-25T17:57:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/loading-external-files-in-php-the-better-way/</loc>
+        <lastmod>2012-10-25T17:57:30+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/updated-less-component-for-cakephp/</loc>
+        <lastmod>2012-10-25T17:52:52+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/spotify-preview-build-expired/</loc>
+        <lastmod>2012-10-25T17:53:38+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp/</loc>
+        <lastmod>2012-10-25T17:54:23+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/format-associative-json-to-work-with-knockout-js/</loc>
+        <lastmod>2012-10-25T17:55:14+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/good-times-with-watchr-coffeescript-and-less/</loc>
+        <lastmod>2012-10-25T17:56:16+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/spotify-boilerplate-app/</loc>
+        <lastmod>2012-10-25T17:56:52+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/about/</loc>
+        <lastmod>2012-10-25T16:09:37+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/archives/</loc>
+        <lastmod>2012-10-25T18:05:50+02:00</lastmod>
+    </url>
+    <url>
         <loc>http://hyra.github.com/blog/archives/</loc>
-        <lastmod>2012-10-25T14:16:57+02:00</lastmod>
+        <lastmod>2012-10-25T18:05:50+02:00</lastmod>
     </url>
     <url>
         <loc>http://hyra.github.com/</loc>
-        <lastmod>2012-10-25T14:16:57+02:00</lastmod>
+        <lastmod>2012-10-25T18:05:50+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hyra.github.com/some-js-demo/</loc>
+        <lastmod>2012-10-25T16:57:34+02:00</lastmod>
     </url>
 </urlset>
