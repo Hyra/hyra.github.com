@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:15:58+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Blogging with Octopress]]></title>
-    <link href="http://hyra.github.com/blogging-with-octopress/"/>
+    <link href="http://mindthecode.com/blogging-with-octopress/"/>
     <updated>2012-10-26T11:27:00+02:00</updated>
-    <id>http://hyra.github.com/blogging-with-octopress</id>
+    <id>http://mindthecode.com/blogging-with-octopress</id>
     <content type="html"><![CDATA[<p>As some of you may know, even though I don&#8217;t blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between <a href="http://croogo.org">Croogo</a>, a custom built <a href="http://cakephp.org">CakePHP</a> site, <a href="http://wordpress.org">Wordpress</a> .. and back again.</p>
 
 <!-- more -->
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[Spotify Boilerplate App]]></title>
-    <link href="http://hyra.github.com/spotify-boilerplate-app/"/>
+    <link href="http://mindthecode.com/spotify-boilerplate-app/"/>
     <updated>2012-09-18T07:59:00+02:00</updated>
-    <id>http://hyra.github.com/spotify-boilerplate-app</id>
+    <id>http://mindthecode.com/spotify-boilerplate-app</id>
     <content type="html"><![CDATA[<p>A while ago we were proud to be releasing 2 of the very first Spotify Apps in the Netherlands at <a href="http://noprotocol.nl" title="NoProtocol" target="_blank">NoProtocol</a>. For a long time since I&#8217;ve been planning on creating a Boilerplate in which we could put all the best practices and redo some stuff in hindsight.</p>
 
 <p>And finally, it&#8217;s here! You can grab it at <a href="https://github.com/Hyra/Spotify-Boilerplate" title="https://github.com/Hyra/Spotify-Boilerplate" target="_blank">https://github.com/Hyra/Spotify-Boilerplate</a></p>
@@ -150,9 +150,9 @@
   
   <entry>
     <title type="html"><![CDATA[Good times with Watchr, Coffeescript and LESS]]></title>
-    <link href="http://hyra.github.com/good-times-with-watchr-coffeescript-and-less/"/>
+    <link href="http://mindthecode.com/good-times-with-watchr-coffeescript-and-less/"/>
     <updated>2012-05-16T07:59:00+02:00</updated>
-    <id>http://hyra.github.com/good-times-with-watchr-coffeescript-and-less</id>
+    <id>http://mindthecode.com/good-times-with-watchr-coffeescript-and-less</id>
     <content type="html"><![CDATA[<p>I have been working on a pure HTML front-end for one of the pet projects I&#8217;m doing. A lot of fun, but while developing, running the terminal commands to compile both the .less and .coffee files gets a tad tedious. <a href="https://github.com/mynyml/watchr">&#8220;Watchr&#8221;</a> to the rescue! With this little gem you can watch specific folders or file extensions and run commands based on the files you watch.</p>
 
 <p>Here is how I got it set up now ..</p>
@@ -257,9 +257,9 @@ watch('coffee/*') { |m|
   
   <entry>
     <title type="html"><![CDATA[Format associative JSON to work with Knockout.js]]></title>
-    <link href="http://hyra.github.com/format-associative-json-to-work-with-knockout-js/"/>
+    <link href="http://mindthecode.com/format-associative-json-to-work-with-knockout-js/"/>
     <updated>2012-05-09T10:43:00+02:00</updated>
-    <id>http://hyra.github.com/format-associative-json-to-work-with-knockout-js</id>
+    <id>http://mindthecode.com/format-associative-json-to-work-with-knockout-js</id>
     <content type="html"><![CDATA[<p>I recently started creating a RESTful API in CakePHP to work with a Knockout.js frontend.</p>
 
 <p>While Knockout.js is a lot of fun, it does expect your JSON to be in a certain format.</p>
@@ -369,9 +369,9 @@ $this-&gt;set('_serialize', array('projects'));
   
   <entry>
     <title type="html"><![CDATA[Using Sessions in PHPUnit Tests with CakePHP]]></title>
-    <link href="http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp/"/>
+    <link href="http://mindthecode.com/using-sessions-in-phpunit-tests-with-cakephp/"/>
     <updated>2012-02-24T11:43:00+01:00</updated>
-    <id>http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp</id>
+    <id>http://mindthecode.com/using-sessions-in-phpunit-tests-with-cakephp</id>
     <content type="html"><![CDATA[<p>I was breaking my head over failing unit tests when trying to test a simple Controller that was saving a new record.</p>
 
 <p>Turned out it was failing only on the command line, while the webversion was passing all the tests.</p>
@@ -409,9 +409,9 @@ $this-&gt;set('_serialize', array('projects'));
   
   <entry>
     <title type="html"><![CDATA[Spotify Preview Build expired]]></title>
-    <link href="http://hyra.github.com/spotify-preview-build-expired/"/>
+    <link href="http://mindthecode.com/spotify-preview-build-expired/"/>
     <updated>2012-02-11T17:16:00+01:00</updated>
-    <id>http://hyra.github.com/spotify-preview-build-expired</id>
+    <id>http://mindthecode.com/spotify-preview-build-expired</id>
     <content type="html"><![CDATA[<p>Today I decided to tinker some more on our Spotify App, only to find that the Preview Build had expired, and was not gonna launch. Period. Great, so now what?</p>
 
 <!--more-->
@@ -458,9 +458,9 @@ function handleArgs() {
   
   <entry>
     <title type="html"><![CDATA[Updated LESS component for CakePHP]]></title>
-    <link href="http://hyra.github.com/updated-less-component-for-cakephp/"/>
+    <link href="http://mindthecode.com/updated-less-component-for-cakephp/"/>
     <updated>2012-02-05T10:28:00+01:00</updated>
-    <id>http://hyra.github.com/updated-less-component-for-cakephp</id>
+    <id>http://mindthecode.com/updated-less-component-for-cakephp</id>
     <content type="html"><![CDATA[<p>I decided to have a look at Twitter Bootstrap 2, and had it run through my LESS Component. I then realized the component didn&#8217;t support subfolders!</p>
 
 <!--more-->
@@ -476,9 +476,9 @@ function handleArgs() {
   
   <entry>
     <title type="html"><![CDATA[Loading external files in PHP the better way]]></title>
-    <link href="http://hyra.github.com/loading-external-files-in-php-the-better-way/"/>
+    <link href="http://mindthecode.com/loading-external-files-in-php-the-better-way/"/>
     <updated>2011-12-06T19:37:00+01:00</updated>
-    <id>http://hyra.github.com/loading-external-files-in-php-the-better-way</id>
+    <id>http://mindthecode.com/loading-external-files-in-php-the-better-way</id>
     <content type="html"><![CDATA[<p>Sometimes you run into &#8220;weird behavior&#8221; when using <code>file_get_contents</code> in your code when retrieving external data. I noticed this for instance when accessing the Facebook Graph API the other day. When using file_get_contents the results were so much different than when using cUrl.</p>
 
 <!--more-->
@@ -559,9 +559,9 @@ $data = loadFile('http://whatever.com/sheep.jpg');
   
   <entry>
     <title type="html"><![CDATA[PHPUnit Installer updated to 3.6.4]]></title>
-    <link href="http://hyra.github.com/phpunit-installer-updated-to-3-6-4/"/>
+    <link href="http://mindthecode.com/phpunit-installer-updated-to-3-6-4/"/>
     <updated>2011-11-29T12:12:00+01:00</updated>
-    <id>http://hyra.github.com/phpunit-installer-updated-to-3-6-4</id>
+    <id>http://mindthecode.com/phpunit-installer-updated-to-3-6-4</id>
     <content type="html"><![CDATA[<p>Just a small update .. I updated the PHPUnit Installer Shell for CakePHP 2.0 to use version 3.6.4.</p>
 
 <p>All dependencies have been updated as well, so it&#8217;s 23% more awesome.</p>
@@ -570,9 +570,9 @@ $data = loadFile('http://whatever.com/sheep.jpg');
   
   <entry>
     <title type="html"><![CDATA[Installing PHPUnit manually for CakePHP 2.0]]></title>
-    <link href="http://hyra.github.com/installing-phpunit-manually-for-cakephp-2-0/"/>
+    <link href="http://mindthecode.com/installing-phpunit-manually-for-cakephp-2-0/"/>
     <updated>2011-11-11T16:50:00+01:00</updated>
-    <id>http://hyra.github.com/installing-phpunit-manually-for-cakephp-2-0</id>
+    <id>http://mindthecode.com/installing-phpunit-manually-for-cakephp-2-0</id>
     <content type="html"><![CDATA[<p>I was trying to get into Unit Testing a few months ago. It was a steep learning curve and eventually I gave myself a non-excuse and decided to wait for Cake 2.0 as that would have PHPUnit and it &#8220;wouldn&#8217;t make sense to learn SimpleTest&#8221; at that time.</p>
 
 <p>I intend to keep that promise and have been trying to get into Unit Testing for real this time. The first thing was also the most annoying so far: installing the <em>(&amp;#(</em>&amp;. After completely messing up my local PEAR environment I gave up on the &#8220;official way&#8221; and wrote a <code>PHPUnit Installer Shell</code> to install PHPUnit along with the Cake site.</p>
@@ -600,9 +600,9 @@ $data = loadFile('http://whatever.com/sheep.jpg');
   
   <entry>
     <title type="html"><![CDATA[Use GZip with PHP]]></title>
-    <link href="http://hyra.github.com/use-gzip-with-php/"/>
+    <link href="http://mindthecode.com/use-gzip-with-php/"/>
     <updated>2011-10-14T09:35:00+02:00</updated>
-    <id>http://hyra.github.com/use-gzip-with-php</id>
+    <id>http://mindthecode.com/use-gzip-with-php</id>
     <content type="html"><![CDATA[<p>I recently started using GZip headers in my websites and the results are simply amazing. Right up there with coffee, sneezing polar bears and green traffic lights.</p>
 
 <p>Nowadays, files are big. People used to optimize graphics and CSS stylesheets. This day and age we just don&#8217;t care anymore. At the same time bandwidth is getting more expensive and the mobile market is growing bigger. Not a good combination.</p>
@@ -645,9 +645,9 @@ header("Expires: " . gmdate('D, d M Y H:i:s', time() - 1) . ' GMT');
   
   <entry>
     <title type="html"><![CDATA[Using LESS in CakePHP]]></title>
-    <link href="http://hyra.github.com/using-less-in-cakephp/"/>
+    <link href="http://mindthecode.com/using-less-in-cakephp/"/>
     <updated>2011-09-10T12:15:00+02:00</updated>
-    <id>http://hyra.github.com/using-less-in-cakephp</id>
+    <id>http://mindthecode.com/using-less-in-cakephp</id>
     <content type="html"><![CDATA[<p>I was a bit bored this morning with my previous Less component, so decided to rewrite the thing and added some new features such as caching. It&#8217;s pretty straightforward and simple to set up. If you can&#8217;t wait, the code is available <a href="https://github.com/Hyra/less">here</a>. For more information, read on.</p>
 
 <!--more-->
@@ -707,9 +707,9 @@ header("Expires: " . gmdate('D, d M Y H:i:s', time() - 1) . ' GMT');
   
   <entry>
     <title type="html"><![CDATA[Using Markdown in CakePHP]]></title>
-    <link href="http://hyra.github.com/using-markdown-in-cakephp/"/>
+    <link href="http://mindthecode.com/using-markdown-in-cakephp/"/>
     <updated>2011-07-10T18:06:00+02:00</updated>
-    <id>http://hyra.github.com/using-markdown-in-cakephp</id>
+    <id>http://mindthecode.com/using-markdown-in-cakephp</id>
     <content type="html"><![CDATA[<p>Markdown rocks. I lately fell in love with it when I was setting up this very blog. You can just write easy-to-read and easy-to-write plain text files, and Markdown takes care of the rest.</p>
 
 <!--more-->
@@ -725,9 +725,9 @@ header("Expires: " . gmdate('D, d M Y H:i:s', time() - 1) . ' GMT');
   
   <entry>
     <title type="html"><![CDATA[How to remove a SubModule from your Git repository]]></title>
-    <link href="http://hyra.github.com/how-to-remove-a-submodule-from-your-git-repository/"/>
+    <link href="http://mindthecode.com/how-to-remove-a-submodule-from-your-git-repository/"/>
     <updated>2011-05-26T19:44:00+02:00</updated>
-    <id>http://hyra.github.com/how-to-remove-a-submodule-from-your-git-repository</id>
+    <id>http://mindthecode.com/how-to-remove-a-submodule-from-your-git-repository</id>
     <content type="html"><![CDATA[<p>Submodules are awesome. Adding them is easy enough. But how about getting rid of them again? In this short post I&#8217;ll share how to do just that.</p>
 
 <!--more-->
@@ -765,9 +765,9 @@ header("Expires: " . gmdate('D, d M Y H:i:s', time() - 1) . ' GMT');
   
   <entry>
     <title type="html"><![CDATA[How to handle multiple domains with CakePHP]]></title>
-    <link href="http://hyra.github.com/how-to-handle-multiple-domains-with-cakephp/"/>
+    <link href="http://mindthecode.com/how-to-handle-multiple-domains-with-cakephp/"/>
     <updated>2011-05-22T22:49:00+02:00</updated>
-    <id>http://hyra.github.com/how-to-handle-multiple-domains-with-cakephp</id>
+    <id>http://mindthecode.com/how-to-handle-multiple-domains-with-cakephp</id>
     <content type="html"><![CDATA[<p>Lately, we&#8217;ve been working with multiple environments/servers for our websites to be able to have them approved by clients before going live. However, following set up can also work nicely when you develop your sites locally and don&#8217;t want to keep changing the configuration every time you upload it.</p>
 
 <!--more-->
@@ -863,9 +863,9 @@ header("Expires: " . gmdate('D, d M Y H:i:s', time() - 1) . ' GMT');
   
   <entry>
     <title type="html"><![CDATA[Using SASS in your next CakePHP project]]></title>
-    <link href="http://hyra.github.com/using-sass-in-your-next-cakephp-project/"/>
+    <link href="http://mindthecode.com/using-sass-in-your-next-cakephp-project/"/>
     <updated>2011-04-14T22:49:00+02:00</updated>
-    <id>http://hyra.github.com/using-sass-in-your-next-cakephp-project</id>
+    <id>http://mindthecode.com/using-sass-in-your-next-cakephp-project</id>
     <content type="html"><![CDATA[<p>I heard a lot about SASS, mostly a lot of people raving about how it was the best thing since chocolate. When I first saw some examples I thought the idea was good, but didn&#8217;t see the point of learning a new syntax in order to not having to use the CSS syntax. Because, honestly, how does typing some curly brackets and semicolons hurt?</p>
 
 <p>I did like the idea of inheretance by indentation though. By indenting subsequent selectors it saves a lot of repetitive class assigning and declarations. But I hate adding extra layers onto things. It just feels clunky and wrong. But with Compass your .sass files get compiled to proper CSS files that reside in your /webroot/css folder. Cool! How? Read on.</p>
@@ -941,9 +941,9 @@ output_style = :compressed
   
   <entry>
     <title type="html"><![CDATA[Setting up CakePHP with MAMP Pro on Mac OSX]]></title>
-    <link href="http://hyra.github.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/"/>
+    <link href="http://mindthecode.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/"/>
     <updated>2011-04-11T16:00:00+02:00</updated>
-    <id>http://hyra.github.com/setting-up-cakephp-with-mamp-pro-on-mac-osx</id>
+    <id>http://mindthecode.com/setting-up-cakephp-with-mamp-pro-on-mac-osx</id>
     <content type="html"><![CDATA[<p>I&#8217;d like to use my first post to describe how I set up new projects in a simple way that works best for me. My setup is pretty straight-forward, really. I know some people who mess about with include-paths so they can run multiple <em>apps</em> on one cake-install, but since I work for various clients and even more various projects I like my project folders to be self-contained.</p>
 
 <!--more-->

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: KnockoutJS | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/knockoutjs/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/knockoutjs/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Format associative JSON to work with Knockout.js]]></title>
-    <link href="http://hyra.github.com/format-associative-json-to-work-with-knockout-js/"/>
+    <link href="http://mindthecode.com/format-associative-json-to-work-with-knockout-js/"/>
     <updated>2012-05-09T10:43:00+02:00</updated>
-    <id>http://hyra.github.com/format-associative-json-to-work-with-knockout-js</id>
+    <id>http://mindthecode.com/format-associative-json-to-work-with-knockout-js</id>
     <content type="html"><![CDATA[<p>I recently started creating a RESTful API in CakePHP to work with a Knockout.js frontend.</p>
 
 <p>While Knockout.js is a lot of fun, it does expect your JSON to be in a certain format.</p>

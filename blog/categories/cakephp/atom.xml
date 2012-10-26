@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: CakePHP | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/cakephp/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/cakephp/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Format associative JSON to work with Knockout.js]]></title>
-    <link href="http://hyra.github.com/format-associative-json-to-work-with-knockout-js/"/>
+    <link href="http://mindthecode.com/format-associative-json-to-work-with-knockout-js/"/>
     <updated>2012-05-09T10:43:00+02:00</updated>
-    <id>http://hyra.github.com/format-associative-json-to-work-with-knockout-js</id>
+    <id>http://mindthecode.com/format-associative-json-to-work-with-knockout-js</id>
     <content type="html"><![CDATA[<p>I recently started creating a RESTful API in CakePHP to work with a Knockout.js frontend.</p>
 
 <p>While Knockout.js is a lot of fun, it does expect your JSON to be in a certain format.</p>
@@ -127,9 +127,9 @@ $this-&gt;set('_serialize', array('projects'));
   
   <entry>
     <title type="html"><![CDATA[Using Sessions in PHPUnit Tests with CakePHP]]></title>
-    <link href="http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp/"/>
+    <link href="http://mindthecode.com/using-sessions-in-phpunit-tests-with-cakephp/"/>
     <updated>2012-02-24T11:43:00+01:00</updated>
-    <id>http://hyra.github.com/using-sessions-in-phpunit-tests-with-cakephp</id>
+    <id>http://mindthecode.com/using-sessions-in-phpunit-tests-with-cakephp</id>
     <content type="html"><![CDATA[<p>I was breaking my head over failing unit tests when trying to test a simple Controller that was saving a new record.</p>
 
 <p>Turned out it was failing only on the command line, while the webversion was passing all the tests.</p>
@@ -167,9 +167,9 @@ $this-&gt;set('_serialize', array('projects'));
   
   <entry>
     <title type="html"><![CDATA[Updated LESS component for CakePHP]]></title>
-    <link href="http://hyra.github.com/updated-less-component-for-cakephp/"/>
+    <link href="http://mindthecode.com/updated-less-component-for-cakephp/"/>
     <updated>2012-02-05T10:28:00+01:00</updated>
-    <id>http://hyra.github.com/updated-less-component-for-cakephp</id>
+    <id>http://mindthecode.com/updated-less-component-for-cakephp</id>
     <content type="html"><![CDATA[<p>I decided to have a look at Twitter Bootstrap 2, and had it run through my LESS Component. I then realized the component didn't support subfolders!</p>
 
 <!--more-->
@@ -185,9 +185,9 @@ $this-&gt;set('_serialize', array('projects'));
   
   <entry>
     <title type="html"><![CDATA[Loading external files in PHP the better way]]></title>
-    <link href="http://hyra.github.com/loading-external-files-in-php-the-better-way/"/>
+    <link href="http://mindthecode.com/loading-external-files-in-php-the-better-way/"/>
     <updated>2011-12-06T19:37:00+01:00</updated>
-    <id>http://hyra.github.com/loading-external-files-in-php-the-better-way</id>
+    <id>http://mindthecode.com/loading-external-files-in-php-the-better-way</id>
     <content type="html"><![CDATA[<p>Sometimes you run into "weird behavior" when using <code>file_get_contents</code> in your code when retrieving external data. I noticed this for instance when accessing the Facebook Graph API the other day. When using file_get_contents the results were so much different than when using cUrl.</p>
 
 <!--more-->
@@ -268,9 +268,9 @@ $data = loadFile('http://whatever.com/sheep.jpg');
   
   <entry>
     <title type="html"><![CDATA[PHPUnit Installer updated to 3.6.4]]></title>
-    <link href="http://hyra.github.com/phpunit-installer-updated-to-3-6-4/"/>
+    <link href="http://mindthecode.com/phpunit-installer-updated-to-3-6-4/"/>
     <updated>2011-11-29T12:12:00+01:00</updated>
-    <id>http://hyra.github.com/phpunit-installer-updated-to-3-6-4</id>
+    <id>http://mindthecode.com/phpunit-installer-updated-to-3-6-4</id>
     <content type="html"><![CDATA[<p>Just a small update .. I updated the PHPUnit Installer Shell for CakePHP 2.0 to use version 3.6.4.</p>
 
 <p>All dependencies have been updated as well, so it's 23% more awesome.</p>

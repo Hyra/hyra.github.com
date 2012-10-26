@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PHP | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/php/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing PHPUnit manually for CakePHP 2.0]]></title>
-    <link href="http://hyra.github.com/installing-phpunit-manually-for-cakephp-2-0/"/>
+    <link href="http://mindthecode.com/installing-phpunit-manually-for-cakephp-2-0/"/>
     <updated>2011-11-11T16:50:00+01:00</updated>
-    <id>http://hyra.github.com/installing-phpunit-manually-for-cakephp-2-0</id>
+    <id>http://mindthecode.com/installing-phpunit-manually-for-cakephp-2-0</id>
     <content type="html"><![CDATA[<p>I was trying to get into Unit Testing a few months ago. It was a steep learning curve and eventually I gave myself a non-excuse and decided to wait for Cake 2.0 as that would have PHPUnit and it "wouldn't make sense to learn SimpleTest" at that time.</p>
 
 <p>I intend to keep that promise and have been trying to get into Unit Testing for real this time. The first thing was also the most annoying so far: installing the <em>(&amp;#(</em>&amp;. After completely messing up my local PEAR environment I gave up on the "official way" and wrote a <code>PHPUnit Installer Shell</code> to install PHPUnit along with the Cake site.</p>
@@ -45,9 +45,9 @@
   
   <entry>
     <title type="html"><![CDATA[Use GZip with PHP]]></title>
-    <link href="http://hyra.github.com/use-gzip-with-php/"/>
+    <link href="http://mindthecode.com/use-gzip-with-php/"/>
     <updated>2011-10-14T09:35:00+02:00</updated>
-    <id>http://hyra.github.com/use-gzip-with-php</id>
+    <id>http://mindthecode.com/use-gzip-with-php</id>
     <content type="html"><![CDATA[<p>I recently started using GZip headers in my websites and the results are simply amazing. Right up there with coffee, sneezing polar bears and green traffic lights.</p>
 
 <p>Nowadays, files are big. People used to optimize graphics and CSS stylesheets. This day and age we just don't care anymore. At the same time bandwidth is getting more expensive and the mobile market is growing bigger. Not a good combination.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Octopress | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Blogging with Octopress]]></title>
-    <link href="http://hyra.github.com/blogging-with-octopress/"/>
+    <link href="http://mindthecode.com/blogging-with-octopress/"/>
     <updated>2012-10-26T11:27:00+02:00</updated>
-    <id>http://hyra.github.com/blogging-with-octopress</id>
+    <id>http://mindthecode.com/blogging-with-octopress</id>
     <content type="html"><![CDATA[<p>As some of you may know, even though I don't blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between <a href="http://croogo.org">Croogo</a>, a custom built <a href="http://cakephp.org">CakePHP</a> site, <a href="http://wordpress.org">Wordpress</a> .. and back again.</p>
 
 <!-- more -->

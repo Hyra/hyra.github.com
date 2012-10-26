@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MAMP | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/mamp/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/mamp/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setting up CakePHP with MAMP Pro on Mac OSX]]></title>
-    <link href="http://hyra.github.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/"/>
+    <link href="http://mindthecode.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/"/>
     <updated>2011-04-11T16:00:00+02:00</updated>
-    <id>http://hyra.github.com/setting-up-cakephp-with-mamp-pro-on-mac-osx</id>
+    <id>http://mindthecode.com/setting-up-cakephp-with-mamp-pro-on-mac-osx</id>
     <content type="html"><![CDATA[<p>I'd like to use my first post to describe how I set up new projects in a simple way that works best for me. My setup is pretty straight-forward, really. I know some people who mess about with include-paths so they can run multiple <em>apps</em> on one cake-install, but since I work for various clients and even more various projects I like my project folders to be self-contained.</p>
 
 <!--more-->

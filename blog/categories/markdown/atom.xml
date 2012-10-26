@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Markdown | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/markdown/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/markdown/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Markdown in CakePHP]]></title>
-    <link href="http://hyra.github.com/using-markdown-in-cakephp/"/>
+    <link href="http://mindthecode.com/using-markdown-in-cakephp/"/>
     <updated>2011-07-10T18:06:00+02:00</updated>
-    <id>http://hyra.github.com/using-markdown-in-cakephp</id>
+    <id>http://mindthecode.com/using-markdown-in-cakephp</id>
     <content type="html"><![CDATA[<p>Markdown rocks. I lately fell in love with it when I was setting up this very blog. You can just write easy-to-read and easy-to-write plain text files, and Markdown takes care of the rest.</p>
 
 <!--more-->

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: WatchR | Mindthecode - Rambling about code]]></title>
-  <link href="http://hyra.github.com/blog/categories/watchr/atom.xml" rel="self"/>
-  <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:54:16+02:00</updated>
-  <id>http://hyra.github.com/</id>
+  <link href="http://mindthecode.com/blog/categories/watchr/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-10-26T12:16:11+02:00</updated>
+  <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Good times with Watchr, Coffeescript and LESS]]></title>
-    <link href="http://hyra.github.com/good-times-with-watchr-coffeescript-and-less/"/>
+    <link href="http://mindthecode.com/good-times-with-watchr-coffeescript-and-less/"/>
     <updated>2012-05-16T07:59:00+02:00</updated>
-    <id>http://hyra.github.com/good-times-with-watchr-coffeescript-and-less</id>
+    <id>http://mindthecode.com/good-times-with-watchr-coffeescript-and-less</id>
     <content type="html"><![CDATA[<p>I have been working on a pure HTML front-end for one of the pet projects I'm doing. A lot of fun, but while developing, running the terminal commands to compile both the .less and .coffee files gets a tad tedious. <a href="https://github.com/mynyml/watchr">"Watchr"</a> to the rescue! With this little gem you can watch specific folders or file extensions and run commands based on the files you watch.</p>
 
 <p>Here is how I got it set up now ..</p>
