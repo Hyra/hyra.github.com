@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LESS | Mindthecode - Rambling about code]]></title>
   <link href="http://mindthecode.com/blog/categories/less/atom.xml" rel="self"/>
   <link href="http://mindthecode.com/"/>
-  <updated>2012-10-26T12:16:11+02:00</updated>
+  <updated>2012-10-26T12:17:11+02:00</updated>
   <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
@@ -155,16 +155,16 @@ watch('coffee/*') { |m|
 <h3>Clone</h3>
 
 <p>Clone from github: in your plugin directory type:
-{% codeblock lang:bash %}
-git clone https://github.com/Hyra/less.git less
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone https://github.com/Hyra/less.git less
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>Submodule</h3>
 
 <p>Add as Git submodule: in your plugin directory type:
-{% codeblock lang:bash %}
-git submodule add https://github.com/Hyra/less.git less
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git submodule add https://github.com/Hyra/less.git less
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>Manual</h3>
 
