@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: LESS - Mindthecode - Rambling about code</title>
+  <title>Blogging with Octopress - Mindthecode - Rambling about code</title>
   <meta name="author" content="Stef van den Ham">
 
   
-  <meta name="description" content="Category: LESS">
+  <meta name="description" content="As some of you may know, even though I don&#8217;t blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hyra.github.comblog/categories/less/">
+  <link rel="canonical" href="http://hyra.github.com/blogging-with-octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
    <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -76,67 +76,119 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: LESS</h1>
+    
+      <h1 class="entry-title">Blogging With Octopress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-26T11:27:00+02:00" pubdate data-updated="true">Oct 26<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>As some of you may know, even though I don&#8217;t blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between <a href="http://croogo.org">Croogo</a>, a custom built <a href="http://cakephp.org">CakePHP</a> site, <a href="http://wordpress.org">Wordpress</a> .. and back again.</p>
 
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/good-times-with-watchr-coffeescript-and-less/">Good times with Watchr, Coffeescript and LESS</a></h1>
-<time datetime="2012-05-16T07:59:00+02:00" pubdate><span class='month'>May</span> <span class='day'>16</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/coffee/'>Coffee</a>, <a class='category' href='/blog/categories/command-line/'>Command-line</a>, <a class='category' href='/blog/categories/less/'>LESS</a>, <a class='category' href='/blog/categories/watchr/'>WatchR</a></span>
-</footer>
+<!-- more -->
 
 
-</article>
+<p>For some reason none of them really seemed what I wanted. Croogo is cool enough, but actually adding posts is a hassle, and theming the thing was more of a puzle. Wordpress does the blogging thing really well, but it always feels ugly, and I had to rely on various plugins to make my post-flow work. I like writing in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>. There&#8217;s a couple of Markdown plugins for Wordpress, but I would still have to copy paste stuff in webinterface, and had to hack it to allow for code-snippet sharing.</p>
+
+<h3>Enter Octopress</h3>
+
+<p>I somehow stumbled upon <a href="http://octopress.org">Octopress</a> earlier this week, and decided to give it a go. Short conclusion: <em>It&#8217;s awesome</em>.</p>
+
+<p>I won&#8217;t go into all of the features, as that&#8217;s nicely explained on their site, but basically it allows for this workflow:</p>
+
+<ul>
+<li>Run <code>rake preview</code> in the background</li>
+<li>Write my posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, with some settings in the top such as title, publish date, etc.</li>
+<li>Hit save</li>
+<li>See the changes in the browser</li>
+<li>When happy, <code>rake deploy</code></li>
+</ul>
 
 
+<p>Now, the deploy function is very awesome. It automatically generate the site to a <code>public</code> folder, commits the whole thing to your git repository, and pushes it. When linked to a Github Pages site it will auto update your site.</p>
 
-<article>
-  
-<h1><a href="/updated-less-component-for-cakephp/">Updated LESS component for CakePHP</a></h1>
-<time datetime="2012-02-05T10:28:00+01:00" pubdate><span class='month'>Feb</span> <span class='day'>05</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/cakephp/'>CakePHP</a>, <a class='category' href='/blog/categories/less/'>LESS</a></span>
-</footer>
-
-
-</article>
-
-
-
-  
-  <h2>2011</h2>
-
-<article>
-  
-<h1><a href="/using-less-in-cakephp/">Using LESS in CakePHP</a></h1>
-<time datetime="2011-09-10T12:15:00+02:00" pubdate><span class='month'>Sep</span> <span class='day'>10</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/cakephp/'>CakePHP</a>, <a class='category' href='/blog/categories/less/'>LESS</a></span>
-</footer>
-
-
-</article>
-
+<p>So yeah, this is good stuff, as I can just write my plain text files like I want to, and without any further webinterfacing and option clicking I can publish new articles.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Stef van den Ham</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-26T11:27:00+02:00" pubdate data-updated="true">Oct 26<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hyra.github.com/blogging-with-octopress/" data-via="stefvdham" data-counturl="http://hyra.github.com/blogging-with-octopress/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/spotify-boilerplate-app/" title="Previous Post: Spotify Boilerplate App">&laquo; Spotify Boilerplate App</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -269,7 +321,10 @@
       var disqus_shortname = 'Mindthecode';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hyra.github.com/blogging-with-octopress/';
+        var disqus_url = 'http://hyra.github.com/blogging-with-octopress/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

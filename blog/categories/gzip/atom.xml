@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: GZip | Mindthecode Blog]]></title>
+  <title><![CDATA[Category: GZip | Mindthecode - Rambling about code]]></title>
   <link href="http://hyra.github.com/blog/categories/gzip/atom.xml" rel="self"/>
   <link href="http://hyra.github.com/"/>
-  <updated>2012-10-26T11:05:00+02:00</updated>
+  <updated>2012-10-26T11:54:16+02:00</updated>
   <id>http://hyra.github.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
