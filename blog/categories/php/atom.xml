@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | Mindthecode - Rambling about code]]></title>
   <link href="http://mindthecode.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://mindthecode.com/"/>
-  <updated>2012-10-26T20:58:18+02:00</updated>
+  <updated>2012-10-26T22:17:57+02:00</updated>
   <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
@@ -35,7 +35,7 @@
 
 <h2>How do I get it</h2>
 
-<p>I just pushed it to Github: [Get the installer Shell here][1]</p>
+<p>I just pushed it to Github: <a href="https://github.com/Hyra/PHPUnit-Cake2">Get the installer Shell here</a></p>
 
 <p>The README there provides you with the rest of the information.</p>
 
