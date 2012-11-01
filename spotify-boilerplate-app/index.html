@@ -31,7 +31,7 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
-
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script> -->
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -385,6 +385,20 @@
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
+<script type="text/javascript">
+var imgArray = [
+	"images/backgrounds/oor.jpg",
+	// "images/backgrounds/bg.jpg",
+	// "images/backgrounds/bg.png",
+	// "images/backgrounds/bg-tile.png"
+]; 
+
+function ranNum(){
+	return Math.floor(Math.random()*imgArray.length); 
+}
+var ranNum = ranNum();
+$("html").css("background", "#262C33 url("+ imgArray[ranNum] +") no-repeat fixed top center");
+</script>
 </footer>
   
 
