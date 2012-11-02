@@ -4,7 +4,7 @@
   <title><![CDATA[Mindthecode - Rambling about code]]></title>
   <link href="http://mindthecode.com/atom.xml" rel="self"/>
   <link href="http://mindthecode.com/"/>
-  <updated>2012-11-01T10:08:43+01:00</updated>
+  <updated>2012-11-02T07:35:35+01:00</updated>
   <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
@@ -95,23 +95,35 @@
 
 <p>What you want to look for is <code>js/app.js</code>. Once index.html has been loaded by Spotify it will fire off our Sammy instance:</p>
 
-<pre><code>$(document).ready(function() {
-    app.run('/home');
-}); 
-</code></pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;/home&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Here you can also handle any other bootstrapping you might want to do.</p>
 
 <p>Next up, the Sammy route gets invoked:</p>
 
-<pre><code>this.get('home', function(ctxt) {
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">loadSection</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">,</span> <span class="s2">&quot;news&quot;</span><span class="p">,</span> <span class="s2">&quot;/templates/home.html&quot;</span><span class="p">,</span> <span class="s2">&quot;js/_example_data.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Callback actions</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    loadSection(ctxt, "news", "/templates/home.html", "js/_example_data.json", function() {
-        // Callback actions
-    });
-
-});
-</code></pre>
 
 <p>This is what you will most likely expand on for your app. The route loads a Mustache template into the DOM, parses it, asynch-y fill in the Spotify details, and cache it. After that it will run your callback actions, should you need to.</p>
 
@@ -164,7 +176,7 @@
 
 <p>First of all we need to get the Watchr gem installed. Assuming you have a Mac and got XCode (or at least the tools) installed, this is pretty simple:</p>
 
-<pre><code>→ gem install watchr
+<pre><code>gem install watchr
 </code></pre>
 
 <h2>Installing coffeescript</h2>
