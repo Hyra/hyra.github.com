@@ -2,86 +2,86 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://mindthecode.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/</loc>
-        <lastmod>2012-10-25T17:57:11+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/using-sass-in-your-next-cakephp-project/</loc>
-        <lastmod>2012-10-25T17:57:13+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/how-to-handle-multiple-domains-with-cakephp/</loc>
-        <lastmod>2012-10-25T17:57:15+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/how-to-remove-a-submodule-from-your-git-repository/</loc>
-        <lastmod>2012-11-01T09:32:27+01:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/using-markdown-in-cakephp/</loc>
-        <lastmod>2012-10-25T17:57:20+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/using-less-in-cakephp/</loc>
-        <lastmod>2012-10-25T18:05:50+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/use-gzip-with-php/</loc>
-        <lastmod>2012-10-25T17:57:24+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/installing-phpunit-manually-for-cakephp-2-0/</loc>
-        <lastmod>2012-10-26T22:17:48+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/phpunit-installer-updated-to-3-6-4/</loc>
-        <lastmod>2012-10-25T17:57:28+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/loading-external-files-in-php-the-better-way/</loc>
-        <lastmod>2012-10-25T17:57:30+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/updated-less-component-for-cakephp/</loc>
-        <lastmod>2012-10-25T17:52:52+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/spotify-preview-build-expired/</loc>
-        <lastmod>2012-10-25T17:53:38+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/using-sessions-in-phpunit-tests-with-cakephp/</loc>
-        <lastmod>2012-10-25T17:54:23+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/format-associative-json-to-work-with-knockout-js/</loc>
-        <lastmod>2012-10-25T17:55:14+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/good-times-with-watchr-coffeescript-and-less/</loc>
-        <lastmod>2012-11-02T07:35:35+01:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/spotify-boilerplate-app/</loc>
-        <lastmod>2012-11-02T13:32:06+01:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/blogging-with-octopress/</loc>
-        <lastmod>2012-10-26T11:53:58+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/about/</loc>
-        <lastmod>2012-10-26T11:02:14+02:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/archives/</loc>
-        <lastmod>2012-11-02T13:32:06+01:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/blog/archives/</loc>
-        <lastmod>2012-11-02T13:32:06+01:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
     <url>
         <loc>http://mindthecode.com/</loc>
-        <lastmod>2012-11-02T14:03:47+01:00</lastmod>
+        <lastmod>2012-11-02T14:17:10+01:00</lastmod>
     </url>
 </urlset>
