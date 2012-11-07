@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHPUnit | Mindthecode - Rambling about code]]></title>
   <link href="http://mindthecode.com/blog/categories/phpunit/atom.xml" rel="self"/>
   <link href="http://mindthecode.com/"/>
-  <updated>2012-11-02T15:42:59+01:00</updated>
+  <updated>2012-11-07T09:08:24+01:00</updated>
   <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Updated the PHPUnit CakePHP installer]]></title>
+    <link href="http://mindthecode.com/updated-phpunit-cakephp-installer/"/>
+    <updated>2012-11-06T09:06:00+01:00</updated>
+    <id>http://mindthecode.com/updated-phpunit-cakephp-installer</id>
+    <content type="html"><![CDATA[<p>Just a quick note, the CakePHP PHPUnit installer has been updated to use version 3.7.8. Go grab it <a href="https://github.com/Hyra/PHPUnit-Cake2">here</a> if you are no fan of PEAR and want a self contained PHPUnit testing system.</p>
+
+<p>Works on Mac OSX, Linux and Windows.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Sessions in PHPUnit Tests with CakePHP]]></title>

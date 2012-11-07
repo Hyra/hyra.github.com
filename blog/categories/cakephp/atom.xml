@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CakePHP | Mindthecode - Rambling about code]]></title>
   <link href="http://mindthecode.com/blog/categories/cakephp/atom.xml" rel="self"/>
   <link href="http://mindthecode.com/"/>
-  <updated>2012-11-02T15:42:59+01:00</updated>
+  <updated>2012-11-07T09:08:24+01:00</updated>
   <id>http://mindthecode.com/</id>
   <author>
     <name><![CDATA[Stef van den Ham]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Updated the PHPUnit CakePHP installer]]></title>
+    <link href="http://mindthecode.com/updated-phpunit-cakephp-installer/"/>
+    <updated>2012-11-06T09:06:00+01:00</updated>
+    <id>http://mindthecode.com/updated-phpunit-cakephp-installer</id>
+    <content type="html"><![CDATA[<p>Just a quick note, the CakePHP PHPUnit installer has been updated to use version 3.7.8. Go grab it <a href="https://github.com/Hyra/PHPUnit-Cake2">here</a> if you are no fan of PEAR and want a self contained PHPUnit testing system.</p>
+
+<p>Works on Mac OSX, Linux and Windows.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Format associative JSON to work with Knockout.js]]></title>
@@ -263,17 +274,6 @@ $data = loadFile('http://whatever.com/sheep.jpg');
 <h2>Thoughts?</h2>
 
 <p>Anyone else experiencing different results between cUrl and the builtin function? I've been googling what could cause this, but so far nothing conclusive.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[PHPUnit Installer updated to 3.6.4]]></title>
-    <link href="http://mindthecode.com/phpunit-installer-updated-to-3-6-4/"/>
-    <updated>2011-11-29T12:12:00+01:00</updated>
-    <id>http://mindthecode.com/phpunit-installer-updated-to-3-6-4</id>
-    <content type="html"><![CDATA[<p>Just a small update .. I updated the PHPUnit Installer Shell for CakePHP 2.0 to use version 3.6.4.</p>
-
-<p>All dependencies have been updated as well, so it's 23% more awesome.</p>
 ]]></content>
   </entry>
   
