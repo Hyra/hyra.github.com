@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Spotify | Mindthecode - Rambling about code]]></title>
+  <link href="http://mindthecode.com/blog/categories/spotify/atom.xml" rel="self"/>
+  <link href="http://mindthecode.com/"/>
+  <updated>2012-11-07T09:08:24+01:00</updated>
+  <id>http://mindthecode.com/</id>
+  <author>
+    <name><![CDATA[Stef van den Ham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Spotify Boilerplate App]]></title>
+    <link href="http://mindthecode.com/spotify-boilerplate-app/"/>
+    <updated>2012-09-18T07:59:00+02:00</updated>
+    <id>http://mindthecode.com/spotify-boilerplate-app</id>
+    <content type="html"><![CDATA[<p>A while ago we were proud to be releasing 2 of the very first Spotify Apps in the Netherlands at <a href="http://noprotocol.nl" title="NoProtocol" target="_blank">NoProtocol</a>. For a long time since I've been planning on creating a Boilerplate in which we could put all the best practices and redo some stuff in hindsight.</p>
+
+<p>And finally, it's here! You can grab it at <a href="https://github.com/Hyra/Spotify-Boilerplate" title="https://github.com/Hyra/Spotify-Boilerplate" target="_blank">https://github.com/Hyra/Spotify-Boilerplate</a></p>
+
+<p>For a bit more in-depth information, read on ..</p>
+
+<!--more-->
+
+
+<p>The Boilerplate project aims to provide a foundation upon which you can start building Spotify Apps. It takes away the hassle of writing the necessary boilerplate code and is structured so you can start developing straight away.</p>
+
+<p>I will add to it as I stumble upon free time, but feel free to open a Pull Request or submit an issue for a suggestion</p>
+
+<h2>Some of the features</h2>
+
+<ul>
+<li>Small footprint</li>
+<li>Automatic Tab Handling</li>
+<li>Automatic Deeplink handling</li>
+<li>Automatic Cover Loading for playlists (mosaics)</li>
+<li>Online/offline status tracking and content switching</li>
+</ul>
+
+
+<h2>How to set it up (on your Mac)</h2>
+
+<ol>
+<li>Sign up for a developer account on Spotify</li>
+<li>Open Terminal, and if it doesn't exist yet <code>mkdir ~/Spotify</code></li>
+<li>cd ~/Spotify</li>
+<li>git clone git@github.com:Hyra/Spotify-Boilerplate.git</li>
+<li>Download the latest version of Spotify</li>
+<li>Open Spotify and type <code>spotify:app:boilerplate</code> in the search bar</li>
+</ol>
+
+
+<h2>What's in the Boilerplate</h2>
+
+<p>The aim is to keep the Boilerplate as clean as possible, while giving all the tools to quickly develop your app.</p>
+
+<h3>How to work with it (the short version)</h3>
+
+<p>What you want to look for is <code>js/app.js</code>. Once index.html has been loaded by Spotify it will fire off our Sammy instance:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;/home&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here you can also handle any other bootstrapping you might want to do.</p>
+
+<p>Next up, the Sammy route gets invoked:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">loadSection</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">,</span> <span class="s2">&quot;news&quot;</span><span class="p">,</span> <span class="s2">&quot;/templates/home.html&quot;</span><span class="p">,</span> <span class="s2">&quot;js/_example_data.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Callback actions</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This is what you will most likely expand on for your app. The route loads a Mustache template into the DOM, parses it, asynch-y fill in the Spotify details, and cache it. After that it will run your callback actions, should you need to.</p>
+
+<p><code>loadSection</code> takes 5 parameters at the moment:</p>
+
+<p><strong>ctxt</strong> A reference to the <code>Sammy.Context</code> which was passed to the route</p>
+
+<p><strong>ID</strong> A unique identifier for the content which is used as a cache-key</p>
+
+<p><strong>Template File</strong> location to the Mustache template</p>
+
+<p><strong>JSON Location</strong> location to the JSON you want to use. This is useful if you want to connect your app with a (RESTful) web service to feed content to your app. NOTE: If you use absolute URLs here you should add the domains to your <code>manifest.json</code></p>
+
+<p><strong>Callback</strong> This callback function you can use to do your post-processing</p>
+
+<h3>Dependencies</h3>
+
+<p>The boilerplate relies on a couple of libraries:</p>
+
+<p>Sammy.js for the routing, templating parsing and content swapping. It's just an awesome little tool</p>
+
+<p>jQuery as we've all become used to it at some point</p>
+
+<p>Mustache as a template handler. This can just as well be any of the other gazillion templating engines out there, so feel free to hack your favourite in.</p>
+
+<h3>Roadmap</h3>
+
+<ul>
+<li>Add more features/functionality regarding the Spotify API</li>
+<li>Make the loadSection and Sammy integration a bit more seamless and less explicit</li>
+<li>Spend more time documenting and writing how-to's</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spotify Preview Build expired]]></title>
+    <link href="http://mindthecode.com/spotify-preview-build-expired/"/>
+    <updated>2012-02-11T17:16:00+01:00</updated>
+    <id>http://mindthecode.com/spotify-preview-build-expired</id>
+    <content type="html"><![CDATA[<p>Today I decided to tinker some more on our Spotify App, only to find that the Preview Build had expired, and was not gonna launch. Period. Great, so now what?</p>
+
+<!--more-->
+
+
+<h2>Small update</h2>
+
+<p>From IRC:</p>
+
+<p><code>chiel: Hi guys, just a small update about the expired preview build we're aware of the issue and will put a new one up today however, we're in San Francisco for a hackday, where it is now 8.30am, so bear with us for a moment.</code></p>
+
+<h2>Back to basics</h2>
+
+<p>I downloaded the normal user version, and obviously my application didn't fully work. Most noticably the <code>application</code> node had disappeared from the <code>models</code> class, even though it's still present at the developer resource page.</p>
+
+<p>This means one can't change tabs in the following way anymore:</p>
+
+<pre><code>application.observe(models.EVENT.ARGUMENTSCHANGED, handleArgs);
+
+function handleArgs() {
+    var args = models.application.arguments;
+    $(".section").hide();   // Hide all sections
+    $("#"+args[0]).show();  // Show current section
+}
+</code></pre>
+
+<h2>So now what?</h2>
+
+<p>I did some digging, and noticed <code>sp.core</code> has some eventListeners. After some fiddling I can now switch tabs again by doing the following:</p>
+
+<pre><code>sp.core.addEventListener('argumentsChanged', function() {
+    $(".section").hide();                   // Hide all sections
+    $("#"+sp.core.getArguments()).show();   // Show current section
+});
+</code></pre>
+
+<p>Nothe most elegant, and I'll probably be able to change it back to the original code when the new Preview Build comes out, but for now I can at least work on the App.</p>
+
+<h2>Broken?</h2>
+
+<p>Any one else noticing things that have stopped working and found some workarounds? Do share below!</p>
+]]></content>
+  </entry>
+  
+</feed>
