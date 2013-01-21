@@ -1,0 +1,226 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>Using LESS in CakePHP</title>
+
+    
+    <meta name="author" content="Stef van den Ham">
+    
+    <link rel="stylesheet" href="/assets/themes/ghminimal/css/styles.css">
+    <link rel="stylesheet" href="/assets/themes/ghminimal/css/pygment_trac.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="main">
+        <hgroup>
+          <h1><a href="/">Mindthecode</a></h1>
+          
+          <h2>Rambling about code</h2>
+          
+        </hgroup>
+        <ul class="buttons">
+          <li><a href="http://github.com/hyra/" rel="me">Code <strong>GitHub</strong></a></li>
+          <li><a href="http://www.linkedin.com/in//" rel="me">Connect <strong>LinkedIn</strong></a></li>
+          <li><a href="http://twitter.com/stefvdham/" rel="me">Follow <strong>Twitter</strong></a></li>
+        </ul>
+      </header>
+      <section class="main">
+        
+<article class="post">
+	<header>
+		<h1>Using LESS in CakePHP</h1>
+		<p>Published on <time datetime="2011-09-10T12:15:00+02:00" pubdate>
+			September 10, 2011
+		</time></p>
+	</header>
+
+	<p>I was a bit bored this morning with my previous Less component, so decided to rewrite the thing and added some new features such as caching. It’s pretty straightforward and simple to set up. If you can’t wait, the code is available <a href="https://github.com/Hyra/less">here</a>. For more information, read on.</p>
+
+<!--more-->
+
+<p>This little helper converts your .less files into .css without relying on Node.js</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="clone">Clone</h3>
+
+<p>Clone from github: in your plugin directory type:</p>
+
+<pre><code>git clone https://github.com/Hyra/less.git less
+</code></pre>
+
+<h3 id="submodule">Submodule</h3>
+
+<p>Add as Git submodule: in your plugin directory type:</p>
+
+<pre><code>git submodule add https://github.com/Hyra/less.git less
+</code></pre>
+
+<h3 id="manual">Manual</h3>
+
+<p>Download as archive from github and extract to <code>app/plugins/less</code></p>
+
+<p>Next, create a folder <code>less</code> in <code>app/webroot/</code> and apply <code>chmod 777</code> to it.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>In your <code>app_controller.php</code> add the helper:</p>
+
+<pre><code>public $helpers = array('Less.Less');
+</code></pre>
+
+<p>Now every <code>.less</code> file from <code>webroot/less</code> will be converted to its <code>.css</code> equivalent in <code>webroot/css</code></p>
+
+<p>In your <code>default.ctp</code> layout you can just use <code>echo $this-&gt;Html-&gt;css('your_css_file');</code> as you always do</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>Conversion happens on every request while in development mode <code>(debug at 0)</code></li>
+</ul>
+
+<p>Again, it’s not much .. but I like simple things that make working on projects more fun, so it’s all good.</p>
+
+<p>I probably should update the helper again soon to make it work with CakePHP 2.0, but haven’t decided when to make the switch yet. Then again, you guys can always fork and help out, of course ;)</p>
+
+
+
+	<footer>
+    <section>
+  		
+    </section>
+
+    <section>
+      
+        <h1>Categories:</h1>
+        <ul>
+        
+        
+
+
+  
+     
+    	<li><a href="/categories.html#LESS-ref">
+    		LESS <span>3</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#CakePHP-ref">
+    		CakePHP <span>11</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+      
+    </section>
+
+    <p class="gotop">
+      <a href="#page">Back to Top</a>
+    </p>
+	</footer>
+
+	
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'Mindthecode'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+</article>
+
+      </section>
+      <aside>
+        <nav>
+          <ul>
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </nav>
+        <ul>
+          <li class="contact"><a href="mailto:stef@mindthecode.com">stef@mindthecode.com</a></li>
+        </ul>
+      </aside>
+      <footer class="main">
+        <p>
+          <small>Themed with <a href="http://sdb.github.com/jb-theme-ghminimal/">ghminimal</a> based on <a href="http://github.com/orderedlist/minimal/">minimal</a>. Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://pages.github.com/">GitHub Pages</a>.</small>
+        </p>
+      </footer>
+    </div>
+    <script src="/assets/themes/ghminimal/js/scale.fix.js"></script>
+
+    
+  </body>
+</html>

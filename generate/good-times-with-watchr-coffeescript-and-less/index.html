@@ -1,0 +1,286 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>Good times with Watchr, Coffeescript and LESS</title>
+
+    
+    <meta name="author" content="Stef van den Ham">
+    
+    <link rel="stylesheet" href="/assets/themes/ghminimal/css/styles.css">
+    <link rel="stylesheet" href="/assets/themes/ghminimal/css/pygment_trac.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="main">
+        <hgroup>
+          <h1><a href="/">Mindthecode</a></h1>
+          
+          <h2>Rambling about code</h2>
+          
+        </hgroup>
+        <ul class="buttons">
+          <li><a href="http://github.com/hyra/" rel="me">Code <strong>GitHub</strong></a></li>
+          <li><a href="http://www.linkedin.com/in//" rel="me">Connect <strong>LinkedIn</strong></a></li>
+          <li><a href="http://twitter.com/stefvdham/" rel="me">Follow <strong>Twitter</strong></a></li>
+        </ul>
+      </header>
+      <section class="main">
+        
+<article class="post">
+	<header>
+		<h1>Good times with Watchr, Coffeescript and LESS</h1>
+		<p>Published on <time datetime="2012-05-16T07:59:00+02:00" pubdate>
+			May 16, 2012
+		</time></p>
+	</header>
+
+	<p>I have been working on a pure HTML front-end for one of the pet projects I’m doing. A lot of fun, but while developing, running the terminal commands to compile both the .less and .coffee files gets a tad tedious. <a href="https://github.com/mynyml/watchr">“Watchr”</a> to the rescue! With this little gem you can watch specific folders or file extensions and run commands based on the files you watch.</p>
+
+<p>Here is how I got it set up now ..</p>
+
+<!--more-->
+
+<h2 id="installing-watchr">Installing watchr</h2>
+
+<p>First of all we need to get the Watchr gem installed. Assuming you have a Mac and got XCode (or at least the tools) installed, this is pretty simple:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>gem install watchr
+</code></pre>
+</div>
+
+<h2 id="installing-coffeescript">Installing coffeescript</h2>
+
+<p>Another easy one ..</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>npm install -g coffee-script
+</code></pre>
+</div>
+
+<p>Don’t forget the <code>-g</code> flag as you (probably) want it to be installed globally.</p>
+
+<h2 id="installing-the-less-compiler">Installing the LESS compiler</h2>
+
+<p>You got the hang of it now, it’s as easy as ..</p>
+
+<pre><code>npm install -g less
+</code></pre>
+
+<h2 id="the-fun-part">The fun part!</h2>
+
+<p>Now we’re ready for the fun bit, setting up watchr to do some automagic stuff.</p>
+
+<p>I have a typical folder structure, with the exception of a new <code>_src</code> folder which will contain all the raw coffeescript and less files.</p>
+
+<pre><code>/index.html
+/css
+/js
+/img
+/_src
+    /less
+    /coffee
+</code></pre>
+
+<p>Watchr works with a config file, which basically tells it what to watch for, and what to do if it finds any changes. I placed the file inside the <code>_src</code> folder and named it <code>watchr.rb</code></p>
+
+<p>Here’s my config file at the moment:</p>
+
+<pre><code>def compile_less
+    %x[lessc less/bootstrap/bootstrap.less ../css/main.css --yui-compress]
+end
+
+def compile_coffee
+    %x[coffee -c -j ../js/app.js coffee/]
+end
+
+def do_growl(message)
+    growlnotify = `which growlnotify`.chomp
+  title = "Watchr Message"
+  passed = message.include?('0 failures, 0 errors')
+  image = passed ? "~/.watchr_images/passed.png" : "~/.watchr_images/failed.png"
+  severity = passed ? "-1" : "1"
+  options = "-w -n Watchr --image '#{File.expand_path(image)}'"
+  options &lt;&lt; " -m '#{message}' '#{title}' -p #{severity}"
+  system %(#{growlnotify} #{options} &amp;)
+end
+
+do_growl "Watching folders and waiting for changes .."
+
+watch('less/*') { |m|
+    # Recompile LESS files
+    compile_less
+    do_growl "LESS Compiled and Compressed!"
+}
+
+watch('coffee/*') { |m|
+    # Recompile Coffeescripts
+    compile_coffee
+    do_growl "Coffeescripts compiled and concatenated!"
+}
+</code></pre>
+
+<p>As you can see at the bottom I’m watching the 2 folders seperately, as I want to run different commands for them. For the project I’m working on I’m using Twitter Bootstrap, so rather than compiling all the .less files to seperate .css files I just want to compiled bootstrap.less as that @imports all the things it needs. When it’s done with that it yui-compresses the lot and writes the output to <code>css/main.css</code>. Pretty cool!</p>
+
+<p>The compile_coffee command does something pretty similar. Whenever a .coffee file in the coffee folder changes it will compile them all and combine the output (notice the <code>-j</code> flag) and write it to <code>js/app.js</code>.</p>
+
+<p>To get the show on the road, cd to the <code>_src</code> folder, and run:</p>
+
+<pre><code>watchr watchr.rb
+</code></pre>
+
+<p>You may have noticed the <code>do_growl</code> function, which doesn’t really add value except that it’s just cool to get a Growl message whenever it has done it’s thing. To get that bit working you have to install <a href="http://growl.info/extras.php#growlnotify">“Growl Notify”</a>.</p>
+
+<p>If you’re not that interested, or you don’t have a Mac with Growl simply remove the function and the do_growl calls from the watch patterns.</p>
+
+<p>I’m sure I could optimize this a bit, and add variables for output folders and options, but for now it’s simple, working, and pretty damn cool.</p>
+
+<p>Let me know how you get your watchr set up!</p>
+
+
+
+	<footer>
+    <section>
+  		
+    </section>
+
+    <section>
+      
+        <h1>Categories:</h1>
+        <ul>
+        
+        
+
+
+  
+     
+    	<li><a href="/categories.html#WatchR-ref">
+    		WatchR <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Coffee-ref">
+    		Coffee <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#LESS-ref">
+    		LESS <span>3</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Command-line-ref">
+    		Command-line <span>1</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+      
+    </section>
+
+    <p class="gotop">
+      <a href="#page">Back to Top</a>
+    </p>
+	</footer>
+
+	
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'Mindthecode'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+</article>
+
+      </section>
+      <aside>
+        <nav>
+          <ul>
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </nav>
+        <ul>
+          <li class="contact"><a href="mailto:stef@mindthecode.com">stef@mindthecode.com</a></li>
+        </ul>
+      </aside>
+      <footer class="main">
+        <p>
+          <small>Themed with <a href="http://sdb.github.com/jb-theme-ghminimal/">ghminimal</a> based on <a href="http://github.com/orderedlist/minimal/">minimal</a>. Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://pages.github.com/">GitHub Pages</a>.</small>
+        </p>
+      </footer>
+    </div>
+    <script src="/assets/themes/ghminimal/js/scale.fix.js"></script>
+
+    
+  </body>
+</html>

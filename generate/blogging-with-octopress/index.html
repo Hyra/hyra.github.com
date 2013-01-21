@@ -1,0 +1,196 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>Blogging with Octopress</title>
+
+    
+    <meta name="author" content="Stef van den Ham">
+    
+    <link rel="stylesheet" href="/assets/themes/ghminimal/css/styles.css">
+    <link rel="stylesheet" href="/assets/themes/ghminimal/css/pygment_trac.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="main">
+        <hgroup>
+          <h1><a href="/">Mindthecode</a></h1>
+          
+          <h2>Rambling about code</h2>
+          
+        </hgroup>
+        <ul class="buttons">
+          <li><a href="http://github.com/hyra/" rel="me">Code <strong>GitHub</strong></a></li>
+          <li><a href="http://www.linkedin.com/in//" rel="me">Connect <strong>LinkedIn</strong></a></li>
+          <li><a href="http://twitter.com/stefvdham/" rel="me">Follow <strong>Twitter</strong></a></li>
+        </ul>
+      </header>
+      <section class="main">
+        
+<article class="post">
+	<header>
+		<h1>Blogging with Octopress</h1>
+		<p>Published on <time datetime="2012-10-26T11:27:00+02:00" pubdate>
+			October 26, 2012
+		</time></p>
+	</header>
+
+	<p>As some of you may know, even though I don’t blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between <a href="http://croogo.org">Croogo</a>, a custom built <a href="http://cakephp.org">CakePHP</a> site, <a href="http://wordpress.org">Wordpress</a> .. and back again.</p>
+
+<!-- more -->
+
+<p>For some reason none of them really seemed what I wanted. Croogo is cool enough, but actually adding posts is a hassle, and theming the thing was more of a puzle. Wordpress does the blogging thing really well, but it always feels ugly, and I had to rely on various plugins to make my post-flow work. I like writing in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>. There’s a couple of Markdown plugins for Wordpress, but I would still have to copy paste stuff in webinterface, and had to hack it to allow for code-snippet sharing.</p>
+
+<h3 id="enter-octopress">Enter Octopress</h3>
+
+<p>I somehow stumbled upon <a href="http://octopress.org">Octopress</a> earlier this week, and decided to give it a go. Short conclusion: <em>It’s awesome</em>.</p>
+
+<p>I won’t go into all of the features, as that’s nicely explained on their site, but basically it allows for this workflow:</p>
+
+<ul>
+  <li>Run <code>rake preview</code> in the background</li>
+  <li>Write my posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, with some settings in the top such as title, publish date, etc.</li>
+  <li>Hit save</li>
+  <li>See the changes in the browser</li>
+  <li>When happy, <code>rake deploy</code></li>
+</ul>
+
+<p>Now, the deploy function is very awesome. It automatically generate the site to a <code>public</code> folder, commits the whole thing to your git repository, and pushes it. When linked to a Github Pages site it will auto update your site.</p>
+
+<p>So yeah, this is good stuff, as I can just write my plain text files like I want to, and without any further webinterfacing and option clicking I can publish new articles.</p>
+
+
+	<footer>
+    <section>
+  		
+    </section>
+
+    <section>
+      
+        <h1>Categories:</h1>
+        <ul>
+        
+        
+
+
+  
+     
+    	<li><a href="/categories.html#Octopress-ref">
+    		Octopress <span>1</span>
+    	</a></li>
+    
+  
+
+
+        </ul>
+      
+    </section>
+
+    <p class="gotop">
+      <a href="#page">Back to Top</a>
+    </p>
+	</footer>
+
+	
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'Mindthecode'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+</article>
+
+      </section>
+      <aside>
+        <nav>
+          <ul>
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </nav>
+        <ul>
+          <li class="contact"><a href="mailto:stef@mindthecode.com">stef@mindthecode.com</a></li>
+        </ul>
+      </aside>
+      <footer class="main">
+        <p>
+          <small>Themed with <a href="http://sdb.github.com/jb-theme-ghminimal/">ghminimal</a> based on <a href="http://github.com/orderedlist/minimal/">minimal</a>. Powered by <a href="http://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://pages.github.com/">GitHub Pages</a>.</small>
+        </p>
+      </footer>
+    </div>
+    <script src="/assets/themes/ghminimal/js/scale.fix.js"></script>
+
+    
+  </body>
+</html>
