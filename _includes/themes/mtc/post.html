@@ -1,0 +1,93 @@
+<article class="post">
+
+  <section class="header">
+    <img src="/assets/themes/mtc/img/stefvdham.png" alt="Stef van den Ham" class="avatar">
+    <div class="meta">
+      <a href="https://plus.google.com/u/0/102230925443628784177" rel="author">STEF VAN DEN HAM</a><br />
+      {{ page.date | date: '%B %d, %Y' }}<br />
+      {% assign categories_list = page.categories %}
+      {% include JB/categories_list_links %}
+      <br />
+      {% assign tags_list = page.tags %}
+      {% include JB/tags_list_links %}
+    </div>
+    <div class="ribbon">
+      <div>
+        {{ page.date | date: '%b' }}<br />
+        {{ page.date | date: '%d' }}
+      </div>
+    </div>
+    <h1>{{ page.title }}</h1>
+  </section class="header">
+
+  <section class="post-body">
+    <div class="excerpt">{{ content | more: "excerpt" }}</div>
+    <hr />
+    {{ content | more: "remaining" }}
+    <br />
+
+    <ul class="socialable">
+      <li>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="stefvdham">Tweet</a>
+      </li>
+      <li>
+        <div class="fb-like" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div>
+      </li>
+      <li>
+        <div class="g-plusone" data-size="medium"></div>
+      </li>
+    </ul>
+
+    <br /><br />
+    <hr />
+  </section>
+
+<!-- 	<section class="meta">
+Published: 
+<date class="date-pub" title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}" pubdate>
+<span class="month"><abbr>{{ page.date | date: '%B' }}</abbr></span>
+<span class="day">{{ page.date | date: '%d' }}</span>
+<span class="year">{{ page.date | date: '%Y' }}</span>
+</date>
+
+<ul class="category">
+<li class="list-head">category: </li>
+{% assign categories_list = page.categories %}
+{% include JB/categories_list %}
+</ul>
+<ul class="list-tag list-linear">
+<li class="list-head">tags: </li>
+{% assign tags_list = page.tags %}
+{% include JB/tags_list %}
+</ul>
+</section> -->
+
+  <section class="prev-next-inline">
+    <h2>Related articles</h2>
+    <ul>
+      {% for post in site.related_posts limit:5 %}
+      <li><a href="{{ post.url }}">{{post.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <ul>
+      {% if page.previous %}
+      <li class="prev">
+        <a class="internal" rel="prev"  href="{{ page.previous.url }}" title="View {{ page.previous.title }}">&laquo; {{ page.previous.title }}</a>
+      </li>
+      {% endif %}
+      {% if page.previous and page.next %}
+      <!-- <li class="pipe"> | </li> -->
+      {% endif %}
+      {% if page.next %}
+      <li class="next"><a class="internal" rel="next"  href="{{ page.next.url }}" title="View {{ page.next.title }}">{{ page.next.title }} &raquo;</a></li>
+      {% endif %}
+    </ul>
+    <br /><br />
+    <hr />
+  </section>
+
+  <section class="comments">
+    {% include JB/comments %}
+  </section>
+
+</article>

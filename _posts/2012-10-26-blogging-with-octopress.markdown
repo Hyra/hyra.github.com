@@ -8,7 +8,7 @@ categories: ["Octopress"]
 
 As some of you may know, even though I don't blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between [Croogo](http://croogo.org), a custom built [CakePHP](http://cakephp.org) site, [Wordpress](http://wordpress.org) .. and back again.
 
-<!-- more -->
+<!--more-->
 
 For some reason none of them really seemed what I wanted. Croogo is cool enough, but actually adding posts is a hassle, and theming the thing was more of a puzle. Wordpress does the blogging thing really well, but it always feels ugly, and I had to rely on various plugins to make my post-flow work. I like writing in [Markdown](http://daringfireball.net/projects/markdown/). There's a couple of Markdown plugins for Wordpress, but I would still have to copy paste stuff in webinterface, and had to hack it to allow for code-snippet sharing.
 

@@ -18,7 +18,7 @@ The PHPUnit command line suite apparently outputs contents early, before the ses
 
 ## Solution 1
 
-Add --stderr to the command line:
+Add `--stderr` to the command line:
 
     cake testsuite app Controller/YourFancyController --stderr
     

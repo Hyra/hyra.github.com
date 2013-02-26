@@ -1,0 +1,511 @@
+html {
+  overflow-y: scroll;
+}
+body {
+	/*background: #393939 url(/assets/themes/mtc/img/escheresque_ste.png) repeat top left;*/
+	background: #393939 url(http://www.colejoplin.com/wp-content/themes/grey-opaque/images/backgrounds/background.jpg) repeat top left;
+	font-size: 10px;
+}
+article {
+	position: relative;
+}
+.logo {
+	margin: 20px 0 20px 0;
+	border-bottom: solid 1px #fff;
+	padding-bottom: 20px;
+	font-size: 3em;
+	font-family: "WhitneyBold", sans-serif;
+	letter-spacing: -0.07em;
+	color: #FFF;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.logo a:hover {
+	/*text-shadow: 0 1px 0 #999, 0 2px 0 #888, 0 3px 0 #777, 0 4px 0 #666, 0 5px 0 #555, 0 6px 0 #444, 0 7px 0 #333, 0 8px 7px #001135;*/
+	text-shadow: 0 0 10px #000;
+}
+.logo a, .logo a:hover {
+	color: #FFF;
+	-webkit-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+}
+nav {
+	text-align: right;
+	margin-top: -50px;
+}
+nav li {
+	display: inline;
+}
+nav li a, nav li a:visited {
+	color: #FFF;
+	font-family: "WhitneyBold", sans-serif;
+	letter-spacing: -0.1em;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	padding-left: 10px;
+}
+nav li a:hover {
+	color: #FFFFFF;
+	text-shadow: 1px 1px 0 #333;
+}
+.post, .posts-archive {
+	background: #f9f8f4;
+	border-radius: 3px;
+	margin: 40px 0 0 0;
+}
+.post h1 {
+	font-size: 6em;
+	margin-bottom: 0.5em;
+}
+.ribbon {
+	width: 128px;
+	height: 128px;
+	background-image: url(/assets/themes/mtc/img/ribbon2.png);
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0;
+}
+.ribbon div {
+	position: absolute;
+	top: 5px;
+	font-family: "WhitneyBold", sans-serif;
+	color: #FFF;
+	right: 15px;
+	font-size: 2.2em;
+	text-shadow: 0 0 4px #000;
+	text-align: center;
+}
+.post-preview {
+	background: #f9f8f4;
+	border-radius: 3px 3px 3px 3px;
+	margin-bottom: 70px;
+	margin-top: 40px;
+	position: relative;
+}
+.post-preview h1 {
+	font-size: 5em;
+	max-width: 430px;
+	margin-top: 10px;
+}
+.post-preview .excerpt {
+	padding: 10px 20px;
+}
+.post-preview h1 {
+	padding: 20px 20px 0 20px;
+	margin-bottom: 0;
+}
+.post-preview h1 a:hover {
+	color: #da5956;
+}
+.posts-archive {
+	background: white;
+	padding: 20px 40px;
+	margin: 40px 0 0 0;
+}
+.posts-archive h1 {
+	margin: 0;
+	padding: 10px 0;
+}
+.posts-archive h2 {
+	margin: 0;
+}
+.posts-archive h3 {
+	font-size: 2em;
+}
+.posts-archive ul {
+	list-style: none;
+	margin: 0;
+	padding: 15px 0 20px 0;
+}
+.posts-archive li {
+	font-family: "WhitneyBookRegular", sans-serif;
+	font-size: 2em;
+	letter-spacing: -0.05em;
+}
+.archive-block {
+	background: white;
+	text-align: center;
+	font-family: "WhitneyBold", sans-serif;
+	font-size: 4em;
+	margin: -30px 0 20px;
+	border-radius: 3px;
+}
+a.read-more {
+	font-family: "WhitneyBold", sans-serif;
+	font-size: 1.9em;
+	text-align: right;
+	display: block;
+	padding: 5px 20px 10px 0;
+	text-transform: uppercase;
+	color: #222;
+	letter-spacing: -0.1em;
+}
+a.read-more:hover {
+	color: #DA5956;
+}
+.post-body strong {
+	font-size: 0.9em;
+}
+.post-body .excerpt {
+	font-size: 1.1em;
+}
+.post-body ul, .post-body ol {
+	/*background: #434343;*/
+	/*color: #FFF;*/
+	/*padding: 20px 40px;*/
+	font-size: 1.6em;
+	margin: 20px -20px;
+}
+.post-body li {
+	font: 1.0em/1.7em 'WhitneyBookRegular', Georgia, "times new roman", times, serif;
+}
+.post-body li code {
+	font-size: 0.8em;
+	word-spacing: -0.3em;
+	background: rgb(248, 255, 184);
+	color: #222;
+	padding: 0 5px;
+}
+
+.post-body li a:hover {
+	color: #FFF;
+	background-color: #DA5956;
+}
+
+h1 {
+	padding: 0 40px 0 40px;
+	font-size: 6em;
+	font-weight: bold;
+	font-family: "WhitneyBold", sans-serif;
+	/*text-transform: uppercase;*/
+	letter-spacing: -0.07em;
+	line-height: 1em;
+}
+h1 a {
+	color: #222222;
+	text-decoration: none;
+}
+h2 {
+	font-size: 4em;
+	font-family: "WhitneyBold", sans-serif;
+	/*text-transform: uppercase;*/
+	margin: 10px 0 -10px 0;
+	letter-spacing: -0.05em;
+}
+h3 {
+	font-size: 3em;
+	font-family: "WhitneyBold", sans-serif;
+	/*text-transform: uppercase;*/
+	margin: 0 0 -20px 0;
+	letter-spacing: -0.05em;
+}
+p {
+	color: #222;
+	font: 1.8em/1.7em 'WhitneyBookRegular', Georgia, 'Times New Roman', times, serif;
+}
+.post-body {
+	/*padding: 0 67px 50px 67px;*/
+	padding: 0 40px;
+	position: relative;
+}
+.blur {
+	min-width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -2;
+	opacity: 0.7;
+}
+.wrapper {
+	margin: 0 auto;
+	max-width: 630px;
+	padding-bottom: 100px;
+}
+.avatar {
+	width: 62px;
+	height: 62px;
+	margin: 40px 0 0 40px;
+}
+
+.comments {
+	padding: 0 40px;
+}
+header {
+	position: relative;
+}
+.header .meta {
+	position: absolute;
+	left: 120px;
+	top: 35px;
+	font-size: 1.4em;
+	font-family: 'WhitneyBookRegular', Georgia, 'Times New Roman', times, serif;
+	line-height: 1.5em;
+	color: #666;
+}
+header .social {
+	position: absolute;
+	right: -35px;
+	top: 5px;
+}
+.prev-next-inline {
+	padding: 10px 40px;
+}
+.prev-next-inline ul {
+	list-style: none;
+	padding: 0;
+	margin: 15px 0 0 0;
+}
+.prev-next-inline ul li {
+	font-size: 2em;
+	font-family: "WhitneyBookRegular", sans-serif;
+	letter-spacing: -0.05em;
+}
+
+code, pre {
+  font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+  font-size: 1.2em;
+  font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+}
+pre {
+  padding:8px 15px;
+  overflow-x: auto;
+}
+p code {
+	background: rgb(248, 255, 184);
+	padding: 2px 5px;
+	font-size: 0.7em;
+}
+
+footer {
+	padding: 5px;
+	/*background: #FFF;*/
+	/*border-radius: 3px;*/
+	font-size: 0.7em;
+	text-align: center;
+}
+footer p {
+	color: #FFF;
+	font-family: 'WhitneyBookRegular', Georgia, 'Times New Roman', times, serif;
+}
+.socialable {
+	list-style: none;
+	padding: 0 0 20px 20px;
+	margin: 0;
+	width: 100%;
+}
+.socialable li {
+	background: none;
+	display: inline !important;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 5px;
+	float: left;
+}
+.fb-like {
+	top: -2px;
+	left: -15px;
+}
+
+.highlight { margin: 0 -40px; }
+.highlight .hll { background-color: #373b41 }
+.highlight  { background: #1d1f21; color: #c5c8c6 }
+.highlight .c { color: #969896 } /* Comment */
+.highlight .err { color: #cc6666 } /* Error */
+.highlight .k { color: #b294bb } /* Keyword */
+.highlight .l { color: #de935f } /* Literal */
+.highlight .n { color: #c5c8c6 } /* Name */
+.highlight .o { color: #8abeb7 } /* Operator */
+.highlight .p { color: #c5c8c6 } /* Punctuation */
+.highlight .cm { color: #969896 } /* Comment.Multiline */
+.highlight .cp { color: #969896 } /* Comment.Preproc */
+.highlight .c1 { color: #969896 } /* Comment.Single */
+.highlight .cs { color: #969896 } /* Comment.Special */
+.highlight .gd { color: #cc6666 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gh { color: #c5c8c6; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #b5bd68 } /* Generic.Inserted */
+.highlight .gp { color: #969896; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #8abeb7; font-weight: bold } /* Generic.Subheading */
+.highlight .kc { color: #b294bb } /* Keyword.Constant */
+.highlight .kd { color: #b294bb } /* Keyword.Declaration */
+.highlight .kn { color: #8abeb7 } /* Keyword.Namespace */
+.highlight .kp { color: #b294bb } /* Keyword.Pseudo */
+.highlight .kr { color: #b294bb } /* Keyword.Reserved */
+.highlight .kt { color: #f0c674 } /* Keyword.Type */
+.highlight .ld { color: #b5bd68 } /* Literal.Date */
+.highlight .m { color: #de935f } /* Literal.Number */
+.highlight .s { color: #b5bd68 } /* Literal.String */
+.highlight .na { color: #81a2be } /* Name.Attribute */
+.highlight .nb { color: #c5c8c6 } /* Name.Builtin */
+.highlight .nc { color: #f0c674 } /* Name.Class */
+.highlight .no { color: #cc6666 } /* Name.Constant */
+.highlight .nd { color: #8abeb7 } /* Name.Decorator */
+.highlight .ni { color: #c5c8c6 } /* Name.Entity */
+.highlight .ne { color: #cc6666 } /* Name.Exception */
+.highlight .nf { color: #81a2be } /* Name.Function */
+.highlight .nl { color: #c5c8c6 } /* Name.Label */
+.highlight .nn { color: #f0c674 } /* Name.Namespace */
+.highlight .nx { color: #81a2be } /* Name.Other */
+.highlight .py { color: #c5c8c6 } /* Name.Property */
+.highlight .nt { color: #8abeb7 } /* Name.Tag */
+.highlight .nv { color: #cc6666 } /* Name.Variable */
+.highlight .ow { color: #8abeb7 } /* Operator.Word */
+.highlight .w { color: #c5c8c6 } /* Text.Whitespace */
+.highlight .mf { color: #de935f } /* Literal.Number.Float */
+.highlight .mh { color: #de935f } /* Literal.Number.Hex */
+.highlight .mi { color: #de935f } /* Literal.Number.Integer */
+.highlight .mo { color: #de935f } /* Literal.Number.Oct */
+.highlight .sb { color: #b5bd68 } /* Literal.String.Backtick */
+.highlight .sc { color: #c5c8c6 } /* Literal.String.Char */
+.highlight .sd { color: #969896 } /* Literal.String.Doc */
+.highlight .s2 { color: #b5bd68 } /* Literal.String.Double */
+.highlight .se { color: #de935f } /* Literal.String.Escape */
+.highlight .sh { color: #b5bd68 } /* Literal.String.Heredoc */
+.highlight .si { color: #de935f } /* Literal.String.Interpol */
+.highlight .sx { color: #b5bd68 } /* Literal.String.Other */
+.highlight .sr { color: #b5bd68 } /* Literal.String.Regex */
+.highlight .s1 { color: #b5bd68 } /* Literal.String.Single */
+.highlight .ss { color: #b5bd68 } /* Literal.String.Symbol */
+.highlight .bp { color: #c5c8c6 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #cc6666 } /* Name.Variable.Class */
+.highlight .vg { color: #cc6666 } /* Name.Variable.Global */
+.highlight .vi { color: #cc6666 } /* Name.Variable.Instance */
+.highlight .il { color: #de935f } /* Literal.Number.Integer.Long */
+
+
+
+
+
+
+@media screen and (max-width: 630px) {
+
+	.wrapper {
+		width: 90%;
+	}
+	.logo {
+		font-size: 2.5em;
+		-webkit-transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+	}
+	.post-preview h1 {
+		padding: 20px;
+		font-size: 3.5em;
+		margin-bottom: 0.1em;
+		-webkit-transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+	}
+	header nav li a {
+		font-size: 1.7em;
+	}
+	.post-preview .excerpt {
+		padding: 10px 20px;
+		margin-top: -35px;
+	}
+	a.read-more {
+		font-size: 1.5em;
+	}
+	.post-body {
+		padding: 0 20px;
+	}
+	.posts-archive {
+		padding: 20px;
+	}
+	.post h1 {
+		font-size: 5em;
+		margin-bottom: 0;
+	}
+	h1 {
+		padding: 0 20px;
+	}
+	h2 {
+		line-height: 1.1em;
+		font-size: 3.5em;
+	}
+	h3 {
+		line-height: 1em;
+		margin-bottom: -10px;
+	}
+	header .social {
+		top: -10px;
+		-webkit-transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+	}
+	a {
+		/*color: #FF0000 !important;*/
+	}
+	p {
+		font-size: 1.5em;
+		-webkit-transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+	}
+	.post-body {
+		/*padding: 5% 10%;*/
+	}
+	hr {
+		margin: 0 -20px;
+	}
+	.highlight {
+		margin: 0 -20px;
+	}
+	.highlight pre {
+		font-size: 1em;
+	}
+	.ribbon {
+		width: 64px;
+		height: 64px;
+		background-image: url(/assets/themes/mtc/img/ribbon2_small.png);
+		top: 0;
+		right: 0;
+	}
+	.ribbon div {
+		right: 7px;
+		font-size: 1.1em;
+	}
+	header .socialable {
+		display: none;
+		-webkit-transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-ms-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+	}
+	.post-preview h1 {
+		padding: 20px 60px 20px 20px;
+	}
+	.prev-next-inline {
+		padding: 10px 20px;
+	}
+	.prev-next-inline ul {
+		margin: 10px 0 0 0;
+	}
+	.prev-next-inline ul li {
+		font-size: 1.5em;
+	}
+	.comments {
+		padding: 0 20px;
+	}
+
+	.header .meta {
+		left: 75px;
+		top: 16px;
+		font-size: 1.2em;
+	}
+	.avatar {
+		width: 42px;
+		height: 42px;
+		margin: 20px 0 0 20px;
+	}
+
+}

@@ -21,16 +21,19 @@ Usage:
   {% include custom/categories_list %}
 {% else %}
   {% if categories_list.first[0] == null %}
-    {% for category in categories_list %} 
-    	<li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-    		{{ category | join: "/" }} <span style="color: #222;">({{ site.categories[category].size }})</span>
-    	</a></li>
-    {% endfor %}
+    {% if categories_list.size > 0 %}
+     Categories: 
+      {% for category in categories_list %} 
+      	<a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
+      		{{ category | join: "/" }} <span style="color: #222;">({{ site.categories[category].size }})</span>
+      	</a>
+      {% endfor %}
+    {% endif %}
   {% else %}
     {% for category in categories_list %} 
-    	<li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+    	<a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
     		{{ category[0] | join: "/" }} <span style="color: #222;">({{ category[1].size }})</span>
-    	</a></li>
+    	</a>
     {% endfor %}
   {% endif %}
 {% endif %}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title }}</title>
+  <meta name="author" content="{{ site.author.name }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Mindthecode.com" href="/rss.xml" />
+  <link href="http://feeds.feedburner.com/{{ site.author.feedbaname }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
+  <link href='{{ ASSET_PATH }}/css/font.css' rel="stylesheet" media="all">
+  <link href='{{ ASSET_PATH }}/css/base.css' rel="stylesheet" media="all">
+  <link href='{{ ASSET_PATH }}/css/main.css' rel="stylesheet" media="all">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="{{ ASSET_PATH }}/js/main.js"></script>
+  <!--[if lt IE 9]>
+  <script>
+    document.createElement('header');
+    document.createElement('nav');
+    document.createElement('section');
+    document.createElement('article');
+    document.createElement('aside');
+    document.createElement('footer');
+  </script>
+  <![endif]-->
+</head>
+<body>
+  <canvas class='blur' id="blur_1"></canvas>
+  <div class="wrapper">
+
+    <header>
+      <div class="logo"><a href="/">Mindthecode.</a></div>
+      <nav role="navigation">
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/archive.html">Archive</a></li>
+          <li><a href="/categories.html">Categories</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </nav>
+      <section class="social">
+        <ul class="socialable">
+          <li><a href="https://twitter.com/stefvdham" class="twitter-follow-button" data-show-count="true">Follow @stefvdham</a></li>
+          <li><iframe src="http://ghbtns.com/github-btn.html?user=hyra&type=follow&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe></li>
+        </ul>
+      </section>
+    </header>
+
+<!--     <div class="prevnext" style="position: absolute; right: 10px; top: 200px;">
+      <div class="next" style="">
+        <a href=""><img src="https://d3levm2kxut31z.cloudfront.net/assets/protips/next-icon-a128f72e22fb80ff60c386a4fc209b36.png"></a>
+      </div>
+    </div> -->
+
+    {{ content }}
+
+    <footer>
+      <br /><br />
+      <ul class="socialable">
+        <li><a href="https://twitter.com/stefvdham" class="twitter-follow-button" data-show-count="true">Follow @stefvdham</a></li>
+        <li><div class="fb-like" data-href="http://mindthecode.com" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div></li>
+        <li><iframe src="http://ghbtns.com/github-btn.html?user=hyra&type=follow&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe></li>
+        <li>
+          <div class="g-plusone" data-size="medium"></div>
+        </li>
+      </ul>
+      <br />
+      <p>&copy; Mindthecode 2010-2013 | All Rights Reserved.<br />
+        Powered by <a href="http://jekyllrb.com">Jekyll</a> and fondled with <a href="http://compass-style.org">Compass</a>.</p>
+    </footer>
+  </div>
+
+  <div id="fb-root"></div>
+
+  <script type="text/javascript" src="{{ ASSET_PATH }}/js/social.js"></script>
+  <script src="{{ ASSET_PATH }}/js/scale.fix.js"></script>
+
+  {% include JB/analytics %}
+
+</body>
+</html>
