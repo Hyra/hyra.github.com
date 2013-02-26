@@ -21,9 +21,9 @@
   </section class="header">
 
   <section class="post-body">
-    <div class="excerpt">{{ content | more: "excerpt" }}</div>
+    <div class="excerpt">{{ content | split:'<!--more-->' | first }}</div>
     <hr />
-    {{ content | more: "remaining" }}
+    {{ content | split:'<!--more-->' | last }}
     <br />
 
     <ul class="socialable">

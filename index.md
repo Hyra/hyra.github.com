@@ -8,7 +8,7 @@ tagline: Welcome home
 <div class="post-preview">
   <h1><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h1>
   <div class="excerpt">
-    {{ post.content | more: "excerpt" }}
+    {{ post.content | split:'<!--more-->' | first }}
   </div>
   <a class="read-more" href="{{ BASE_PATH }}{{ post.url }}">Read the rest &#8594;</a>
   <div class="ribbon">
