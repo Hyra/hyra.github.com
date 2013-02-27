@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page.title }}</title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Mindthecode</title>
   <meta name="author" content="{{ site.author.name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   {% if page.description %}<meta name="description" content="{{page.description}}" />{% else %}<meta name="description" content="Rambling about code and all things web." />{% endif %}
