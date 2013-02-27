@@ -13,6 +13,11 @@
   {% if page.description %}<meta name="description" content="{{page.description}}" />{% else %}<meta name="description" content="Rambling about code and all things web." />{% endif %}
   {% if page.categories %}<meta name="keywords" content="{{page.categories | join: ','}}" />{% else %}<meta name="keywords" content="HTML,CSS,JavaScript,SASS,LESS,PHP,CakePHP,Bash,Ruby,Rails,RoR" />{% endif %}
   {% if page.date %}<meta http-equiv="date" content="{{page.date |date: '%A, %d  %Y %H:%M:%S GMT'}}" />{% endif %}
+  <meta property="og:image" content="http://localhost:4000{{ ASSET_PATH }}/img/stefvdham.png" />
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}Mindthecode" />
+  <meta property="og:url" content="http://mindthecode.com{{ page.url | canonical }}" />
+  <meta property="og:site_name" content="Mindthecode | by Stef van den Ham" />
+  <meta property="og:type" content="blog" />
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for Mindthecode.com" href="/rss.xml" />
   <link href="http://feeds.feedburner.com/{{ site.author.feedbaname }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
   <link href='{{ ASSET_PATH }}/css/font.css' rel="stylesheet" media="all">
