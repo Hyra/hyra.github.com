@@ -18,6 +18,7 @@
   <meta property="og:url" content="http://mindthecode.com{{ page.url | canonical }}" />
   <meta property="og:site_name" content="Mindthecode | by Stef van den Ham" />
   <meta property="og:type" content="blog" />
+  <meta property="og:description" content="{% if page.description %}{{page.description}}{% else %}Rambling about code and all things web.{% endif %}" />
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for Mindthecode.com" href="/rss.xml" />
   <link href="http://feeds.feedburner.com/{{ site.author.feedbaname }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
   <link href='{{ ASSET_PATH }}/css/font.css' rel="stylesheet" media="all">
