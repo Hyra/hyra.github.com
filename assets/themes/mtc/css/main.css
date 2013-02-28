@@ -265,6 +265,26 @@ header .social {
 	font-family: "WhitneyBookRegular", sans-serif;
 	letter-spacing: -0.05em;
 }
+.prevnext a:active {
+	/*margin-left: -80px;*/
+	left: auto;
+	top: 40%;
+	position: fixed;
+}
+
+.prevnext-next, .prevnext-prev {
+	background: transparent url(/assets/themes/mtc/img/next.png) no-repeat top center;
+	width: 37px;
+	height: 38px;
+	position: fixed;
+	top: 40%;
+	/*margin-left: 680px;*/
+	margin-left: 580px;
+}
+.prevnext-prev {
+	background: transparent url(/assets/themes/mtc/img/prev.png) no-repeat top center;
+	margin-left: 0px;
+}
 
 code, pre {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;

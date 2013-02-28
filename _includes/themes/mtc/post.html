@@ -1,9 +1,9 @@
 <div class="prevnext">
 {% if page.previous %}
-  <a href="{{ page.previous.url }}" style="width: 20px; height: 20px; background: transparent url(/assets/themes/mtc/img/prev.png) no-repeat top center; width: 37px; height: 38px; position: fixed; top: 40%; margin-left: -80px;">&nbsp;</a>
+  <a href="{{ page.previous.url }}" class="prevnext-prev" rel="prev">&nbsp;</a>
 {% endif %}
 {% if page.next %}
-  <a href="{{ page.next.url }}" style="width: 20px; height: 20px; background: transparent url(/assets/themes/mtc/img/next.png) no-repeat top center; width: 37px; height: 38px; position: fixed; top: 40%; margin-left: 710px;">&nbsp;</a>
+  <a href="{{ page.next.url }}" class="prevnext-next" rel="next">&nbsp;</a>
 {% endif %}
 </div>
 
