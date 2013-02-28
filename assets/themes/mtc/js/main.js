@@ -43,7 +43,7 @@ CanvasImage.prototype = {
 
 function changeBg() {
 	$('.bg').fadeOut(2500, function() {
-		bg = Math.floor(Math.random() * 4) + 1;
+		bg = Math.floor(Math.random() * 5) + 1;
 		$('.bg img').attr('src', '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg').parent().fadeIn(2500, function() {
 			setTimeout(changeBg, 5000);
 		});
