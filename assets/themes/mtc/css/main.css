@@ -292,23 +292,19 @@ footer p {
 	color: #FFF;
 	font-family: 'WhitneyBookRegular', Georgia, 'Times New Roman', times, serif;
 }
+
 .socialable {
 	list-style: none;
 	padding: 0 0 20px 20px;
-	margin: 0;
 	width: 100%;
+	margin: 20px 0;
 }
 .socialable li {
 	background: none;
-	display: inline !important;
 	list-style-type: none;
 	margin: 0;
 	padding: 0 5px;
 	float: left;
-}
-.fb-like {
-	top: -2px;
-	left: -15px;
 }
 
 .highlight { margin: 0 -40px; }
