@@ -16,7 +16,7 @@
   {% if page.date %}<meta http-equiv="date" content="{{page.date |date: '%A, %d  %Y %H:%M:%S GMT'}}" />{% endif %}
   <meta property="og:image" content="http://mindthecode.com/{{ ASSET_PATH }}/img/stefvdham.png" />
   <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}Mindthecode" />
-  <meta property="og:url" content="http://mindthecode.com{{ page.url | canonical }}" />
+  <meta property="og:url" content="http://mindthecode.com{%if page.url != '/index.html' %}{{ page.url | canonical }}{% endif %}" />
   <meta property="og:site_name" content="Mindthecode | by Stef van den Ham" />
   <meta property="og:type" content="blog" />
   <meta property="og:description" content="{% if page.description %}{{page.description}}{% else %}Rambling about code and all things web.{% endif %}" />
