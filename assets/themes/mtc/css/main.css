@@ -52,7 +52,7 @@ nav li a:hover {
 	text-shadow: 1px 1px 0 #333;
 }
 .post, .posts-archive {
-	background: #f9f8f4;
+	background: #f9f8f4 url(/assets/themes/mtc/img/pattern.jpg) repeat top left;
 	border-radius: 3px;
 	margin: 40px 0 0 0;
 }
