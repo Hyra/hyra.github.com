@@ -2,9 +2,6 @@ html {
   overflow-y: scroll;
 }
 body {
-	/*background: #393939 url(/assets/themes/mtc/img/escheresque_ste.png) repeat top left;*/
-	/*background: #393939 url(http://www.colejoplin.com/wp-content/themes/grey-opaque/images/backgrounds/background.jpg) repeat top left;*/
-	/*background: #393939 url(http://www.colejoplin.com/wp-content/themes/grey-opaque/images/backgrounds/background.jpg) repeat fixed center center;*/
 	background: #393939 url(/assets/themes/mtc/img/bgs/initial.jpg) repeat fixed center center;
 	font-size: 10px;
 }
@@ -23,7 +20,6 @@ article {
 	text-transform: uppercase;
 }
 .logo a:hover {
-	/*text-shadow: 0 1px 0 #999, 0 2px 0 #888, 0 3px 0 #777, 0 4px 0 #666, 0 5px 0 #555, 0 6px 0 #444, 0 7px 0 #333, 0 8px 7px #001135;*/
 	text-shadow: 0 0 10px #000;
 }
 .logo a, .logo a:hover {
