@@ -42,12 +42,22 @@ CanvasImage.prototype = {
 };
 
 function changeBg() {
-	$('.bg').fadeOut(2500, function() {
+	$('.bg1').fadeOut(2500, function() {
 		bg = Math.floor(Math.random() * 5) + 1;
-		$('.bg img').attr('src', '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg').parent().fadeIn(2500, function() {
+		$('.bg1 img').attr('src', '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg');
+		$('.bg1').delay(5000).fadeIn(2500, function() {
+			bg = Math.floor(Math.random() * 5) + 1;
+			$('.bg2 img').attr('src', '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg');
 			setTimeout(changeBg, 5000);
 		});
 	});
+
+	// $('.bg').fadeOut(2500, function() {
+	// 	bg = Math.floor(Math.random() * 5) + 1;
+	// 	$('.bg img').attr('src', '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg').parent().fadeIn(2500, function() {
+	// 		setTimeout(changeBg, 5000);
+	// 	});
+	// });
 }
 
 /**
