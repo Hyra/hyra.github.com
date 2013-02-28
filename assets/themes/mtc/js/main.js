@@ -41,6 +41,15 @@ CanvasImage.prototype = {
 	}
 };
 
+function changeBg() {
+	$('.bg').fadeOut(2500, function() {
+		bg = Math.floor(Math.random() * 4) + 1;
+		$('.bg img').attr('src', '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg').parent().fadeIn(2500, function() {
+			setTimeout(changeBg, 5000);
+		});
+	});
+}
+
 /**
  * Initialise an image on the page and blur it.
  */
@@ -57,8 +66,12 @@ window.onload = function() {
 
 	// image.src = '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg';
 
-	bg = Math.floor(Math.random() * 4) + 1;
-	$('body').css('background-image', 'url(/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg)');
+	changeBg();
+
+	setTimeout(function() {
+		$('.prevnext-prev').css('margin-left', '-80px');
+		$('.prevnext-next').css('margin-left', '680px');
+	}, 1000);
 
 	// iOS Scroll
 	if(navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
