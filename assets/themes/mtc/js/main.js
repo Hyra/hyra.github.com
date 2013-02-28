@@ -45,26 +45,27 @@ CanvasImage.prototype = {
  * Initialise an image on the page and blur it.
  */
 window.onload = function() {
-	var canvasImage;
-	image = new Image();
+	// var canvasImage;
+	// image = new Image();
 
-	image.onload = function () {
-		canvasImage = new CanvasImage(document.getElementById('blur_1'), this);
-		try{console.time('blur_1');}catch(err){}
-		canvasImage.blur(5);
-		try{console.timeEnd('blur_21');}catch(err){}
-	};
+	// image.onload = function () {
+	// 	canvasImage = new CanvasImage(document.getElementById('blur_1'), this);
+	// 	try{console.time('blur_1');}catch(err){}
+	// 	canvasImage.blur(5);
+	// 	try{console.timeEnd('blur_21');}catch(err){}
+	// };
+
+	// image.src = '/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg';
 
 	bg = Math.floor(Math.random() * 4) + 1;
-	$('.blur').fadeOut('fast', function() {
-		image.src = '/assets/themes/mtc/img/bgs/0'+bg+'.jpg';
-		$('.blur').fadeIn(900);
-	});
+	$('body').css('background-image', 'url(/assets/themes/mtc/img/bgs/0'+bg+'_v2.jpg)');
 
 	// iOS Scroll
-	setTimeout(function() {
-    	window.scrollTo(0, 1);
-	}, 0);
+	if(navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
+		setTimeout(function() {
+			window.scrollTo(0, 1);
+		}, 0);
+	}
 
 };
 
