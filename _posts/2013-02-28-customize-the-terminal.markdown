@@ -4,7 +4,8 @@ title: "Customize the terminal on OSX"
 date: 2013-02-28 10:12
 comments: true
 categories: ["Terminal"]
-tags: ["terminal", "command line"]
+tags: ["terminal", "command line", "OSX"]
+description: "In this short walkthrough I'll explain how to customize the terminal on OSX. Make it look pretty and more useful."
 ---
 
 I love the terminal. Besides the fact it makes you look awesome while using it, it can also do about a gazillion different things. Most of them useful.
