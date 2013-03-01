@@ -12,7 +12,7 @@
   <meta name="author" content="{{ site.author.name }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   {% if page.description %}<meta name="description" content="{{page.description}}" />{% else %}<meta name="description" content="Rambling about code and all things web." />{% endif %}
-  {% if page.categories %}<meta name="keywords" content="{{page.categories | join: ','}}" />{% else %}<meta name="keywords" content="HTML,CSS,JavaScript,SASS,LESS,PHP,CakePHP,Bash,Ruby,Rails,RoR" />{% endif %}
+  <meta name="keywords" content="{% if page.categories %}{{page.categories | join: ','}},{% endif %}{% if page.tags %}{{page.tags | join: ','}},{% endif %}HTML,CSS,JavaScript,SASS,LESS,PHP,CakePHP,Bash,Ruby,Rails,RoR" />
   {% if page.date %}<meta http-equiv="date" content="{{page.date |date: '%A, %d  %Y %H:%M:%S GMT'}}" />{% endif %}
   <meta property="og:image" content="http://mindthecode.com/{{ ASSET_PATH }}/img/stefvdham.png" />
   <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}Mindthecode" />
