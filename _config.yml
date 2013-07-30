@@ -3,7 +3,7 @@ description:      Rambling about code and things web.
 logo:             site-logo.png
 disqus_shortname: Mindthecode
 #Comment out url when working locally to resolve base urls correctly
-url:              http://mindthecode.com
+# url:              http://mindthecode.com
 
 # Owner/author information
 owner:
