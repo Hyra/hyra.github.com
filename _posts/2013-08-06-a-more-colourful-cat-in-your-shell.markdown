@@ -18,11 +18,11 @@ Below is a screenshot of what an [average terminal](/customize-the-terminal/) lo
   $ cat somefile.js
 {% endhighlight %}
 
-[![Terminal Dull Colours](/images/screenshots/130806_terminal_dull.png "Terminal Dull Colours")](/images/screenshots/130806_terminal_dull.png)
+![Terminal Dull Colours](/images/screenshots/130806_terminal_dull.png "Terminal Dull Colours")
 
 Sure, it does the job, and you probably are ok with it looking dull as hell. But what if you could make it look like this:
 
-[![Terminal Colour](/images/screenshots/130806_terminal_colour.png "Terminal Colour")](/images/screenshots/130806_terminal_colour.png)
+![Terminal Colour](/images/screenshots/130806_terminal_colour.png "Terminal Colour")
 
 Indeed! If you could, why wouldn't you?
 
