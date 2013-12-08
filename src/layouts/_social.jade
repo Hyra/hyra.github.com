@@ -5,6 +5,14 @@
   a(href="http://news.ycombinator.com/submit", class="hn-share-button") Vote on HN
   div(class="fb-like",data-width="200",data-href="",data-layout="button_count",data-action="like",data-show-faces="false",data-share="false")
 
+if post.currentIndex-1 >= 0
+  hr
+  h3 Read the next post
+  a(href="/#{posts[post.currentIndex-1].url}") #{posts[post.currentIndex-1].title}
+  br
+  br
+  hr
+
 // Disqus comments, Make sure to replace `colinwren` with your account name in the Disqus helper script below
 #comments
   #disqus_thread
