@@ -2,5 +2,7 @@ Thumbs.db
 .DS_Store
 !.gitkeep
 
+node_modules/*
+
 .grunt
 .sass-cache

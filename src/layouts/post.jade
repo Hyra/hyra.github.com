@@ -1,0 +1,24 @@
+extends base
+
+block head
+  title= post.title
+  link(rel="canonical",href="http://mindthecode.com/#{post.url}")
+  meta(name="twitter:title",content="#{post.title}")
+  meta(name="twitter:description",content="#{post.description}")
+  meta(name="twitter:creator",content="@stefvdham")
+  meta(name="twitter:card",content="summary")
+  meta(name="twitter:image:" content="http://mindthecode.com/images/logo.png")
+  meta(property="og:type",content="article")
+  meta(property="og:image",content="http://mindthecode.com/images/logo.png")
+  meta(property="og:title",content="#{post.title}")
+  meta(property="og:description",content="#{post.description}")
+  meta(property="og:url",content="http://mindthecode.com/#{post.url}")
+  meta(property="og:site_name",content="Mindthecode")
+  meta(property="fb:app_id",content="116332715192025")
+  if post.keywords
+    meta(name="description", content="#{post.keywords}")
+  if post.description
+    meta(name="description", content="#{post.description}")
+block content
+  mixin post(post)
+  include _social
