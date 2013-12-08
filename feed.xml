@@ -1,36 +1,351 @@
----
-layout: none
----
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-<title type="text">{{ site.title }}</title>
-<generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="{{ site.url }}/feed.xml" />
-<link rel="alternate" type="text/html" href="{{ site.url }}" />
-<updated>{{ site.time | date_to_xmlschema }}</updated>
-<id>{{ site.url }}/</id>
-<author>
-  <name>{{ site.owner.name }}</name>
-  <uri>{{ site.url }}/</uri>
-  <email>{{ site.owner.email }}</email>
-</author>
-{% for post in site.posts limit:20 %}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Sun, 08 Dec 2013 12:41:01 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Sun, 08 Dec 2013 12:41:01 GMT</pubDate><copyright><![CDATA[2013 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[A more colourful cat in your shell]]></title><description><![CDATA[<p>I just wanted to quickly share a shell alias I have been using lately to get some more color in the terminal when you cat a file.</p>
+<!--more-->
 
-<entry>
-  <title type="html"><![CDATA[{{ post.title | cdata_escape }}]]></title>
-  <link rel="alternate" type="text/html" href="{{ site.url }}{{ post.url }}" />
-  <id>{{ site.url }}{{ post.id }}</id>
-  {% if post.modified %}<updated>{{ post.modified | to_xmlschema }}T00:00:00-00:00</updated>
-  <published>{{ post.date | date_to_xmlschema }}</published>
-  {% else %}<published>{{ post.date | date_to_xmlschema }}</published>
-  <updated>{{ post.date | date_to_xmlschema }}</updated>{% endif %}
-  <author>
-    <name>{{ site.owner.name }}</name>
-    <uri>{{ site.url }}</uri>
-    <email>{{ site.owner.email }}</email>
-  </author>
-  <content type="html">{{ post.content | xml_escape }}
-  &lt;p&gt;&lt;a href=&quot;{{ site.url }}{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt; was originally published by {{ site.owner.name }} at &lt;a href=&quot;{{ site.url }}&quot;&gt;{{ site.title }}&lt;/a&gt; on {{ post.date | date: "%B %d, %Y" }}.&lt;/p&gt;</content>
-</entry>
-{% endfor %}
-</feed>
+<p>Below is a screenshot of what an <a href="/customize-the-terminal/">average terminal</a> looks like when you just use</p>
+<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">cat</span> <span class="nx">somefile</span><span class="p">.</span><span class="nx">js</span>
+</pre></div>
+</code></pre>
+<p><img src="/images/screenshots/130806_terminal_dull.png" alt="Terminal Dull Colours" title="Terminal Dull Colours"></p>
+<p>Sure, it does the job, and you probably are ok with it looking dull as hell. But what if you could make it look like this:</p>
+<p><img src="/images/screenshots/130806_terminal_colour.png" alt="Terminal Colour" title="Terminal Colour"></p>
+<p>Indeed! If you could, why wouldn&#39;t you?</p>
+<h2><a name="the-ingredients" class="anchor" href="#the-ingredients"><span class="header-link"></span></a>The ingredients</h2>
+<p>So, let&#39;s get to it. Luckily this isn&#39;t very complex to get going on your machine. Let&#39;s start by installing <a href="https://github.com/tmm1/pygments.rb">Pygments</a>. This little Ruby wrapper library is used to make the realtime syntax highlighting possible:</p>
+<pre><code><div class="highlight"><pre><span class="nx">gem</span> <span class="nx">install</span> <span class="nx">pygments</span>
+</pre></div>
+</code></pre>
+<p>Next up, the alias itself. Depending on your shell and environment open up your profile. If you aren&#39;t sure whether you&#39;ve installed or configured something specifically on your system, chances are the file you are looking for (on OSX at least) is <code>~/.bashrc</code>.</p>
+<p>In there, add the following alias:</p>
+<pre><code><div class="highlight"><pre><span class="nx">alias</span> <span class="nx">c</span><span class="o">=</span><span class="s1">&#39;pygmentize -O style=monokai -f console256 -g&#39;</span>
+</pre></div>
+</code></pre>
+<p>And that&#39;s all there is to it. Now whenever you type <code>c some-file.ext</code> it will detect the extension and add syntax highlighting.</p>
+<p>I chose the monokai style because it looks awesome and works well with the rest of my ZSH theme, but feel free to try a few and see which works best for you.</p>
+<p>Happy CLI-ing!</p>
+]]></description><link>a-more-colourful-cat-in-your-shell/</link><guid isPermaLink="true">a-more-colourful-cat-in-your-shell/</guid><category><![CDATA[terminal]]></category><category><![CDATA[command line]]></category><category><![CDATA[OSX]]></category><category><![CDATA[shell]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 06 Aug 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Getting used to Vim]]></title><description><![CDATA[<p>So there we go. Writing this post in vim. Macvim to be exact. Trying not to touch the arrow keys, not use the h-j-k-l too extensively either, work with A and I a lot, and generally trying not to cock things up too much by hitting the wrong commands.</p>
+<!--more-->
+
+<p>So why do I willingly put myself through the torture of using the monster that is Vim? Well, just like a lot of developers out there, I&#39;ve had a long time desire to be able to use Vim properly. No immediate need, just a personal goal if you will. I&#39;ve tried Vim a couple of times over the last few months, but pretty much every attempt lead quickly to being overwhelmed by all the different commands and feeling about a gazillion times slower as I did when using Sublime Text Edit 2.</p>
+<h3><a name="new-tactic" class="anchor" href="#new-tactic"><span class="header-link"></span></a>New tactic</h3>
+<p>The new plan is not as exciting or brilliant as one might hope, but it&#39;s one that might just work: <em>Forceful editing</em>
+What? Well, it&#39;s simple really .. whenever I was trying out Vim and found myself having to actually &quot;quickly&quot; edit a file or whip up some code I switched to my trustworthy Sublime. This time around I&#39;m going to force myself to stay in Vim. This will slow me down at first. A lot. And it will probably lead to some cursing and frustration. But I guess it&#39;s the only way to learn.</p>
+<p>So here we go, I&#39;ve written this post in Vim, the keyboard is still intact, I haven&#39;t cursed and screamed more than usual, so I suppose we&#39;re off to a good start.</p>
+<p>As a bonus I&#39;ve decided I&#39;ll keep you guys informed of my progress and share my findings, tips and useful plugins I might stumble upon whilst enduring this ordeal :)</p>
+<p>If any of you are already using Vim and have some tips or tricks, let us know!</p>
+<p>For now all that&#39;s left is to save, commit and push this file .. all from within Vim!</p>
+<p>I like.</p>
+]]></description><link>getting-used-to-vim/</link><guid isPermaLink="true">getting-used-to-vim/</guid><category><![CDATA[vim]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Sat, 09 Feb 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Updated the PHPUnit CakePHP installer]]></title><description><![CDATA[<p>Just a quick note, the CakePHP PHPUnit installer has been updated to use version 3.7.8. Go grab it <a href="https://github.com/Hyra/PHPUnit-Cake2">here</a> if you are no fan of PEAR and want a self contained PHPUnit testing system.</p>
+<p>Works on Mac OSX, Linux and Windows.</p>
+]]></description><link>updated-the-phpunit-cakephp-installer/</link><guid isPermaLink="true">updated-the-phpunit-cakephp-installer/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 06 Nov 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Blogging with Octopress]]></title><description><![CDATA[<p>As some of you may know, even though I don&#39;t blog all that often, I do mess about with it a lot. Mostly on what makes it run. Switching between <a href="http://croogo.org">Croogo</a>, a custom built <a href="http://cakephp.org">CakePHP</a> site, <a href="http://wordpress.org">Wordpress</a> .. and back again.</p>
+<!--more-->
+
+<p>For some reason none of them really seemed what I wanted. Croogo is cool enough, but actually adding posts is a hassle, and theming the thing was more of a puzle. Wordpress does the blogging thing really well, but it always feels ugly, and I had to rely on various plugins to make my post-flow work. I like writing in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>. There&#39;s a couple of Markdown plugins for Wordpress, but I would still have to copy paste stuff in webinterface, and had to hack it to allow for code-snippet sharing.</p>
+<h3><a name="enter-octopress" class="anchor" href="#enter-octopress"><span class="header-link"></span></a>Enter Octopress</h3>
+<p>I somehow stumbled upon <a href="http://octopress.org">Octopress</a> earlier this week, and decided to give it a go. Short conclusion: <em>It&#39;s awesome</em>.</p>
+<p>I won&#39;t go into all of the features, as that&#39;s nicely explained on their site, but basically it allows for this workflow:</p>
+<ul>
+<li>Run <code>rake preview</code> in the background</li>
+<li>Write my posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, with some settings in the top such as title, publish date, etc.</li>
+<li>Hit save</li>
+<li>See the changes in the browser</li>
+<li>When happy, <code>rake deploy</code></li>
+</ul>
+<p>Now, the deploy function is very awesome. It automatically generate the site to a <code>public</code> folder, commits the whole thing to your git repository, and pushes it. When linked to a Github Pages site it will auto update your site.</p>
+<p>So yeah, this is good stuff, as I can just write my plain text files like I want to, and without any further webinterfacing and option clicking I can publish new articles.</p>
+]]></description><link>blogging-with-octopress/</link><guid isPermaLink="true">blogging-with-octopress/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Fri, 26 Oct 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Spotify Boilerplate App]]></title><description><![CDATA[<p>A while ago we were proud to be releasing 2 of the very first Spotify Apps in the Netherlands at <a href="http://noprotocol.nl" title="NoProtocol" target="_blank">NoProtocol</a>. For a long time since I&#39;ve been planning on creating a Boilerplate in which we could put all the best practices and redo some stuff in hindsight.</p>
+<p>And finally, it&#39;s here! You can grab it at <a href="https://github.com/Hyra/Spotify-Boilerplate" title="https://github.com/Hyra/Spotify-Boilerplate" target="_blank"><a href="https://github.com/Hyra/Spotify-Boilerplate">https://github.com/Hyra/Spotify-Boilerplate</a></a></p>
+<p>For a bit more in-depth information, read on ..</p>
+<!--more-->
+
+<p>The Boilerplate project aims to provide a foundation upon which you can start building Spotify Apps. It takes away the hassle of writing the necessary boilerplate code and is structured so you can start developing straight away.</p>
+<p>I will add to it as I stumble upon free time, but feel free to open a Pull Request or submit an issue for a suggestion</p>
+<h2><a name="some-of-the-features" class="anchor" href="#some-of-the-features"><span class="header-link"></span></a>Some of the features</h2>
+<ul>
+<li>Small footprint</li>
+<li>Automatic Tab Handling</li>
+<li>Automatic Deeplink handling</li>
+<li>Automatic Cover Loading for playlists (mosaics)</li>
+<li>Online/offline status tracking and content switching</li>
+</ul>
+<h2><a name="how-to-set-it-up-on-your-mac" class="anchor" href="#how-to-set-it-up-on-your-mac"><span class="header-link"></span></a>How to set it up (on your Mac)</h2>
+<ol>
+<li>Sign up for a developer account on Spotify</li>
+<li>Open Terminal, and if it doesn&#39;t exist yet <code>mkdir ~/Spotify</code></li>
+<li>cd ~/Spotify</li>
+<li>git clone git@github.com:Hyra/Spotify-Boilerplate.git</li>
+<li>Download the latest version of Spotify</li>
+<li>Open Spotify and type <code>spotify:app:boilerplate</code> in the search bar</li>
+</ol>
+<h2><a name="whats-in-the-boilerplate" class="anchor" href="#whats-in-the-boilerplate"><span class="header-link"></span></a>What&#39;s in the Boilerplate</h2>
+<p>The aim is to keep the Boilerplate as clean as possible, while giving all the tools to quickly develop your app.</p>
+<h3><a name="how-to-work-with-it-the-short-version" class="anchor" href="#how-to-work-with-it-the-short-version"><span class="header-link"></span></a>How to work with it (the short version)</h3>
+<p>What you want to look for is <code>js/app.js</code>. Once index.html has been loaded by Spotify it will fire off our Sammy instance:</p>
+<pre><code><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;/home&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>Here you can also handle any other bootstrapping you might want to do.</p>
+<p>Next up, the Sammy route gets invoked:</p>
+<pre><code><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">loadSection</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">,</span> <span class="s2">&quot;news&quot;</span><span class="p">,</span> <span class="s2">&quot;/templates/home.html&quot;</span><span class="p">,</span> <span class="s2">&quot;js/_example_data.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Callback actions</span>
+    <span class="p">});</span>
+
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>This is what you will most likely expand on for your app. The route loads a Mustache template into the DOM, parses it, asynch-y fill in the Spotify details, and cache it. After that it will run your callback actions, should you need to.</p>
+<p><code>loadSection</code> takes 5 parameters at the moment:</p>
+<p><strong>ctxt</strong> A reference to the <code>Sammy.Context</code> which was passed to the route</p>
+<p><strong>ID</strong> A unique identifier for the content which is used as a cache-key</p>
+<p><strong>Template File</strong> location to the Mustache template</p>
+<p><strong>JSON Location</strong> location to the JSON you want to use. This is useful if you want to connect your app with a (RESTful) web service to feed content to your app. NOTE: If you use absolute URLs here you should add the domains to your <code>manifest.json</code></p>
+<p><strong>Callback</strong> This callback function you can use to do your post-processing</p>
+<h3><a name="dependencies" class="anchor" href="#dependencies"><span class="header-link"></span></a>Dependencies</h3>
+<p>The boilerplate relies on a couple of libraries:</p>
+<p>Sammy.js for the routing, templating parsing and content swapping. It&#39;s just an awesome little tool</p>
+<p>jQuery as we&#39;ve all become used to it at some point</p>
+<p>Mustache as a template handler. This can just as well be any of the other gazillion templating engines out there, so feel free to hack your favourite in.</p>
+<h3><a name="roadmap" class="anchor" href="#roadmap"><span class="header-link"></span></a>Roadmap</h3>
+<ul>
+<li>Add more features/functionality regarding the Spotify API</li>
+<li>Make the loadSection and Sammy integration a bit more seamless and less explicit</li>
+<li>Spend more time documenting and writing how-to&#39;s</li>
+</ul>
+]]></description><link>spotify-boilerplate-app/</link><guid isPermaLink="true">spotify-boilerplate-app/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 18 Sep 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Good times with Watchr, Coffeescript and LESS]]></title><description><![CDATA[<p>I have been working on a pure HTML front-end for one of the pet projects I&#39;m doing. A lot of fun, but while developing, running the terminal commands to compile both the .less and .coffee files gets a tad tedious. <a href="https://github.com/mynyml/watchr">&quot;Watchr&quot;</a> to the rescue! With this little gem you can watch specific folders or file extensions and run commands based on the files you watch.</p>
+<p>Here is how I got it set up now ..</p>
+<!--more-->
+
+<h2><a name="installing-watchr" class="anchor" href="#installing-watchr"><span class="header-link"></span></a>Installing watchr</h2>
+<p>First of all we need to get the Watchr gem installed. Assuming you have a Mac and got XCode (or at least the tools) installed, this is pretty simple:</p>
+<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">gem</span> <span class="nx">install</span> <span class="nx">watchr</span>
+</pre></div>
+</code></pre>
+<h2><a name="installing-coffeescript" class="anchor" href="#installing-coffeescript"><span class="header-link"></span></a>Installing coffeescript</h2>
+<p>Another easy one ..</p>
+<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">coffee</span><span class="o">-</span><span class="nx">script</span>
+</pre></div>
+</code></pre>
+<p>Don&#39;t forget the <code>-g</code> flag as you (probably) want it to be installed globally.</p>
+<h2><a name="installing-the-less-compiler" class="anchor" href="#installing-the-less-compiler"><span class="header-link"></span></a>Installing the LESS compiler</h2>
+<p>You got the hang of it now, it&#39;s as easy as ..</p>
+<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">less</span>
+</pre></div>
+</code></pre>
+<h2><a name="the-fun-part" class="anchor" href="#the-fun-part"><span class="header-link"></span></a>The fun part!</h2>
+<p>Now we&#39;re ready for the fun bit, setting up watchr to do some automagic stuff.</p>
+<p>I have a typical folder structure, with the exception of a new <code>_src</code> folder which will contain all the raw coffeescript and less files.</p>
+<pre><code><div class="highlight"><pre><span class="err">/index.html</span>
+<span class="o">/</span><span class="nx">css</span>
+<span class="o">/</span><span class="nx">js</span>
+<span class="o">/</span><span class="nx">img</span>
+<span class="o">/</span><span class="nx">_src</span>
+    <span class="o">/</span><span class="nx">less</span>
+    <span class="o">/</span><span class="nx">coffee</span>
+</pre></div>
+</code></pre>
+<p>Watchr works with a config file, which basically tells it what to watch for, and what to do if it finds any changes. I placed the file inside the <code>_src</code> folder and named it <code>watchr.rb</code></p>
+<p>Here&#39;s my config file at the moment:</p>
+<pre><code><div class="highlight"><pre><span class="nx">def</span> <span class="nx">compile_less</span>
+    <span class="o">%</span><span class="nx">x</span><span class="p">[</span><span class="nx">lessc</span> <span class="nx">less</span><span class="o">/</span><span class="nx">bootstrap</span><span class="o">/</span><span class="nx">bootstrap</span><span class="p">.</span><span class="nx">less</span> <span class="p">..</span><span class="o">/</span><span class="nx">css</span><span class="o">/</span><span class="nx">main</span><span class="p">.</span><span class="nx">css</span> <span class="o">--</span><span class="nx">yui</span><span class="o">-</span><span class="nx">compress</span><span class="p">]</span>
+<span class="nx">end</span>
+
+<span class="nx">def</span> <span class="nx">compile_coffee</span>
+    <span class="o">%</span><span class="nx">x</span><span class="p">[</span><span class="nx">coffee</span> <span class="o">-</span><span class="nx">c</span> <span class="o">-</span><span class="nx">j</span> <span class="p">..</span><span class="o">/</span><span class="nx">js</span><span class="o">/</span><span class="nx">app</span><span class="p">.</span><span class="nx">js</span> <span class="nx">coffee</span><span class="o">/</span><span class="p">]</span>
+<span class="nx">end</span>
+
+<span class="nx">def</span> <span class="nx">do_growl</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+    <span class="nx">growlnotify</span> <span class="o">=</span> <span class="err">`</span><span class="nx">which</span> <span class="nx">growlnotify</span><span class="err">`</span><span class="p">.</span><span class="nx">chomp</span>
+  <span class="nx">title</span> <span class="o">=</span> <span class="s2">&quot;Watchr Message&quot;</span>
+  <span class="nx">passed</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">include</span><span class="o">?</span><span class="p">(</span><span class="s1">&#39;0 failures, 0 errors&#39;</span><span class="p">)</span>
+  <span class="nx">image</span> <span class="o">=</span> <span class="nx">passed</span> <span class="o">?</span> <span class="s2">&quot;~/.watchr_images/passed.png&quot;</span> <span class="o">:</span> <span class="s2">&quot;~/.watchr_images/failed.png&quot;</span>
+  <span class="nx">severity</span> <span class="o">=</span> <span class="nx">passed</span> <span class="o">?</span> <span class="s2">&quot;-1&quot;</span> <span class="o">:</span> <span class="s2">&quot;1&quot;</span>
+  <span class="nx">options</span> <span class="o">=</span> <span class="s2">&quot;-w -n Watchr --image &#39;#{File.expand_path(image)}&#39;&quot;</span>
+  <span class="nx">options</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; -m &#39;#{message}&#39; &#39;#{title}&#39; -p #{severity}&quot;</span>
+  <span class="nx">system</span> <span class="o">%</span><span class="p">(</span><span class="err">#</span><span class="p">{</span><span class="nx">growlnotify</span><span class="p">}</span> <span class="err">#</span><span class="p">{</span><span class="nx">options</span><span class="p">}</span> <span class="o">&amp;</span><span class="p">)</span>
+<span class="nx">end</span>
+
+<span class="nx">do_growl</span> <span class="s2">&quot;Watching folders and waiting for changes ..&quot;</span>
+
+<span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;less/*&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="nx">m</span><span class="o">|</span>
+    <span class="err">#</span> <span class="nx">Recompile</span> <span class="nx">LESS</span> <span class="nx">files</span>
+    <span class="nx">compile_less</span>
+    <span class="nx">do_growl</span> <span class="s2">&quot;LESS Compiled and Compressed!&quot;</span>
+<span class="p">}</span>
+
+<span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;coffee/*&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="nx">m</span><span class="o">|</span>
+    <span class="err">#</span> <span class="nx">Recompile</span> <span class="nx">Coffeescripts</span>
+    <span class="nx">compile_coffee</span>
+    <span class="nx">do_growl</span> <span class="s2">&quot;Coffeescripts compiled and concatenated!&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+<p>As you can see at the bottom I&#39;m watching the 2 folders seperately, as I want to run different commands for them. For the project I&#39;m working on I&#39;m using Twitter Bootstrap, so rather than compiling all the .less files to seperate .css files I just want to compiled bootstrap.less as that @imports all the things it needs. When it&#39;s done with that it yui-compresses the lot and writes the output to <code>css/main.css</code>. Pretty cool!</p>
+<p>The compile_coffee command does something pretty similar. Whenever a .coffee file in the coffee folder changes it will compile them all and combine the output (notice the <code>-j</code> flag) and write it to <code>js/app.js</code>.</p>
+<p>To get the show on the road, cd to the <code>_src</code> folder, and run:</p>
+<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">watchr</span> <span class="nx">watchr</span><span class="p">.</span><span class="nx">rb</span>
+</pre></div>
+</code></pre>
+<p>You may have noticed the <code>do_growl</code> function, which doesn&#39;t really add value except that it&#39;s just cool to get a Growl message whenever it has done it&#39;s thing. To get that bit working you have to install <a href="http://growl.info/extras.php#growlnotify">&quot;Growl Notify&quot;</a>.</p>
+<p>If you&#39;re not that interested, or you don&#39;t have a Mac with Growl simply remove the function and the do_growl calls from the watch patterns.</p>
+<p>I&#39;m sure I could optimize this a bit, and add variables for output folders and options, but for now it&#39;s simple, working, and pretty damn cool.</p>
+<p>Let me know how you get your watchr set up!</p>
+]]></description><link>good-times-with-watchr-coffeescript-and-less/</link><guid isPermaLink="true">good-times-with-watchr-coffeescript-and-less/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Wed, 16 May 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Format associative JSON to work with Knockout.js]]></title><description><![CDATA[<p>I recently started creating a RESTful API in CakePHP to work with a Knockout.js frontend.</p>
+<p>While Knockout.js is a lot of fun, it does expect your JSON to be in a certain format.</p>
+<!--more-->
+
+<p>Take the following response from a simple <code>find</code> action:</p>
+<pre><code><div class="highlight"><pre><span class="s2">&quot;Projects&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Project&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;151&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;Task&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Project&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;152&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project-1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;Task&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
+    <span class="p">},</span>
+</pre></div>
+</code></pre>
+<p>This is fine to work with in your typical View, but Knockout rather has a nested format, and doesn&#39;t like the leading <code>Project</code> nodes. You could write custom parsers in Knockout, but would quickly become a hell to maintain.</p>
+<p>Instead, I wrote a little function to reformat the response to get the result Knockout likes:</p>
+<pre><code><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="kr">public</span> <span class="kd">function</span> <span class="nx">formatResponse</span><span class="p">(</span><span class="nx">$data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$ret</span> <span class="o">=</span> <span class="nx">array</span><span class="p">();</span>
+    <span class="nx">foreach</span><span class="p">(</span><span class="nx">$data</span> <span class="nx">as</span> <span class="nx">$key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$keys</span> <span class="o">=</span> <span class="nx">array_keys</span><span class="p">(</span><span class="nx">$key</span><span class="p">);</span>
+        <span class="nx">$t</span> <span class="o">=</span> <span class="nx">$key</span><span class="p">[</span><span class="nx">$keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+        <span class="k">for</span><span class="p">(</span><span class="nx">$i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">$i</span><span class="o">&lt;</span><span class="nx">count</span><span class="p">(</span><span class="nx">$keys</span><span class="p">);</span> <span class="nx">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$t</span><span class="p">[</span><span class="nx">Inflector</span><span class="o">::</span><span class="nx">pluralize</span><span class="p">(</span><span class="nx">strtolower</span><span class="p">(</span><span class="nx">$keys</span><span class="p">[</span><span class="nx">$i</span><span class="p">]))]</span> <span class="o">=</span> <span class="nx">$key</span><span class="p">[</span><span class="nx">$keys</span><span class="p">[</span><span class="nx">$i</span><span class="p">]];</span>
+        <span class="p">}</span>
+        <span class="nx">$ret</span><span class="p">[]</span> <span class="o">=</span> <span class="nx">$t</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">$ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">$projects</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">Project</span><span class="o">-&gt;</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">);</span>
+<span class="nx">$projects</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">formatResponse</span><span class="p">(</span><span class="nx">$projects</span><span class="p">);</span>
+<span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="nx">compact</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">));</span>
+<span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;_serialize&#39;</span><span class="p">,</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">));</span>
+
+<span class="o">?&gt;</span>
+</pre></div>
+</code></pre>
+<p>This will reformat the Projects response to:</p>
+<pre><code><div class="highlight"><pre><span class="s2">&quot;projects&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;151&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;152&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
+    <span class="p">},</span>
+</pre></div>
+</code></pre>
+<p>This way I don&#39;t have to worry about modifying the core of how Knockout.js works with JSON, and focus on developing the front-end of my app instead.</p>
+<p>It will probably be classier to put the function in something like an <code>afterFind</code>, but for now it will do nicely.</p>
+]]></description><link>format-associative-json-to-work-with-knockout-js/</link><guid isPermaLink="true">format-associative-json-to-work-with-knockout-js/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Wed, 09 May 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Using Sessions in PHPUnit Tests with CakePHP]]></title><description><![CDATA[<p>I was breaking my head over failing unit tests when trying to test a simple Controller that was saving a new record.</p>
+<p>Turned out it was failing only on the command line, while the webversion was passing all the tests.</p>
+<p>Luckily, the solution was simple ..</p>
+<!--more-->
+
+<p>The PHPUnit command line suite apparently outputs contents early, before the session gets initiated.</p>
+<h2><a name="solution-1" class="anchor" href="#solution-1"><span class="header-link"></span></a>Solution 1</h2>
+<p>Add <code>--stderr</code> to the command line:</p>
+<pre><code><div class="highlight"><pre><span class="nx">cake</span> <span class="nx">testsuite</span> <span class="nx">app</span> <span class="nx">Controller</span><span class="o">/</span><span class="nx">YourFancyController</span> <span class="o">--</span><span class="nx">stderr</span>
+</pre></div>
+</code></pre>
+<p>This will pass the tests again, as it doesn&#39;t output contents early to <code>STDOUT</code>. The only &quot;problem&quot; is you won&#39;t see the awesome green and red colors in the CLI output anymore.</p>
+<h2><a name="solution-2" class="anchor" href="#solution-2"><span class="header-link"></span></a>Solution 2</h2>
+<p>This is the one I use, as it brings the colors back.</p>
+<p>As I&#39;m using my self-contained PHPUnit Install, as found on Github @ <a href="https://github.com/hyra/PHPUnit-Cake2">PHPUnit-Cake2</a> I am able to edit the following file: <code>Vendor/PHPUnit/Autoload.php</code> At the very top of this file, initialize the session early:</p>
+<pre><code><div class="highlight"><pre><span class="nx">session_start</span><span class="p">();</span>
+</pre></div>
+</code></pre>
+<p>This will pass the tests again, and even better, bring back the colors!</p>
+<p>Maybe the session initialization can be done early by putting it in a file by CakePHP itself, but haven&#39;t found the right place yet. Any suggestions?</p>
+]]></description><link>using-sessions-in-phpunit-tests-with-cakephp/</link><guid isPermaLink="true">using-sessions-in-phpunit-tests-with-cakephp/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Fri, 24 Feb 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Spotify Preview Build expired]]></title><description><![CDATA[<p>Today I decided to tinker some more on our Spotify App, only to find that the Preview Build had expired, and was not gonna launch. Period. Great, so now what?</p>
+<!--more-->
+
+<h2><a name="small-update" class="anchor" href="#small-update"><span class="header-link"></span></a>Small update</h2>
+<p>From IRC:</p>
+<p><code>chiel: Hi guys, just a small update about the expired preview build we&#39;re aware of the issue and will put a new one up today however, we&#39;re in San Francisco for a hackday, where it is now 8.30am, so bear with us for a moment.</code></p>
+<h2><a name="back-to-basics" class="anchor" href="#back-to-basics"><span class="header-link"></span></a>Back to basics</h2>
+<p>I downloaded the normal user version, and obviously my application didn&#39;t fully work. Most noticably the <code>application</code> node had disappeared from the <code>models</code> class, even though it&#39;s still present at the developer resource page.</p>
+<p>This means one can&#39;t change tabs in the following way anymore:</p>
+<pre><code><div class="highlight"><pre><span class="nx">application</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">EVENT</span><span class="p">.</span><span class="nx">ARGUMENTSCHANGED</span><span class="p">,</span> <span class="nx">handleArgs</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">handleArgs</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">application</span><span class="p">.</span><span class="nx">arguments</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.section&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>   <span class="c1">// Hide all sections</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="o">+</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">show</span><span class="p">();</span>  <span class="c1">// Show current section</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+<h2><a name="so-now-what" class="anchor" href="#so-now-what"><span class="header-link"></span></a>So now what?</h2>
+<p>I did some digging, and noticed <code>sp.core</code> has some eventListeners. After some fiddling I can now switch tabs again by doing the following:</p>
+<pre><code><div class="highlight"><pre><span class="nx">sp</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;argumentsChanged&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.section&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>                   <span class="c1">// Hide all sections</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="o">+</span><span class="nx">sp</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">getArguments</span><span class="p">()).</span><span class="nx">show</span><span class="p">();</span>   <span class="c1">// Show current section</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>Nothe most elegant, and I&#39;ll probably be able to change it back to the original code when the new Preview Build comes out, but for now I can at least work on the App.</p>
+<h2><a name="broken" class="anchor" href="#broken"><span class="header-link"></span></a>Broken?</h2>
+<p>Any one else noticing things that have stopped working and found some workarounds? Do share below!</p>
+]]></description><link>spotify-preview-build-expired/</link><guid isPermaLink="true">spotify-preview-build-expired/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Sat, 11 Feb 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Updated LESS component for CakePHP]]></title><description><![CDATA[<p>I decided to have a look at Twitter Bootstrap 2, and had it run through my LESS Component. I then realized the component didn&#39;t support subfolders!</p>
+<!--more-->
+
+<p>So this is just to let you guys know I wrote a small tweak, and now it works perfectly :)</p>
+<p>If you have any other alterations you would like to see feel free to fork, or drop me a comment below.</p>
+<p>The new version: <a href="https://github.com/Hyra/less">https://github.com/Hyra/less</a></p>
+]]></description><link>updated-less-component-for-cakephp/</link><guid isPermaLink="true">updated-less-component-for-cakephp/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Sun, 05 Feb 2012 00:00:00 GMT</pubDate></item></channel></rss>
