@@ -12,7 +12,7 @@ Today I decided to tinker some more on our Spotify App, only to find that the Pr
 
 From IRC:
 
-`chiel: Hi guys, just a small update about the expired preview build we're aware of the issue and will put a new one up today however, we're in San Francisco for a hackday, where it is now 8.30am, so bear with us for a moment.`
+> chiel: Hi guys, just a small update about the expired preview build we're aware of the issue and will put a new one up today however, we're in San Francisco for a hackday, where it is now 8.30am, so bear with us for a moment.
 
 ## Back to basics
 
