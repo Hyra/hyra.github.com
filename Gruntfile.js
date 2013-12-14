@@ -1,6 +1,12 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
+    sitemap: {
+      dist: {
+        siteRoot: 'dist/',
+	      homepage: 'http://mindthecode.com/'
+      }
+    },
     pages: {
       posts: {
         src: 'posts',
@@ -122,8 +128,10 @@ module.exports = function (grunt) {
     'open',
     'watch'
   ]);
+grunt.loadNpmTasks('grunt-sitemap');
 
   grunt.registerTask('default', 'server');
+  // grunt.registerTask('sitemap', 'sitemap');
 
   require('load-grunt-tasks')(grunt);
 };
