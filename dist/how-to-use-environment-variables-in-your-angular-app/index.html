@@ -1,10 +1,10 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><meta http-equiv="cleartype" content="on"><link rel="icon" type="image/png" href="/favicon.ico"><link href="/styles/main.css" rel="stylesheet"><link href="http://mindthecode.com/feed.xml" type="application/atom+xml" rel="alternate" title="Mindthecode Feed"><link rel="author" href="https://plus.google.com/102230925443628784177?rel=author"><meta property="fb:admins" content="1322812414"><meta property="og:type" content="article"><meta property="og:image" content="http://mindthecode.com/images/og_image.png"><meta property="og:site_name" content="Mindthecode"><meta property="fb:app_id" content="116332715192025"><meta name="twitter:creator" content="@stefvdham"><meta name="twitter:card" content="summary"><meta name="twitter:image:" content="http://mindthecode.com/images/og_image.png"><title>Mindthecode</title><link rel="canonical" href="http://mindthecode.com/"><meta name="description" content="Rambling about all things web."><meta property="og:title" content="Mindthecode"><meta property="og:description" content="Rambling about all things web."><meta property="og:url" content="http://mindthecode.com/"><meta name="twitter:title" content="Mindthecode"><meta name="twitter:description" content="Rambling about all things web."><script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></head><body><nav><div class="logo"><a href="/"><img src="/images/logo.png"></a></div><div class="avatar"><a href="/"><img src="/images/avatar.png"><br><br><a href="https://twitter.com/stefvdham" data-show-count="true" data-size="small" data-show-screen-name="false" class="twitter-follow-button">Follow @stefvdham</a></a><p>Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.</p></div><div class="menu icon-menu"></div><ul class="nav-links"><li class="text-link"><a href="/about.html">about</a></li><li class="text-link"><a href="/archives.html">archives</a></li></ul><div class="social-media"><a href="https://github.com/hyra" class="icon-github"></a><a href="https://twitter.com/stefvdham" class="icon-twitter"></a></div></nav><div class="content"><div class="post-head group"><a href="/how-to-use-environment-variables-in-your-angular-application/"><h1 class="post-title">How to use environment variables in your Angular application</h1></a><span class="post-date">2013 &#183; 12 &#183; 29</span></div><div class="post-body markdown"><p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><meta http-equiv="cleartype" content="on"><link rel="icon" type="image/png" href="/favicon.ico"><link href="/styles/main.css" rel="stylesheet"><link href="http://mindthecode.com/feed.xml" type="application/atom+xml" rel="alternate" title="Mindthecode Feed"><link rel="author" href="https://plus.google.com/102230925443628784177?rel=author"><meta property="fb:admins" content="1322812414"><meta property="og:type" content="article"><meta property="og:image" content="http://mindthecode.com/images/og_image.png"><meta property="og:site_name" content="Mindthecode"><meta property="fb:app_id" content="116332715192025"><meta name="twitter:creator" content="@stefvdham"><meta name="twitter:card" content="summary"><meta name="twitter:image:" content="http://mindthecode.com/images/og_image.png"><title>How to use environment variables in your Angular App</title><link rel="canonical" href="http://mindthecode.com/how-to-use-environment-variables-in-your-angular-app/"><meta name="twitter:title" content="How to use environment variables in your Angular App"><meta name="twitter:description" content="How to use environmental variables in your Angular App"><meta property="og:title" content="How to use environment variables in your Angular App"><meta property="og:description" content="How to use environmental variables in your Angular App"><meta property="og:url" content="http://mindthecode.com/how-to-use-environment-variables-in-your-angular-app/"><meta name="description" content="How to use environmental variables in your Angular App"><script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></head><body><nav><div class="logo"><a href="/"><img src="/images/logo.png"></a></div><div class="avatar"><a href="/"><img src="/images/avatar.png"><br><br><a href="https://twitter.com/stefvdham" data-show-count="true" data-size="small" data-show-screen-name="false" class="twitter-follow-button">Follow @stefvdham</a></a><p>Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.</p></div><div class="menu icon-menu"></div><ul class="nav-links"><li class="text-link"><a href="/about.html">about</a></li><li class="text-link"><a href="/archives.html">archives</a></li></ul><div class="social-media"><a href="https://github.com/hyra" class="icon-github"></a><a href="https://twitter.com/stefvdham" class="icon-twitter"></a></div></nav><div class="content"><div class="post-head group"><a href="/how-to-use-environment-variables-in-your-angular-app/"><h1 class="post-title">How to use environment variables in your Angular App</h1></a><span class="post-date">2013 &#183; 12 &#183; 29</span></div><div class="post-body markdown"><p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
 <p>But how do you handle such variables in the front-end? Specifically, in an AngularJS App?</p>
 <p>For instance, you might have a seperate API you&#39;re talking to for your content, which has a different location locally, than on your production server. Or you might want to do some debugging or verbose output, based on what environment you&#39;re on.</p>
 <p>In this post I&#39;ll show you how to set this up automagically using Grunt and ngConstant.</p>
 <h2><a name="the-ingredients" class="anchor" href="#the-ingredients"><span class="header-link"></span></a>The ingredients</h2>
 <h3><a name="grunt" class="anchor" href="#grunt"><span class="header-link"></span></a>Grunt</h3>
-<p>I&#39;ll assume you&#39;re familiar with <a href="http://gruntjs.com/">Grunt</a> and have set it up to aid your workflow. If not, there&#39;s plenty of tutorials out there to get this going.</p>
+<p>I&#39;ll assume you&#39;re familiar with Grunt and have set it up to aid your workflow. If not, there&#39;s plenty of tutorials out there to get this going.</p>
 <h3><a name="grunt-ng-constant" class="anchor" href="#grunt-ng-constant"><span class="header-link"></span></a>grunt-ng-constant</h3>
 <p>This Grunt plugin takes care of the dynamic generation of your constants. Grab it <a href="https://github.com/werk85/grunt-ng-constant">here</a>, or simply install it by doing:</p>
 <pre><code><div class="highlight"><pre><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">grunt</span><span class="o">-</span><span class="nx">ng</span><span class="o">-</span><span class="nx">constant</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span>
@@ -110,29 +110,31 @@
 </code></pre>
 <p>And there you have it. Environmental variables in your front-end. It might look like a lot of work, but once you&#39;ve set it up it&#39;s easy to extend the variables and duplicate environments to match your needs.</p>
 <p>Happy coding.</p>
-</div><div class="comments"><a href="/how-to-use-environment-variables-in-your-angular-application/#comments"><span class="icon-bubbles"></span>Comments</a></div><div class="post-head group"><a href="/httpie-a-command-line-http-client/"><h1 class="post-title">HTTPIe, a command line HTTP client</h1></a><span class="post-date">2013 &#183; 12 &#183; 8</span></div><div class="post-body markdown"><p>Stumbled upon <strong><a href="https://github.com/jkbr/httpie">HTTPie</a></strong>, a command line HTTP client. It&#39;s pretty awesome. Basically it&#39;s Curl on steroids, as it has an easy interface and syntax highlighted output.</p>
-<p>Here&#39;s an example of a simple GET request to the <a href="http://baconipsum.com/api/">Bacon Ipsum JSON service</a>:</p>
-<p><img src="/images/screenshots/131208_http.png" alt="HTTPie"></p>
-<p>Of course you can do actual useful stuff as well, such as POST-ing, Authentication, Cookies, Custom Headers, etc.</p>
-<p>As the repo says, the main features are:</p>
-<ul>
-<li>Expressive and intuitive syntax</li>
-<li>Formatted and colorized terminal output</li>
-<li>Built-in JSON support</li>
-<li>Forms and file uploads</li>
-<li>HTTPS, proxies, and authentication</li>
-<li>Arbitrary request data</li>
-<li>Custom headers</li>
-<li>Persistent sessions</li>
-<li>Wget-like downloads</li>
-<li>Python 2.6, 2.7 and 3.x support</li>
-<li>Linux, Mac OS X and Windows support</li>
-<li>Documentation</li>
-<li>Test coverage</li>
-</ul>
-<p>I haven&#39;t played with it much yet, but so far it seems like a rather useful little tool, worth checking out.</p>
-<p>You can get it <a href="https://github.com/jkbr/httpie">here</a></p>
-</div><div class="comments"><a href="/httpie-a-command-line-http-client/#comments"><span class="icon-bubbles"></span>Comments</a></div><div class="pagination group"><a href="/page/1/" class="older">&#8592; Older</a></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script><script src="/scripts/main.js" type="text/javascript"></script><script>if(window.devicePixelRatio) { $("#logo").attr('src', '/images/logo@2x.png'); }
+</div><!-- Social sharing icons--><div class="social"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a><div data-size="medium" data-annotation="bubble" data-width="300" class="g-plusone"></div><a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a><div data-width="200" data-href="" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" class="fb-like"></div></div><!-- Disqus comments, Make sure to replace `colinwren` with your account name in the Disqus helper script below--><div id="comments"><div id="disqus_thread"></div></div><!-- Helper scripts for social share icons--><!-- Hacker News--><script type="text/javascript">(function(d, t) {
+  var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+  g.src = '//hnbutton.appspot.com/static/hn.min.js';
+  s.parentNode.insertBefore(g, s);
+}(document, 'script'));
+</script><!-- Twitter--><!-- Google Plus--><script type="text/javascript">(function() {
+  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  po.src = 'https://apis.google.com/js/plusone.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script><!-- Disqus--><script type="text/javascript">var disqus_shortname = 'mindthecode'; // Change this to your Disqus account name
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script><!-- Facebook--><div id="fb-root"></div><script type="text/javascript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=116332715192025";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script><script src="/scripts/main.js" type="text/javascript"></script><script>if(window.devicePixelRatio) { $("#logo").attr('src', '/images/logo@2x.png'); }
 var _gaq = _gaq || [];
 var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
 _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
