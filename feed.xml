@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Sun, 29 Dec 2013 08:22:06 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Sun, 29 Dec 2013 08:22:06 GMT</pubDate><copyright><![CDATA[2013 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[How to use environment variables in your Angular application]]></title><description><![CDATA[<p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Fri, 03 Jan 2014 11:45:41 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Fri, 03 Jan 2014 11:45:41 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[How to use environment variables in your Angular application]]></title><description><![CDATA[<p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
 <p>But how do you handle such variables in the front-end? Specifically, in an AngularJS App?</p>
 <p>For instance, you might have a seperate API you&#39;re talking to for your content, which has a different location locally, than on your production server. Or you might want to do some debugging or verbose output, based on what environment you&#39;re on.</p>
 <p>In this post I&#39;ll show you how to set this up automagically using Grunt and ngConstant.</p>
@@ -167,7 +167,88 @@
 <p>And that&#39;s all there is to it. Now whenever you type <code>c some-file.ext</code> it will detect the extension and add syntax highlighting.</p>
 <p>I chose the monokai style because it looks awesome and works well with the rest of my ZSH theme, but feel free to try a few and see which works best for you.</p>
 <p>Happy CLI-ing!</p>
-]]></description><link>a-more-colourful-cat-in-your-shell/</link><guid isPermaLink="true">a-more-colourful-cat-in-your-shell/</guid><category><![CDATA[terminal]]></category><category><![CDATA[command line]]></category><category><![CDATA[OSX]]></category><category><![CDATA[shell]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 06 Aug 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Getting used to Vim]]></title><description><![CDATA[<p>So there we go. Writing this post in vim. Macvim to be exact. Trying not to touch the arrow keys, not use the h-j-k-l too extensively either, work with A and I a lot, and generally trying not to cock things up too much by hitting the wrong commands.</p>
+]]></description><link>a-more-colourful-cat-in-your-shell/</link><guid isPermaLink="true">a-more-colourful-cat-in-your-shell/</guid><category><![CDATA[terminal]]></category><category><![CDATA[command line]]></category><category><![CDATA[OSX]]></category><category><![CDATA[shell]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 06 Aug 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Customize the terminal on OSX]]></title><description><![CDATA[<p>I love the terminal. Besides the fact it makes you look awesome while using it, it can also do about a gazillion different things. Most of them useful.</p>
+<p>One thing is for sure, while developing webapps I have it running all the time and spend a lot of time running commands and monitoring output. So why not make it look as pretty as it is awesome? In this short walkthrough I&#39;ll explain how to customize the terminal to make it look like mine, but make sure you fiddle with the settings so it works best for you.</p>
+<!--more-->
+
+<h2><a name="what-we-will-be-making" class="anchor" href="#what-we-will-be-making"><span class="header-link"></span></a>What we will be making</h2>
+<p>Below is a screenshot of what my terminal looks like:</p>
+<p><a href="/images/custom-terminal.png"><img src="/images/custom-terminal.png" alt="Custom Terminal" title="Custom Terminal"></a></p>
+<p>That&#39;s right, besides the beautiful colour-scheme it also visually tells you what git branch you&#39;re in and information about its status.</p>
+<h2><a name="the-ingredients" class="anchor" href="#the-ingredients"><span class="header-link"></span></a>The ingredients</h2>
+<p>So, let&#39;s get to it. We will be needing a few things to set up the basis, and will then start fiddling with settings.</p>
+<h3><a name="colour-theme" class="anchor" href="#colour-theme"><span class="header-link"></span></a>Colour theme</h3>
+<p>The theme I&#39;m using is <strong>Tomorrow Night</strong>. I use it for my every day coding, so it made sense to propagate those colours into the terminal. <a href="https://github.com/chriskempson">Chris Kempson</a> did an amazing job at making this theme available for pretty much everything out there, so <a href="https://github.com/chriskempson/tomorrow-theme/blob/master/OS%20X%20Terminal/Tomorrow%20Night.terminal">grab the Terminal version</a> here.</p>
+<p>Download this file and put it in a folder that makes sense.</p>
+<p>Once you&#39;ve done that, simply double click the file and it will open a terminal window with the new theme active. Next go to <code>Preferences</code> by hitting <code>Command-.</code></p>
+<p>In the <code>Settings</code> tab you will see a list of themes, including your fresh <code>Tomorrow Night</code> one. Make sure to make it the <code>Default</code> one.</p>
+<h3><a name="font" class="anchor" href="#font"><span class="header-link"></span></a>Font</h3>
+<p>Choosing a font is the most important thing, because, if you&#39;re anything like me, you spend a hell of a lot of time looking at it. For the last 4 months I&#39;ve been using <code>Monaco 12pt</code>. Make sure to select the font you like to work with in the Theme Settings.</p>
+<h3><a name="zsh" class="anchor" href="#zsh"><span class="header-link"></span></a>ZSH</h3>
+<p>I recently got to know <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>, which as Robby describes it, is:</p>
+<p>&quot;A handful of functions, auto-complete helpers, and stuff that makes you shout..</p>
+<pre><code><div class="highlight"><pre><span class="s1">&#39;OH MY ZSHELL!&#39;</span>
+</pre></div>
+</code></pre>
+<p>To get it working you first have to change the shell you&#39;re working in. By default OSX users get the <code>/bin/bash</code> shell. ZSH is pretty much the same, but comes with quite a few handy additions to make it cool enough to use. To change your shell to zsh simply go:</p>
+<ul>
+<li>System Preferences</li>
+<li>Users &amp; Groups</li>
+<li>Right click your user account and select <code>Advanced Options</code> (You might have to click the little lock first)</li>
+<li>Change <code>/bin/bash/</code> to <code>/bin/zsh</code> in the Login Shell dropdown</li>
+<li>Save your changes</li>
+</ul>
+<p>Next, to get oh-my-zsh working, they have provided a nice one-line install script which you run, of course, in the terminal:</p>
+<p>{% highlight bash %}
+$ curl -L <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh">https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh</a> | sh
+{% endhighlight %}</p>
+<h3><a name="preparing-the-zsh-theme" class="anchor" href="#preparing-the-zsh-theme"><span class="header-link"></span></a>Preparing the ZSH theme</h3>
+<p>We&#39;re almost there! Next up is creating a theme for zsh to get the prompt to work and look the way we want. Oh My ZSH was installed into <code>~/.oh-my-zsh</code> so open up that folder. You will see it has a lot of <code>themes</code> ready. What we want to look at first though is the <code>zshrc.zsh-template</code> file in the <code>templates</code> folder. If you&#39;ve ever did any terminal customisation you might be familiar with a file called <code>.bashrc</code>. This is pretty much the same thing, but for .. you guessed it: zsh</p>
+<p>So open up that <code>zshrc.zsh-template</code> file and find the line that says <code>ZSH_THEME=&quot;robbyrussell&quot;</code></p>
+<p>We will create our own theme so replace the theme name with your own theme name. For instance: <code>ZSH_THEME=&quot;sheeptheme&quot;</code>.</p>
+<p>Save this file as <code>~/.zshrc</code>. Go to the <code>themes</code> folder again, and create a new file called <code>sheeptheme.zsh-theme</code>, or whatever title you gave your theme.</p>
+<h3><a name="creating-your-custom-zsh-theme" class="anchor" href="#creating-your-custom-zsh-theme"><span class="header-link"></span></a>Creating your custom ZSH theme</h3>
+<p>Now the fun part. Making it all yours. Open up the theme file you created, and put the following inside:</p>
+<p>{% highlight bash %}
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2&gt; /dev/null) || return
+  echo &quot;$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX&quot;
+}</p>
+<p>function get_pwd() {
+  print -D $PWD
+}</p>
+<p>function put_spacing() {
+  local git=$(git_prompt_info)
+  if [ ${#git} != 0 ]; then
+    ((git=${#git} - 10))
+  else
+    git=0
+  fi</p>
+<p>  local termwidth
+  (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} ))</p>
+<p>  local spacing=&quot;&quot;
+  for i in {1..$termwidth}; do
+    spacing=&quot;${spacing} &quot;
+  done
+  echo $spacing
+}</p>
+<p>function precmd() {
+print -rP &#39;
+$fg[cyan]%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)&#39;
+}</p>
+<p>PROMPT=&#39;%{$reset_color%} &#39;</p>
+<p>ZSH_THEME_GIT_PROMPT_PREFIX=&quot;[git:&quot;
+ZSH_THEME_GIT_PROMPT_SUFFIX=&quot;]$reset_color&quot;
+ZSH_THEME_GIT_PROMPT_DIRTY=&quot;$fg[red]+&quot;
+ZSH_THEME_GIT_PROMPT_CLEAN=&quot;$fg[green]&quot;
+{% endhighlight %}</p>
+<p>The above will probably be pretty self-explanatory, we got a function to get the Git information from the current folder, so we can determin if it&#39;s dirty. A function to get the current directory. And a function to determin how much space to put between the first part of the prompt and the last part (the git part) so that it aligns nicely.</p>
+<h2><a name="extending-even-more" class="anchor" href="#extending-even-more"><span class="header-link"></span></a>Extending even more</h2>
+<p>You will probably find it doesn&#39;t <strong>exactly</strong> fit your exact needs, and I would encourage you to fiddle with it as long and as much until you are happy with it. You can find a lot of nice plugins in the <code>/.oh-my-zsh</code> directory to play around with, so please do.</p>
+<h2><a name="conslusion" class="anchor" href="#conslusion"><span class="header-link"></span></a>Conslusion</h2>
+<p>A good prompt comes down to personal preference. I hope you can make yours look the way you want and that the above was a good starting point to get there.</p>
+<p>Happy CLI-ing!</p>
+]]></description><link>customize-the-terminal-on-osx/</link><guid isPermaLink="true">customize-the-terminal-on-osx/</guid><category><![CDATA[terminal]]></category><category><![CDATA[command line]]></category><category><![CDATA[OSX]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Thu, 28 Feb 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Getting used to Vim]]></title><description><![CDATA[<p>So there we go. Writing this post in vim. Macvim to be exact. Trying not to touch the arrow keys, not use the h-j-k-l too extensively either, work with A and I a lot, and generally trying not to cock things up too much by hitting the wrong commands.</p>
 <!--more-->
 
 <p>So why do I willingly put myself through the torture of using the monster that is Vim? Well, just like a lot of developers out there, I&#39;ve had a long time desire to be able to use Vim properly. No immediate need, just a personal goal if you will. I&#39;ve tried Vim a couple of times over the last few months, but pretty much every attempt lead quickly to being overwhelmed by all the different commands and feeling about a gazillion times slower as I did when using Sublime Text Edit 2.</p>
@@ -337,104 +418,4 @@ What? Well, it&#39;s simple really .. whenever I was trying out Vim and found my
 <p>If you&#39;re not that interested, or you don&#39;t have a Mac with Growl simply remove the function and the do_growl calls from the watch patterns.</p>
 <p>I&#39;m sure I could optimize this a bit, and add variables for output folders and options, but for now it&#39;s simple, working, and pretty damn cool.</p>
 <p>Let me know how you get your watchr set up!</p>
-]]></description><link>good-times-with-watchr-coffeescript-and-less/</link><guid isPermaLink="true">good-times-with-watchr-coffeescript-and-less/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Wed, 16 May 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Format associative JSON to work with Knockout.js]]></title><description><![CDATA[<p>I recently started creating a RESTful API in CakePHP to work with a Knockout.js frontend.</p>
-<p>While Knockout.js is a lot of fun, it does expect your JSON to be in a certain format.</p>
-<!--more-->
-
-<p>Take the following response from a simple <code>find</code> action:</p>
-<pre><code><div class="highlight"><pre><span class="s2">&quot;Projects&quot;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;Project&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;151&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;Task&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;Project&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;152&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project-1&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;Task&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
-    <span class="p">},</span>
-</pre></div>
-</code></pre>
-<p>This is fine to work with in your typical View, but Knockout rather has a nested format, and doesn&#39;t like the leading <code>Project</code> nodes. You could write custom parsers in Knockout, but would quickly become a hell to maintain.</p>
-<p>Instead, I wrote a little function to reformat the response to get the result Knockout likes:</p>
-<pre><code><div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="kr">public</span> <span class="kd">function</span> <span class="nx">formatResponse</span><span class="p">(</span><span class="nx">$data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">$ret</span> <span class="o">=</span> <span class="nx">array</span><span class="p">();</span>
-    <span class="nx">foreach</span><span class="p">(</span><span class="nx">$data</span> <span class="nx">as</span> <span class="nx">$key</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">$keys</span> <span class="o">=</span> <span class="nx">array_keys</span><span class="p">(</span><span class="nx">$key</span><span class="p">);</span>
-        <span class="nx">$t</span> <span class="o">=</span> <span class="nx">$key</span><span class="p">[</span><span class="nx">$keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
-        <span class="k">for</span><span class="p">(</span><span class="nx">$i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">$i</span><span class="o">&lt;</span><span class="nx">count</span><span class="p">(</span><span class="nx">$keys</span><span class="p">);</span> <span class="nx">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$t</span><span class="p">[</span><span class="nx">Inflector</span><span class="o">::</span><span class="nx">pluralize</span><span class="p">(</span><span class="nx">strtolower</span><span class="p">(</span><span class="nx">$keys</span><span class="p">[</span><span class="nx">$i</span><span class="p">]))]</span> <span class="o">=</span> <span class="nx">$key</span><span class="p">[</span><span class="nx">$keys</span><span class="p">[</span><span class="nx">$i</span><span class="p">]];</span>
-        <span class="p">}</span>
-        <span class="nx">$ret</span><span class="p">[]</span> <span class="o">=</span> <span class="nx">$t</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nx">$ret</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">$projects</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">Project</span><span class="o">-&gt;</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">);</span>
-<span class="nx">$projects</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">formatResponse</span><span class="p">(</span><span class="nx">$projects</span><span class="p">);</span>
-<span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="nx">compact</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">));</span>
-<span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;_serialize&#39;</span><span class="p">,</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;projects&#39;</span><span class="p">));</span>
-
-<span class="o">?&gt;</span>
-</pre></div>
-</code></pre>
-<p>This will reformat the Projects response to:</p>
-<pre><code><div class="highlight"><pre><span class="s2">&quot;projects&quot;</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;151&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:52:19&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;152&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Een ander project&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;slug&quot;</span><span class="o">:</span> <span class="s2">&quot;een-ander-project-1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;dsfdsfs&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_count&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_backlog&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_open&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="s2">&quot;tasks_closed&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="s2">&quot;duedate&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;created&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;modified&quot;</span><span class="o">:</span> <span class="s2">&quot;2012-04-09 13:55:30&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tasks&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
-    <span class="p">},</span>
-</pre></div>
-</code></pre>
-<p>This way I don&#39;t have to worry about modifying the core of how Knockout.js works with JSON, and focus on developing the front-end of my app instead.</p>
-<p>It will probably be classier to put the function in something like an <code>afterFind</code>, but for now it will do nicely.</p>
-]]></description><link>format-associative-json-to-work-with-knockout-js/</link><guid isPermaLink="true">format-associative-json-to-work-with-knockout-js/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Wed, 09 May 2012 00:00:00 GMT</pubDate></item></channel></rss>
+]]></description><link>good-times-with-watchr-coffeescript-and-less/</link><guid isPermaLink="true">good-times-with-watchr-coffeescript-and-less/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Wed, 16 May 2012 00:00:00 GMT</pubDate></item></channel></rss>
