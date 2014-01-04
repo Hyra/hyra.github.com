@@ -4,7 +4,7 @@
 
 <h2><a name="what-we-will-be-making" class="anchor" href="#what-we-will-be-making"><span class="header-link"></span></a>What we will be making</h2>
 <p>Below is a screenshot of what my terminal looks like:</p>
-<p><a href="/images/custom-terminal.png"><img src="/images/custom-terminal.png" alt="Custom Terminal" title="Custom Terminal"></a></p>
+<p><a href="/images/screenshots/custom-terminal.png"><img src="/images/screenshots/custom-terminal.png" alt="Custom Terminal" title="Custom Terminal"></a></p>
 <p>That&#39;s right, besides the beautiful colour-scheme it also visually tells you what git branch you&#39;re in and information about its status.</p>
 <h2><a name="the-ingredients" class="anchor" href="#the-ingredients"><span class="header-link"></span></a>The ingredients</h2>
 <p>So, let&#39;s get to it. We will be needing a few things to set up the basis, and will then start fiddling with settings.</p>
@@ -40,39 +40,46 @@ $ curl -L <a href="https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/in
 <p>Save this file as <code>~/.zshrc</code>. Go to the <code>themes</code> folder again, and create a new file called <code>sheeptheme.zsh-theme</code>, or whatever title you gave your theme.</p>
 <h3><a name="creating-your-custom-zsh-theme" class="anchor" href="#creating-your-custom-zsh-theme"><span class="header-link"></span></a>Creating your custom ZSH theme</h3>
 <p>Now the fun part. Making it all yours. Open up the theme file you created, and put the following inside:</p>
-<p>{% highlight bash %}
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2&gt; /dev/null) || return
-  echo &quot;$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX&quot;
-}</p>
-<p>function get_pwd() {
-  print -D $PWD
-}</p>
-<p>function put_spacing() {
-  local git=$(git_prompt_info)
-  if [ ${#git} != 0 ]; then
-    ((git=${#git} - 10))
-  else
-    git=0
-  fi</p>
-<p>  local termwidth
-  (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} ))</p>
-<p>  local spacing=&quot;&quot;
-  for i in {1..$termwidth}; do
-    spacing=&quot;${spacing} &quot;
-  done
-  echo $spacing
-}</p>
-<p>function precmd() {
-print -rP &#39;
-$fg[cyan]%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)&#39;
-}</p>
-<p>PROMPT=&#39;%{$reset_color%} &#39;</p>
-<p>ZSH_THEME_GIT_PROMPT_PREFIX=&quot;[git:&quot;
-ZSH_THEME_GIT_PROMPT_SUFFIX=&quot;]$reset_color&quot;
-ZSH_THEME_GIT_PROMPT_DIRTY=&quot;$fg[red]+&quot;
-ZSH_THEME_GIT_PROMPT_CLEAN=&quot;$fg[green]&quot;
-{% endhighlight %}</p>
+<pre><code><div class="highlight"><pre><span class="kd">function</span> <span class="nx">git_prompt_info</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">ref</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="nx">git</span> <span class="nx">symbolic</span><span class="o">-</span><span class="nx">ref</span> <span class="nx">HEAD</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="err">/dev/null) || return</span>
+  <span class="nx">echo</span> <span class="s2">&quot;$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">get_pwd</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">print</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">$PWD</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">put_spacing</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">local</span> <span class="nx">git</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="nx">git_prompt_info</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">[</span> <span class="nx">$</span><span class="p">{</span><span class="err">#</span><span class="nx">git</span><span class="p">}</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">];</span> <span class="nx">then</span>
+    <span class="p">((</span><span class="nx">git</span><span class="o">=</span><span class="nx">$</span><span class="p">{</span><span class="err">#</span><span class="nx">git</span><span class="p">}</span> <span class="o">-</span> <span class="mi">10</span><span class="p">))</span>
+  <span class="k">else</span>
+    <span class="nx">git</span><span class="o">=</span><span class="mi">0</span>
+  <span class="nx">fi</span>
+
+  <span class="nx">local</span> <span class="nx">termwidth</span>
+  <span class="p">((</span> <span class="nx">termwidth</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">COLUMNS</span><span class="p">}</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">-</span> <span class="nx">$</span><span class="p">{</span><span class="err">#</span><span class="nx">HOST</span><span class="p">}</span> <span class="o">-</span> <span class="nx">$</span><span class="p">{</span><span class="err">#</span><span class="nx">$</span><span class="p">(</span><span class="nx">get_pwd</span><span class="p">)}</span> <span class="o">-</span> <span class="nx">$</span><span class="p">{</span><span class="nx">bat</span><span class="p">}</span> <span class="o">-</span> <span class="nx">$</span><span class="p">{</span><span class="nx">git</span><span class="p">}</span> <span class="p">))</span>
+
+  <span class="nx">local</span> <span class="nx">spacing</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+  <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="p">{</span><span class="mi">1</span><span class="p">..</span><span class="nx">$termwidth</span><span class="p">};</span> <span class="k">do</span>
+    <span class="nx">spacing</span><span class="o">=</span><span class="s2">&quot;${spacing} &quot;</span>
+  <span class="nx">done</span>
+  <span class="nx">echo</span> <span class="nx">$spacing</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">precmd</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">print</span> <span class="o">-</span><span class="nx">rP</span> <span class="s1">&#39;</span>
+<span class="s1">$fg[cyan]%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)&#39;</span>
+<span class="p">}</span>
+
+<span class="nx">PROMPT</span><span class="o">=</span><span class="s1">&#39;%{$reset_color%} &#39;</span>
+
+<span class="nx">ZSH_THEME_GIT_PROMPT_PREFIX</span><span class="o">=</span><span class="s2">&quot;[git:&quot;</span>
+<span class="nx">ZSH_THEME_GIT_PROMPT_SUFFIX</span><span class="o">=</span><span class="s2">&quot;]$reset_color&quot;</span>
+<span class="nx">ZSH_THEME_GIT_PROMPT_DIRTY</span><span class="o">=</span><span class="s2">&quot;$fg[red]+&quot;</span>
+<span class="nx">ZSH_THEME_GIT_PROMPT_CLEAN</span><span class="o">=</span><span class="s2">&quot;$fg[green]&quot;</span>
+</pre></div>
+</code></pre>
 <p>The above will probably be pretty self-explanatory, we got a function to get the Git information from the current folder, so we can determin if it&#39;s dirty. A function to get the current directory. And a function to determin how much space to put between the first part of the prompt and the last part (the git part) so that it aligns nicely.</p>
 <h2><a name="extending-even-more" class="anchor" href="#extending-even-more"><span class="header-link"></span></a>Extending even more</h2>
 <p>You will probably find it doesn&#39;t <strong>exactly</strong> fit your exact needs, and I would encourage you to fiddle with it as long and as much until you are happy with it. You can find a lot of nice plugins in the <code>/.oh-my-zsh</code> directory to play around with, so please do.</p>

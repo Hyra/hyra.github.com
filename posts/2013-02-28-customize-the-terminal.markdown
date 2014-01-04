@@ -16,7 +16,7 @@ One thing is for sure, while developing webapps I have it running all the time a
 
 Below is a screenshot of what my terminal looks like:
 
-[![Custom Terminal](/images/custom-terminal.png "Custom Terminal")](/images/custom-terminal.png)
+[![Custom Terminal](/images/screenshots/custom-terminal.png "Custom Terminal")](/images/screenshots/custom-terminal.png)
 
 That's right, besides the beautiful colour-scheme it also visually tells you what git branch you're in and information about its status.
 
@@ -74,46 +74,44 @@ Save this file as `~/.zshrc`. Go to the `themes` folder again, and create a new 
 
 Now the fun part. Making it all yours. Open up the theme file you created, and put the following inside:
 
-{% highlight bash %}
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
+    function git_prompt_info() {
+      ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+      echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    }
 
-function get_pwd() {
-  print -D $PWD
-}
+    function get_pwd() {
+      print -D $PWD
+    }
 
-function put_spacing() {
-  local git=$(git_prompt_info)
-  if [ ${#git} != 0 ]; then
-    ((git=${#git} - 10))
-  else
-    git=0
-  fi
+    function put_spacing() {
+      local git=$(git_prompt_info)
+      if [ ${#git} != 0 ]; then
+        ((git=${#git} - 10))
+      else
+        git=0
+      fi
 
-  local termwidth
-  (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} ))
+      local termwidth
+      (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} ))
 
-  local spacing=""
-  for i in {1..$termwidth}; do
-    spacing="${spacing} "
-  done
-  echo $spacing
-}
+      local spacing=""
+      for i in {1..$termwidth}; do
+        spacing="${spacing} "
+      done
+      echo $spacing
+    }
 
-function precmd() {
-print -rP '
-$fg[cyan]%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)'
-}
+    function precmd() {
+    print -rP '
+    $fg[cyan]%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)'
+    }
 
-PROMPT='%{$reset_color%} '
+    PROMPT='%{$reset_color%} '
 
-ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
-ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
-ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
-ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
-{% endhighlight %}
+    ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
+    ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
+    ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
 
 The above will probably be pretty self-explanatory, we got a function to get the Git information from the current folder, so we can determin if it's dirty. A function to get the current directory. And a function to determin how much space to put between the first part of the prompt and the last part (the git part) so that it aligns nicely.
 
