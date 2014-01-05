@@ -117,6 +117,7 @@ module.exports = function (grunt) {
     'clean',
     'pages',
     'compass',
+    'sitemap',
     'copy'
   ]);
 
