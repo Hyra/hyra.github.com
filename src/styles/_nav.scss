@@ -1,31 +1,60 @@
 nav {
   position: fixed;
-  z-index: 100;
-  height: 100%;
+  width: 25%;
   top: 0;
-  // background: $mainTheme;
-  background: white;
-  width: 270px;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  box-shadow: inset -30px -10px 80px 0 rgba(0,0,0,.2), inset -10px -10px 20px 0 rgba(0,0,0,.15), 1px 0 0 0 white;
+  text-align: center;
+  background-color: #eb4c42;
+  color: white;
+
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: italic;
 
   a {
-    // color: white;
     text-decoration: none;
-
     &:hover {
       text-decoration: underline;
     }
   }
 
+  hr {
+    height: 1px;
+    width: 80%;
+    border: 0;
+    background: white;
+    opacity: 0.5;
+    @include breakpoint(big-phone) {
+      display: none;
+    }
+  }
+
+  #tagline {
+    letter-spacing: -1px;
+  }
+
   @include breakpoint(big-phone) {
     overflow: hidden;
     width: 100%;
-    height: auto;
+    position: static;
+    padding: 20px 0;
     @include clearfix;
   }
-}
 
-.nav-show {
-  overflow: visible;
+  @include breakpoint(small-phone) {
+    position: fixed;
+    height: 40px;
+    text-align: left;
+    padding: 10px 0;
+    #tagline {
+      display: none;
+    }
+  }
 }
 
 $mobileNavFontSize: 1.6em;
@@ -37,94 +66,81 @@ $mobileNavLineHeight: 2.2em;
   font-size: 2em;
   margin: 30px 0;
   // padding-left: 40px;
-  text-align: center;
+  // text-align: center;
 
   @include breakpoint(big-phone) {
     padding-left: 1em;
     margin: 0;
-    float: left;
+    // float: left;
     font-size: $mobileNavFontSize;
     line-height: $mobileNavLineHeight;
   }
   @include breakpoint(small-phone) {
+    margin-top: -40px;
     img {
-      content: url('/images/logo_small.png');
+      height: 20px;
+    }
+    #semicolon {
+      display: none;
     }
   }
 }
 
 .avatar {
   z-index: 100;
-  margin: 30px 0;
   text-align: center;
 
   @include breakpoint(big-phone) {
-    display: none;
+    // display: none;
   }
   p {
-    text-align: left;
-    padding-left: 40px;
-  }
-}
-
-.menu {
-  text-align: right;
-  color: white;
-  display: none;
-  float: right;
-  margin: 0;
-  padding-right: .5em;
-  font-size: $mobileNavFontSize;
-  line-height: $mobileNavLineHeight;
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  @include breakpoint(small-phone) {
-    display: block;
+    // text-align: left;
+    // padding-left: 40px;
   }
 }
 
 .nav-links {
   list-style: none;
+  margin: 0;
+  padding: 0;
   // background: $mainTheme;
-  padding-left: 40px;
+  // padding-left: 40px;
   font-size: 1.4em;
+  line-height: 36px;
 
   a {
-    display: block;
-    padding: 0 0 .55em;
-    color: #000;
+    // display: block;
+    // padding: 0 0 .55em;
+    font-size: 16px;
+    color: #FFF;
 
     @include breakpoint(big-phone) {
-      display: block;
+      // display: block;
       padding: 0;
       margin: .55em .9em;
     }
   }
+
   @include breakpoint(big-phone) {
-    position: absolute;
-    right:0;
-    top:-18px;
-    .text-link {
-      float: left;
+    li {
+      display: inline;
+      margin: 8px 0;
     }
+    // position: absolute;
+    // right:0;
+    // top:-18px;
+    // .text-link {
+    // float: left;
+    // }
   }
+
   @include breakpoint(small-phone) {
     padding: 0;
     margin: 0;
     position: absolute;
     right: 0;
-    top: 2.5em;
-    .text-link {
-      float: none;
-    }
+    top: 10px;
   }
-}
-
-.menu.icon-menu {
-  color: #999;
 }
 
 .social-media {
@@ -137,7 +153,7 @@ $mobileNavLineHeight: 2.2em;
 
   a {
     margin: 0 10px;
-    color: #434343;
+    color: #FFFFFF;
 
     // This is used to prevent the edges of the icon character from being cut off
     padding: 2px;

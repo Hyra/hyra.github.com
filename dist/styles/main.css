@@ -1,4 +1,4 @@
-@import 'http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic|PT+Sans:400italic,400,700italic,700|Source+Sans+Pro|Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic';
+@import 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic|PT+Sans:400italic,400,700italic,700|Source+Sans+Pro|Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic';
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -807,12 +807,13 @@ table {
 body {
   margin: 0;
   color: #393838;
+  background: #fbfbfb url(/img/txtr_white.jpg) fixed;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  font-family: "Gentium Book Basic", sans-serif;
+  font-family: "Ubuntu", Georgia, serif;
   font-size: 19px;
 }
-@media (max-width: 1250px) {
+@media (max-width: 1020px) {
   /* line 32, ../../src/styles/_base.scss */
   body {
     font-size: 16px;
@@ -825,44 +826,76 @@ body {
   }
 }
 
-/* line 49, ../../src/styles/_base.scss */
+/* line 51, ../../src/styles/_base.scss */
+.container {
+  width: 75%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media (max-width: 1020px) {
+  /* line 51, ../../src/styles/_base.scss */
+  .container {
+    position: relative;
+    margin: 10px auto;
+  }
+}
+@media (max-width: 630px) {
+  /* line 51, ../../src/styles/_base.scss */
+  .container {
+    width: auto;
+    padding: 0 20px;
+  }
+}
+
+/* line 66, ../../src/styles/_base.scss */
 .content {
   position: relative;
   margin: 30px auto 0;
-  max-width: 680px;
-  width: 55%;
+  margin: 0 auto;
+  padding: 0 0 80px 0;
+  width: 80%;
+  max-width: 640px;
 }
-/* line 55, ../../src/styles/_base.scss */
+/* line 74, ../../src/styles/_base.scss */
 .content a {
   color: #393838;
+  text-decoration: none;
+  border-bottom: 1px solid #eb4c42;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -o-transition: color 0.2s;
   transition: color 0.2s;
 }
-/* line 59, ../../src/styles/_base.scss */
+/* line 79, ../../src/styles/_base.scss */
 .content a:hover {
-  color: #ff6666;
+  color: #eb4c42;
 }
-@media (max-width: 1250px) {
-  /* line 49, ../../src/styles/_base.scss */
+/* line 84, ../../src/styles/_base.scss */
+.content .pagination a, .content h2 a, .content h3 a, .content h4 a {
+  border-bottom: none;
+}
+@media (max-width: 1020px) {
+  /* line 66, ../../src/styles/_base.scss */
   .content {
     margin: 65px auto 25px;
     width: 86%;
   }
 }
 @media (max-width: 630px) {
-  /* line 49, ../../src/styles/_base.scss */
+  /* line 66, ../../src/styles/_base.scss */
   .content {
-    margin: 50px auto 15px;
+    margin: 75px auto 15px;
+    width: 100%;
+    line-height: 21px;
   }
 }
 
-/* line 74, ../../src/styles/_base.scss */
+/* line 100, ../../src/styles/_base.scss */
 .pagination {
   width: 100%;
 }
-/* line 77, ../../src/styles/_base.scss */
+/* line 103, ../../src/styles/_base.scss */
 .pagination a {
   font-size: 1.5em;
   font-weight: bold;
@@ -870,12 +903,12 @@ body {
   text-decoration: none;
 }
 
-/* line 85, ../../src/styles/_base.scss */
+/* line 111, ../../src/styles/_base.scss */
 .older {
   float: left;
 }
 
-/* line 89, ../../src/styles/_base.scss */
+/* line 115, ../../src/styles/_base.scss */
 .newer {
   float: right;
 }
@@ -911,7 +944,7 @@ body {
 .markdown h4:hover .header-link, .markdown h5:hover .header-link, .markdown h6:hover .header-link {
   visibility: visible;
 }
-@media (max-width: 1250px) {
+@media (max-width: 1020px) {
   /* line 29, ../../src/styles/_markdown.scss */
   .markdown h1:hover .header-link, .markdown h2:hover .header-link, .markdown h3:hover .header-link,
   .markdown h4:hover .header-link, .markdown h5:hover .header-link, .markdown h6:hover .header-link {
@@ -931,7 +964,7 @@ body {
   visibility: hidden;
   font-size: 16px;
 }
-@media (max-width: 1250px) {
+@media (max-width: 1020px) {
   /* line 45, ../../src/styles/_markdown.scss */
   .header-link {
     font-size: 14px;
@@ -1098,154 +1131,148 @@ Note: To edit icons, go to the following url: http://icomoon.io/app/
 /* line 1, ../../src/styles/_nav.scss */
 nav {
   position: fixed;
-  z-index: 100;
-  height: 100%;
+  width: 25%;
   top: 0;
-  background: white;
-  width: 270px;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  box-shadow: inset -30px -10px 80px 0 rgba(0, 0, 0, 0.2), inset -10px -10px 20px 0 rgba(0, 0, 0, 0.15), 1px 0 0 0 white;
+  text-align: center;
+  background-color: #eb4c42;
+  color: white;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: italic;
 }
-/* line 10, ../../src/styles/_nav.scss */
+/* line 19, ../../src/styles/_nav.scss */
 nav a {
   text-decoration: none;
 }
-/* line 14, ../../src/styles/_nav.scss */
+/* line 21, ../../src/styles/_nav.scss */
 nav a:hover {
   text-decoration: underline;
 }
-@media (max-width: 1250px) {
+/* line 26, ../../src/styles/_nav.scss */
+nav hr {
+  height: 1px;
+  width: 80%;
+  border: 0;
+  background: white;
+  opacity: 0.5;
+}
+@media (max-width: 1020px) {
+  /* line 26, ../../src/styles/_nav.scss */
+  nav hr {
+    display: none;
+  }
+}
+/* line 37, ../../src/styles/_nav.scss */
+nav #tagline {
+  letter-spacing: -1px;
+}
+@media (max-width: 1020px) {
   /* line 1, ../../src/styles/_nav.scss */
   nav {
     overflow: hidden;
     width: 100%;
-    height: auto;
+    position: static;
+    padding: 20px 0;
     overflow: hidden;
     *zoom: 1;
   }
 }
-
-/* line 27, ../../src/styles/_nav.scss */
-.nav-show {
-  overflow: visible;
+@media (max-width: 630px) {
+  /* line 1, ../../src/styles/_nav.scss */
+  nav {
+    position: fixed;
+    height: 40px;
+    text-align: left;
+    padding: 10px 0;
+  }
+  /* line 54, ../../src/styles/_nav.scss */
+  nav #tagline {
+    display: none;
+  }
 }
 
-/* line 34, ../../src/styles/_nav.scss */
+/* line 63, ../../src/styles/_nav.scss */
 .logo {
   z-index: 100;
   font-weight: normal;
   font-size: 2em;
   margin: 30px 0;
-  text-align: center;
 }
-@media (max-width: 1250px) {
-  /* line 34, ../../src/styles/_nav.scss */
+@media (max-width: 1020px) {
+  /* line 63, ../../src/styles/_nav.scss */
   .logo {
     padding-left: 1em;
     margin: 0;
-    float: left;
     font-size: 1.6em;
     line-height: 2.2em;
   }
 }
 @media (max-width: 630px) {
-  /* line 50, ../../src/styles/_nav.scss */
+  /* line 63, ../../src/styles/_nav.scss */
+  .logo {
+    margin-top: -40px;
+  }
+  /* line 80, ../../src/styles/_nav.scss */
   .logo img {
-    content: url("/images/logo_small.png");
+    height: 20px;
   }
-}
-
-/* line 56, ../../src/styles/_nav.scss */
-.avatar {
-  z-index: 100;
-  margin: 30px 0;
-  text-align: center;
-}
-@media (max-width: 1250px) {
-  /* line 56, ../../src/styles/_nav.scss */
-  .avatar {
+  /* line 83, ../../src/styles/_nav.scss */
+  .logo #semicolon {
     display: none;
-  }
-}
-/* line 64, ../../src/styles/_nav.scss */
-.avatar p {
-  text-align: left;
-  padding-left: 40px;
-}
-
-/* line 70, ../../src/styles/_nav.scss */
-.menu {
-  text-align: right;
-  color: white;
-  display: none;
-  float: right;
-  margin: 0;
-  padding-right: .5em;
-  font-size: 1.6em;
-  line-height: 2.2em;
-}
-/* line 80, ../../src/styles/_nav.scss */
-.menu:hover {
-  text-decoration: none;
-}
-@media (max-width: 630px) {
-  /* line 70, ../../src/styles/_nav.scss */
-  .menu {
-    display: block;
   }
 }
 
 /* line 89, ../../src/styles/_nav.scss */
+.avatar {
+  z-index: 100;
+  text-align: center;
+}
+
+/* line 102, ../../src/styles/_nav.scss */
 .nav-links {
   list-style: none;
-  padding-left: 40px;
+  margin: 0;
+  padding: 0;
   font-size: 1.4em;
+  line-height: 36px;
 }
-/* line 95, ../../src/styles/_nav.scss */
+/* line 111, ../../src/styles/_nav.scss */
 .nav-links a {
-  display: block;
-  padding: 0 0 .55em;
-  color: #000;
+  font-size: 16px;
+  color: #FFF;
 }
-@media (max-width: 1250px) {
-  /* line 95, ../../src/styles/_nav.scss */
+@media (max-width: 1020px) {
+  /* line 111, ../../src/styles/_nav.scss */
   .nav-links a {
-    display: block;
     padding: 0;
     margin: .55em .9em;
   }
 }
-@media (max-width: 1250px) {
-  /* line 89, ../../src/styles/_nav.scss */
-  .nav-links {
-    position: absolute;
-    right: 0;
-    top: -18px;
-  }
-  /* line 110, ../../src/styles/_nav.scss */
-  .nav-links .text-link {
-    float: left;
+@media (max-width: 1020px) {
+  /* line 125, ../../src/styles/_nav.scss */
+  .nav-links li {
+    display: inline;
+    margin: 8px 0;
   }
 }
 @media (max-width: 630px) {
-  /* line 89, ../../src/styles/_nav.scss */
+  /* line 102, ../../src/styles/_nav.scss */
   .nav-links {
     padding: 0;
     margin: 0;
     position: absolute;
     right: 0;
-    top: 2.5em;
-  }
-  /* line 120, ../../src/styles/_nav.scss */
-  .nav-links .text-link {
-    float: none;
+    top: 10px;
   }
 }
 
-/* line 126, ../../src/styles/_nav.scss */
-.menu.icon-menu {
-  color: #999;
-}
-
-/* line 130, ../../src/styles/_nav.scss */
+/* line 146, ../../src/styles/_nav.scss */
 .social-media {
   text-align: center;
   position: absolute;
@@ -1254,19 +1281,19 @@ nav a:hover {
   font-size: 1.8em;
   line-height: 2em;
 }
-/* line 138, ../../src/styles/_nav.scss */
+/* line 154, ../../src/styles/_nav.scss */
 .social-media a {
   margin: 0 10px;
-  color: #434343;
+  color: #FFFFFF;
   padding: 2px;
 }
-/* line 145, ../../src/styles/_nav.scss */
+/* line 161, ../../src/styles/_nav.scss */
 .social-media a:hover {
   text-decoration: none;
   color: #393838;
 }
-@media (max-width: 1250px) {
-  /* line 130, ../../src/styles/_nav.scss */
+@media (max-width: 1020px) {
+  /* line 146, ../../src/styles/_nav.scss */
   .social-media {
     display: none;
   }
@@ -1275,35 +1302,47 @@ nav a:hover {
 /* line 1, ../../src/styles/_post.scss */
 .post-head {
   border-bottom: 1px solid #b8b7b7;
+  box-shadow: 0 1px 0 white;
   margin: 1em 0;
   padding-bottom: 5px;
   position: relative;
 }
-/* line 7, ../../src/styles/_post.scss */
+/* line 8, ../../src/styles/_post.scss */
 .post-head a {
   text-decoration: none;
 }
 
-/* line 12, ../../src/styles/_post.scss */
+/* line 13, ../../src/styles/_post.scss */
 .post-title {
   float: left;
   padding-right: 2.9em;
   margin: 0 0 5px;
-  font-size: 2.4em;
+  font-size: 52px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: -4px;
 }
-/* line 18, ../../src/styles/_post.scss */
+/* line 22, ../../src/styles/_post.scss */
 .post-title.list {
   font-size: 1em;
   font-weight: normal;
+  letter-spacing: 0px;
 }
-@media (max-width: 1250px) {
-  /* line 12, ../../src/styles/_post.scss */
+@media (max-width: 1020px) {
+  /* line 13, ../../src/styles/_post.scss */
   .post-title {
     font-size: 1.7em;
+    letter-spacing: -2px;
+  }
+}
+@media (max-width: 630px) {
+  /* line 13, ../../src/styles/_post.scss */
+  .post-title {
+    letter-spacing: -1px;
   }
 }
 
-/* line 28, ../../src/styles/_post.scss */
+/* line 38, ../../src/styles/_post.scss */
 .post-date {
   position: absolute;
   bottom: 10px;
@@ -1311,36 +1350,48 @@ nav a:hover {
   line-height: 1.7em;
   color: #b8b7b7;
 }
-/* line 36, ../../src/styles/_post.scss */
+/* line 46, ../../src/styles/_post.scss */
 .post-date.list {
   font-size: 1em;
   font-weight: normal;
 }
 
-/* line 43, ../../src/styles/_post.scss */
+/* line 53, ../../src/styles/_post.scss */
 .post-body {
   margin-bottom: 1.2em;
-  font-family: "Gentium Book Basic", serif;
+  font-family: "Ubuntu", Georgia, serif;
   line-height: 1.65em;
 }
 
-/* line 49, ../../src/styles/_post.scss */
+/* line 59, ../../src/styles/_post.scss */
+h2 {
+  font-style: italic;
+  letter-spacing: -1px;
+}
+
+/* line 64, ../../src/styles/_post.scss */
+h3 {
+  font-style: italic;
+  letter-spacing: -1px;
+}
+
+/* line 69, ../../src/styles/_post.scss */
 .social {
   padding: .55em 0 1.4em;
 }
 
-/* line 53, ../../src/styles/_post.scss */
+/* line 73, ../../src/styles/_post.scss */
 .comments {
   margin-top: 1em;
   font-weight: bold;
   font-size: 1.2em;
 }
-/* line 58, ../../src/styles/_post.scss */
+/* line 78, ../../src/styles/_post.scss */
 .comments a {
   color: #b8b7b7;
   text-decoration: none;
 }
-/* line 63, ../../src/styles/_post.scss */
+/* line 83, ../../src/styles/_post.scss */
 .comments .icon-bubbles {
   padding: 3px 15px 5px 0;
   float: left;

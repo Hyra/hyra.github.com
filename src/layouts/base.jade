@@ -49,27 +49,32 @@ html
       .logo
         a(href="#{data.baseUrl}")
           //- img(src='/images/logo.png',id="logo",data-at2x="/images/logo@2x.png")
-          img(src='/images/logo.png')
+          img(src='/images/semicolon.png',id='semicolon')
+          br
+          img(src='/images/logo_white.png')
+      #tagline
+        p by Stef van den Ham
+      hr
       .avatar
-        a(href="#{data.baseUrl}")
+        //- a(href="#{data.baseUrl}")
           img(src='/images/avatar.png')
           br
           br
-          a(href="https://twitter.com/stefvdham",class="twitter-follow-button",data-show-count="true",data-size="small",data-show-screen-name="false") Follow @stefvdham
-        p Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.
-      .menu.icon-menu
+          a(href="https://twitter.com/stefvdham",class="twitter-follow-button",data-show-count="false",data-size="small",data-show-screen-name="false") Follow @stefvdham
+        //- p Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.
       ul.nav-links
+        li.text-link
+          a(href="#{data.baseUrl}archives.html") blog
         li.text-link
           a(href="#{data.baseUrl}about.html") about
         //- li.text-link
           //- a(href="#{data.baseUrl}projects.html") projects
-        li.text-link
-          a(href="#{data.baseUrl}archives.html") archives
       .social-media
         a.icon-github(href="https://github.com/hyra")
         a.icon-twitter(href="https://twitter.com/stefvdham")
-    .content
-      block content
+    .container
+      .content
+        block content
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", type="text/javascript")
     script(src="#{data.baseUrl}scripts/main.js", type="text/javascript")
     //- script(src="#{data.baseUrl}scripts/retina-1.1.0.min.js", type="text/javascript")
