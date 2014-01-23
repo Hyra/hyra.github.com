@@ -152,7 +152,7 @@ $(document).ready(function() {
     var facebookCount = d.shares;
     $('.fb-share-count.count-box').html(facebookCount);
   });
-  $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url='+document.URL+'callback=twttr.receiveCount=', function(d) {
+  $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + document.URL + '&callback=?', function(d) {
     var twitterCount = d.count;
     $('.tweet-count.count-box').html(twitterCount);
   });
