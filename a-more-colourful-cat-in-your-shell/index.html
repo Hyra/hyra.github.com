@@ -62,10 +62,10 @@ _gaq.push(['_trackPageview']);
 $(document).ready(function() {
   $.get('http://graph.facebook.com/?id='+document.URL, function(d) {
     var facebookCount = d.shares;
-    $('.tweet-count.count-box').html(facebookCount);
+    $('.fb-share-count.count-box').html(facebookCount);
   });
   $.get('http://urls.api.twitter.com/1/urls/count.json?url='+document.URL+'callback=twttr.receiveCount=', function(d) {
     var twitterCount = d.count;
-    $('.fb-share-count.count-box').html(twitterCount);
+    $('.tweet-count.count-box').html(twitterCount);
   });
 });</script></body></html>
