@@ -13,7 +13,19 @@ mixin postHeadList(post)
 
 mixin post(post)
   mixin postHead(post)
+  //- mixin share(post)
   .post-body.markdown!= post.content
+
+mixin share(post)
+  .share-icons.share-icons-mini
+    a(href="https://www.facebook.com/sharer/sharer.php?u=http://mindthecode.com/#{post.url}",class="social-media-facebook social-media-button js-social-popup first")
+      span(class="icon-facebook")
+      span(class="fb-share-count count-box")
+    a(href="https://twitter.com/intent/tweet?text=#{post.title} http://mindthecode.com/#{post.url} via @stefvdham",class="social-media-twitter social-media-button js-social-popup")
+      span(class="icon-twitter")
+      span(class="tweet-count count-box")
+    .is-clear
+      &nbsp
 
 doctype 5
 html
@@ -55,13 +67,13 @@ html
       #tagline
         p by Stef van den Ham
       hr
-      .avatar
-        //- a(href="#{data.baseUrl}")
+      //- .avatar
+        a(href="#{data.baseUrl}")
           img(src='/images/avatar.png')
           br
           br
           a(href="https://twitter.com/stefvdham",class="twitter-follow-button",data-show-count="false",data-size="small",data-show-screen-name="false") Follow @stefvdham
-        //- p Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.
+        p Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.
       ul.nav-links
         li.text-link
           a(href="#{data.baseUrl}archives.html") blog
@@ -91,3 +103,14 @@ html
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+
+      $(document).ready(function() {
+        $.get('http://graph.facebook.com/?id='+document.URL, function(d) {
+          var facebookCount = d.shares;
+          $('.fb-share-count.count-box').html(facebookCount);
+        });
+        $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + document.URL + '&callback=?', function(d) {
+          var twitterCount = d.count;
+          $('.tweet-count.count-box').html(twitterCount);
+        });
+      });

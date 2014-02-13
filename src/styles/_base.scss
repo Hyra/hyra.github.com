@@ -32,7 +32,7 @@ $lightTextColor: $grey;
 body {
   margin: 0;
   color: $baseTextColor;
-  background: #fbfbfb url(/img/txtr_white.jpg) fixed;
+  background: #fbfbfb url(/images/txtr_white.jpg) fixed;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   font-family: $headerFont;
@@ -81,7 +81,7 @@ body {
     }
   }
 
-  .pagination a, h2 a, h3 a, h4 a {
+  .pagination a, h2 a, h3 a, h4 a, .share-icons a {
     border-bottom: none;
   }
 
