@@ -99,37 +99,6 @@ html
               li
                 a(href="/") Blog
                 a(href="/about.html") About
-          //- div.logo
-            h1
-              a(href=locals.url)= locals.name
-            p.description= locals.description
-    nav
-      .logo
-        a(href="#{data.baseUrl}")
-          //- img(src='/images/logo.png',id="logo",data-at2x="/images/logo@2x.png")
-          img(src='/images/semicolon.png',id='semicolon')
-          br
-          img(src='/images/logo_white.png')
-      #tagline
-        p by Stef van den Ham
-      hr
-      //- .avatar
-        a(href="#{data.baseUrl}")
-          img(src='/images/avatar.png')
-          br
-          br
-          a(href="https://twitter.com/stefvdham",class="twitter-follow-button",data-show-count="false",data-size="small",data-show-screen-name="false") Follow @stefvdham
-        p Stef van den Ham<br />Full stack web developer.<br /> Solving the web one pixel at a time.
-      ul.nav-links
-        li.text-link
-          a(href="#{data.baseUrl}archives.html") blog
-        li.text-link
-          a(href="#{data.baseUrl}about.html") about
-        //- li.text-link
-          //- a(href="#{data.baseUrl}projects.html") projects
-      .social-media
-        a.icon-github(href="https://github.com/hyra")
-        a.icon-twitter(href="https://twitter.com/stefvdham")
     .container
       .content
         block content
