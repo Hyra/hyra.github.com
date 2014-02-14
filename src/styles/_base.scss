@@ -62,6 +62,10 @@ body {
   top: 0;
 }
 
+.fb_iframe_widget {
+  display: inline !important;
+}
+
 .header:first-child {
   height: 85px;
   background-color: #eb6355;
