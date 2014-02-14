@@ -1,19 +1,18 @@
 extends ../layouts/base
 
 block content
+
+  p I'm Stef van den Ham. I write Sass/LESS/CSS, HTML5, Javascript, PHP, Bash with Sublime Text 2 for fun and profit. I work as CTO at <a href="http://noprotocol.nl">NoProtocol</a> in Amsterdam.
+  br
   each post in posts
-    mixin post(post)
-    div.comments
-      a(href="#{data.baseUrl}#{post.url}#comments")
-        span.icon-bubbles
-        | Comments
+    mixin postHeadList(post)
 
   .pagination.group
     - for (var i = 0; i < pages.length; i++) {
       - var page = pages[i];
       - if (i === currentIndex - 1) {
-        a.newer(href="#{data.baseUrl}#{page.url}") Newer &#8594;
+        a.newer(href="#{data.baseUrl}#{page.url}") Newer&nbsp;»
       - } else if (i === currentIndex + 1) {
-        a.older(href="#{data.baseUrl}#{page.url}") &#8592; Older
+        a.older(href="#{data.baseUrl}#{page.url}") «&nbsp;Older
       - }
     - }

@@ -3,13 +3,46 @@ mixin postHead(post)
   .post-head.group
     a(href="#{data.baseUrl}#{post.url}")
       h1.post-title= post.title
-    span.post-date!= [post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join(' &#183; ')
+    hr
+    .meta-data
+      - var month = new Array(12);
+      - month[0] = 'January';
+      - month[1] = 'February';
+      - month[2] = 'March';
+      - month[3] = 'April';
+      - month[4] = 'May';
+      - month[5] = 'June';
+      - month[6] = 'July';
+      - month[7] = 'August';
+      - month[8] = 'September';
+      - month[9] = 'October';
+      - month[10] = 'November';
+      - month[11] = 'December';
+      time(datetime=[post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join('-'),pubdate=[post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join('-'))= [post.date.getUTCDate(), month[post.date.getUTCMonth()], post.date.getUTCFullYear()].join(' ')
+      div.social
+        a(href="https://twitter.com/share", class="twitter-share-button") Tweet
+        .g-plusone(data-size="medium", data-annotation="bubble", data-width="300")
+        iframe(src="https://www.facebook.com/plugins/like.php?href=&show_faces=false&layout=button_count",scrolling="no",frameborder="0",style="height: 21px; width: 100px",allowTransparency="true")
+    //- span.post-date!= [post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join(' &#183; ')
 
 mixin postHeadList(post)
-  .post-head.group
+  - var month = new Array(12);
+  - month[0] = 'January';
+  - month[1] = 'February';
+  - month[2] = 'March';
+  - month[3] = 'April';
+  - month[4] = 'May';
+  - month[5] = 'June';
+  - month[6] = 'July';
+  - month[7] = 'August';
+  - month[8] = 'September';
+  - month[9] = 'October';
+  - month[10] = 'November';
+  - month[11] = 'December';
+  .post-head.group.list
     a(href="#{data.baseUrl}#{post.url}")
       h1.post-title.list= post.title
-    span.list.post-date!= [post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join(' &#183; ')
+        span.list.post-date!= [post.date.getUTCDate(), month[post.date.getUTCMonth()], post.date.getUTCFullYear()].join(' ')
 
 mixin post(post)
   mixin postHead(post)
@@ -57,6 +90,21 @@ html
     script(type="text/javascript").
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   body
+    header.header(role="header")
+      div.container
+        block header
+          .logo
+            a(href='/')
+              img(src="http://mindthecode.com/images/logo_white.png")
+          .nav
+            ul
+              li
+                a(href="/") Blog
+                a(href="/about.html") About
+          //- div.logo
+            h1
+              a(href=locals.url)= locals.name
+            p.description= locals.description
     nav
       .logo
         a(href="#{data.baseUrl}")
@@ -87,9 +135,13 @@ html
     .container
       .content
         block content
+    footer
+      a(href="/")
+        img(src="/images/logo_small.png")
+      p &copy; 2010 - 2014
+    .stickyheader
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js", type="text/javascript")
     script(src="#{data.baseUrl}scripts/main.js", type="text/javascript")
-    //- script(src="#{data.baseUrl}scripts/retina-1.1.0.min.js", type="text/javascript")
     script.
       if(window.devicePixelRatio) { $("#logo").attr('src', '/images/logo@2x.png'); }
       var _gaq = _gaq || [];
@@ -104,13 +156,3 @@ html
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-      $(document).ready(function() {
-        $.get('http://graph.facebook.com/?id='+document.URL, function(d) {
-          var facebookCount = d.shares;
-          $('.fb-share-count.count-box').html(facebookCount);
-        });
-        $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + document.URL + '&callback=?', function(d) {
-          var twitterCount = d.count;
-          $('.tweet-count.count-box').html(twitterCount);
-        });
-      });
