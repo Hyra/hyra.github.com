@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     sitemap: {
       dist: {
         siteRoot: 'dist/',
-	      homepage: 'http://mindthecode.com/'
+        homepage: 'http://mindthecode.com/'
       }
     },
     pages: {
@@ -14,11 +14,11 @@ module.exports = function (grunt) {
         layout: 'src/layouts/post.jade',
         url: ':title/',
         options: {
-	        rss: {
-	        	author: 'Stef van den Ham',
-	        	title: 'Mindthecode Feed',
-	        	url: 'feed.xml'
-	        },
+          rss: {
+            author: 'Stef van den Ham',
+            title: 'Mindthecode Feed',
+            url: 'feed.xml'
+          },
           pageSrc: 'src/pages',
           data: {
             baseUrl: '/'
@@ -47,10 +47,10 @@ module.exports = function (grunt) {
           cwd: 'src',
           dest: 'dist',
           src: [
-	        	'favicon.ico',
-	        	'CNAME',
-	        	'google1f3078fb72c283c6.html',
-	        	'googlef03de932be2bb371.html',
+            'favicon.ico',
+            'CNAME',
+            'google1f3078fb72c283c6.html',
+            'googlef03de932be2bb371.html',
             'images/**',
             'scripts/**',
             'styles/**.css',
@@ -131,10 +131,10 @@ module.exports = function (grunt) {
     'open',
     'watch'
   ]);
-grunt.loadNpmTasks('grunt-sitemap');
+
+	grunt.loadNpmTasks('grunt-sitemap');
 
   grunt.registerTask('default', 'server');
-  // grunt.registerTask('sitemap', 'sitemap');
 
   require('load-grunt-tasks')(grunt);
 };
