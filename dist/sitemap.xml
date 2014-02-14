@@ -2,235 +2,181 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://mindthecode.com/a-more-colourful-cat-in-your-shell/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/about.html</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/archives.html</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/blogging-with-cabinjs-and-grunt/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/blogging-with-octopress/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/customize-the-terminal-on-osx/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/format-associative-json-to-work-with-knockout-js/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/getting-used-to-vim/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/good-times-with-watchr-coffeescript-and-less/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/how-to-handle-multiple-domains-with-cakephp/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/how-to-remove-a-submodule-from-your-git-repository/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/how-to-use-environment-variables-in-your-angular-application/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/httpie-a-command-line-http-client/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/installing-phpunit-manually-for-cakephp-2-0/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/loading-external-files-in-php-the-better-way/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/page/1/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/10/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/11/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/page/2/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/3/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/4/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/5/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/6/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/7/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/8/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://mindthecode.com/page/9/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/phpunit-installer-updated-to-3-6-4/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/projects.html</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/setting-up-cakephp-with-mamp-pro-on-mac-osx/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/spotify-boilerplate-app/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/spotify-preview-build-expired/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/updated-less-component-for-cakephp/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/updated-the-phpunit-cakephp-installer/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/use-gzip-with-php/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/using-less-in-cakephp/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/using-markdown-in-cakephp/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/using-sass-in-your-next-cakephp-project/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
 <url>
   <loc>http://mindthecode.com/using-sessions-in-phpunit-tests-with-cakephp/</loc>
-  <lastmod>2014-02-13T06:47:03.000Z</lastmod>
+  <lastmod>2014-02-14T09:58:51.000Z</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.5</priority>
 </url>
