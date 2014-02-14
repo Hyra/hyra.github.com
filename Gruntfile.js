@@ -24,7 +24,7 @@ module.exports = function (grunt) {
             baseUrl: '/'
           },
           pagination: {
-            postsPerPage: 2,
+            postsPerPage: 10,
             listPage: 'src/pages/index.jade'
           }
         }
