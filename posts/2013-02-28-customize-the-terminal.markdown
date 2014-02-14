@@ -1,5 +1,5 @@
 {
-  title: "Customize the terminal on OSX",
+  title: "Customize the terminal",
   date: "2013-02-28",
   categories: ["Terminal"],
   tags: ["terminal", "command line", "OSX"],
