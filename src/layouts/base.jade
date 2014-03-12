@@ -18,7 +18,7 @@ mixin postHead(post)
       - month[9] = 'October';
       - month[10] = 'November';
       - month[11] = 'December';
-      time(datetime=[post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join('-'),pubdate=[post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join('-'))= [post.date.getUTCDate(), month[post.date.getUTCMonth()], post.date.getUTCFullYear()].join(' ')
+      time(datetime=[post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join('-'),pubdate=[post.date.getUTCFullYear(), post.date.getUTCMonth() + 1, post.date.getUTCDate()].join('-'))= [month[post.date.getUTCMonth()], post.date.getUTCDate() + ',', post.date.getUTCFullYear()].join(' ')
       div.social
         a(href="https://twitter.com/share", class="twitter-share-button") Tweet
         .g-plusone(data-size="medium", data-annotation="bubble", data-width="300")
@@ -39,9 +39,10 @@ mixin postHeadList(post)
   - month[10] = 'November';
   - month[11] = 'December';
   .post-head.group.list
+    span.list.post-date!= [month[post.date.getUTCMonth()], post.date.getUTCDate() + ',', post.date.getUTCFullYear()].join(' ')
     a(href="#{data.baseUrl}#{post.url}")
       h1.post-title.list= post.title
-        span.list.post-date!= [post.date.getUTCDate(), month[post.date.getUTCMonth()], post.date.getUTCFullYear()].join(' ')
+    //- p= post.description
 
 mixin post(post)
   mixin postHead(post)
@@ -121,4 +122,3 @@ html
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-

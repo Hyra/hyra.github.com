@@ -14,7 +14,7 @@
   &.list {
     margin: 0;
     padding: 15px 0;
-    border-bottom: 1px solid #CCC;
+    // border-bottom: 1px solid #CCC;
   }
 }
 
@@ -22,21 +22,23 @@
   font-size: 2.8em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  letter-spacing: -4px;
+  letter-spacing: -3px;
   color: #3b343f;
+  line-height: 1em;
   &.list {
     font-weight: normal;
     letter-spacing: 0px;
-    font-size: 0.95em;
-    text-transform: uppercase;
+    font-size: 1.25em;
+    // text-transform: uppercase;
     padding: 0;
-    color: #eb6355;
+    // color: #eb6355;
     font-weight: 700;
     margin-bottom: 0;
   }
 
   @include breakpoint(big-phone) {
-    font-size: 1.7em;
+    font-size: 2.3em;
+    margin-top: 15px;
     letter-spacing: -2px;
   }
 
@@ -56,11 +58,10 @@
   &.list {
     position: relative;
     bottom: 0;
-    font-weight: 700;
+    font-weight: 100;
     text-transform: none;
-    font-size: 0.867em;
-    color: #2c313b;
-    padding-left: 15px;
+    font-size: 0.75em;
+    color: #666;
   }
 
 }
@@ -70,7 +71,7 @@
   font-family: $postFont;
   line-height: 1.65em;
 
-  font-family: 'PT Sans';
+  // font-family: 'PT Sans';
   color: #434343;
   // line-height: 1.9em;
   >p:first-child {
