@@ -1,11 +1,22 @@
 .markdown {
 
+
+  p {
+    font-family: 'MerriWeather';
+    font-size: 18px;
+    &:first-child {
+      font-size: 22px;
+    }
+  }
+
   ul, ol {
     padding-left: 30px;
   }
 
   img {
-    max-width:100%;
+    @include breakpoint(small-phone) {
+      max-width:100%;
+    }
   }
 
   .anchor {
@@ -24,6 +35,7 @@
   h1, h2, h3,
   h4, h5, h6 {
 
+    font-family: $headerFont;
     line-height: 1.3;
 
     &:hover .header-link {

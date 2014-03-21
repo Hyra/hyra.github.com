@@ -8,7 +8,7 @@ $offBlack: hsl(10, 1%, 22%);
 $grey: lighten($offBlack, 50);
 
 $codeFont: Monaco, Consolas, monospace;
-$postFont: 'Source Sans Pro', Georgia, serif;
+$postFont: 'Merriweather', Georgia, serif;
 $headerFont: 'Source Sans Pro', Georgia, serif;
 
 $mainTheme:#eb4c42;
@@ -32,10 +32,11 @@ $lightTextColor: $grey;
 body {
   margin: 0;
   color: $baseTextColor;
-  background: #fbfbfb url(/images/txtr_white.jpg) fixed;
+  // background: #fbfbfb url(/images/txtr_white.jpg) fixed;
+  background: white;
   // -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  font-family: $headerFont;
+  font-family: $postFont;
   font-size: 19px;
 
   // font-family: Ubuntu;
@@ -54,12 +55,8 @@ body {
   }
 }
 
-.stickyheader {
-  width: 100%;
-  height: 5px;
-  background-color: #eb6355;
-  position: fixed;
-  top: 0;
+.intro {
+  font-size: 28px;
 }
 
 .fb_iframe_widget {
@@ -67,45 +64,93 @@ body {
 }
 
 .header:first-child {
-  height: 85px;
-  background-color: #eb6355;
-  border-bottom: 3px solid #ececec;
+  height: 320px;
+  // background-color: #eb6355;
+  // border-bottom: 3px solid #ececec;
   margin-bottom: 45px;
+  @include breakpoint(small-phone) {
+    height: 200px;
+  }
+  .bg {
+    background-image: url(/images/hdr.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 320px;
+    background-position: center top;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    -webkit-box-shadow: inset 0 -10px 100px -5px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0 -10px 100px -5px rgba(0,0,0,0.5);
+    -ms-box-shadow: inset 0 -10px 100px -5px rgba(0,0,0,0.5);
+    -o-box-shadow: inset 0 -10px 100px -5px rgba(0,0,0,0.5);
+    @include breakpoint(small-phone) {
+      height: 200px;
+    }
+  }
   .logo {
     padding: 0;
-    margin-top: 25px;
-    float: left;
+    // margin-top: 25px;
+    text-align: center;
+    top: 100px;
+    position: relative;
+    // float: left;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
     @include breakpoint(small-phone) {
+      top: 20px;
       img {
-        width: 75%;
+        width: 250px;
       }
     }
   }
+  p.tagline {
+    color: #FFF;
+    position: relative;
+    top: 100px;
+    font-size: 0.85em;
+    text-align: center;
+    font-style: italic;
+    // text-shadow: 0px 0px 3px #333;
+  }
   .nav {
-    float: right;
-    margin-top: 30px;
-    font-weight: 400;
+    top: 30px;
+    right: 0px;
+    position: absolute;
+    font-weight: 600;
+    font-size: 13px;
     @include breakpoint(small-phone) {
-      position: absolute;
-      right: 20px;
-      top: 5px;
+      position: relative;
+      text-align: center;
+      float: none;
+      top: 60px;
     }
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
       a {
-        padding-left: 20px;
+        padding: 6px 12px;
         color: #FFF;
         text-decoration: none;
-        text-shadow: 2px 2px 0 #c95a51;
+        background-color: rgba(255,255,255,0.1);
+        margin: 0 10px;
+        border-radius: 6px;
+        border: 1px solid #FFF;
+        &:hover {
+          color: #333;
+          background-color: rgba(255,255,255,0.9);
+          -webkit-transition: color 0.3s ease-in-out;
+          -moz-transition: color 0.3s ease-in-out;
+          -ms-transition: color 0.3s ease-in-out;
+          -o-transition: color 0.3s ease-in-out;
+        }
       }
     }
   }
 }
 
 .container {
-  max-width: 680px;
+  max-width: 700px;
   margin: 0 auto;
   @include breakpoint(big-phone) {
   }
@@ -125,8 +170,13 @@ body {
   }
   a {
     // transition: all 0.666s ease-in-out;
+    font-weight: bold;
     color: #eb6355;
     text-decoration: none;
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -ms-transition: color 0.5s;
+    -o-transition: color 0.5s;
     &:hover {
       color: #333333;
     }
@@ -151,6 +201,18 @@ body {
     margin: 0 auto 15px;
     width: 100%;
     line-height: 21px;
+  }
+}
+
+a {
+  h1 {
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -ms-transition: color 0.5s;
+    -o-transition: color 0.5s;
+    &:hover {
+      color: #eb6355;
+    }
   }
 }
 

@@ -4,6 +4,22 @@
   a {
     text-decoration: none;
   }
+  .postDate {
+    text-align: center;
+    border-bottom: 2px solid #d4d4d4;
+    line-height: .1em;
+    margin: 50px auto 30px;
+    width: 300px;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Merriweather',sans-serif;
+    span {
+      background-color: #FFF;
+      padding: 0 10px;
+      color: #666;
+    }
+  }
   .meta-data time {
     float: right;
     width: 160px;
@@ -19,16 +35,18 @@
 }
 
 .post-title {
-  font-size: 2.8em;
+  font-family: $headerFont;
+  font-size: 3.4em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
   color: #3b343f;
   line-height: 1em;
+  text-align: center;
   &.list {
-    font-weight: normal;
     letter-spacing: 0px;
-    font-size: 1.25em;
+    font-size: 1.35em;
+    // text-align: left;
     // text-transform: uppercase;
     padding: 0;
     // color: #eb6355;
@@ -37,7 +55,7 @@
   }
 
   @include breakpoint(big-phone) {
-    font-size: 2.3em;
+    font-size: 2.7em;
     margin-top: 15px;
     letter-spacing: -2px;
   }
@@ -45,6 +63,17 @@
   @include breakpoint(small-phone) {
     letter-spacing: -1px;
   }
+}
+
+.post-subtitle {
+  font-size: 1.4em;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  letter-spacing: -2px;
+  color: #666;
+  line-height: 1em;
+  text-align: center;
 }
 
 .post-date {
@@ -77,6 +106,12 @@
   >p:first-child {
     font-size: 1.25em;
     line-height: 1.7em;
+    text-align: center;
+
+    @include breakpoint(small-phone) {
+      text-align: left;
+      font-size: 1.1em;
+    }
   }
 }
 
@@ -126,6 +161,7 @@ h3 {
 
 .social {
   padding: .55em 0 1.4em;
+  padding: 30px 0;
 }
 
 .comments {
