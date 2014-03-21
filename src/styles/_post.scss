@@ -61,6 +61,8 @@
   }
 
   @include breakpoint(small-phone) {
+    text-align: left;
+    font-size: 1.95em;
     letter-spacing: -1px;
   }
 }
