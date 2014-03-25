@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Fri, 21 Mar 2014 14:28:48 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Fri, 21 Mar 2014 14:28:48 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[How to use environment variables in your Angular application]]></title><description><![CDATA[<p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Tue, 25 Mar 2014 10:38:14 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Tue, 25 Mar 2014 10:38:14 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[How to use environment variables in your Angular application]]></title><description><![CDATA[<p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
 <p>But how do you handle such variables in the front-end? Specifically, in an AngularJS App?</p>
 <p>For instance, you might have a seperate API you&#39;re talking to for your content, which has a different location locally, than on your production server. Or you might want to do some debugging or verbose output, based on what environment you&#39;re on.</p>
 <p>In this post I&#39;ll show you how to set this up automagically using Grunt and ngConstant.</p>
+<h3><a name="update" class="anchor" href="#update"><span class="header-link"></span></a>UPDATE</h3>
+<p><a href="http://werk85.de/">Malte</a> was so kind as to provide an updated configuration for the <em>ngconstant 0.5.0</em> version. The example code in the post has been updated accordingly.</p>
 <h2><a name="the-ingredients" class="anchor" href="#the-ingredients"><span class="header-link"></span></a>The ingredients</h2>
 <h3><a name="grunt" class="anchor" href="#grunt"><span class="header-link"></span></a>Grunt</h3>
 <p>I&#39;ll assume you&#39;re familiar with <a href="http://gruntjs.com/">Grunt</a> and have set it up to aid your workflow. If not, there&#39;s plenty of tutorials out there to get this going.</p>
@@ -14,30 +16,33 @@
 <h2><a name="automatically-write-your-config-js-file" class="anchor" href="#automatically-write-your-config-js-file"><span class="header-link"></span></a>Automatically write your config.js file</h2>
 <p>Now that you have all you need, let&#39;s set it up! Open up your <code>Gruntfile.js</code>, and inside the <code>grunt.initConfig</code> section add the following:</p>
 <pre><code><div class="highlight"><pre><span class="nx">ngconstant</span><span class="o">:</span> <span class="p">{</span>
+  <span class="c1">// Options for all targets</span>
   <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">space</span><span class="o">:</span> <span class="s1">&#39;  &#39;</span>
-  <span class="p">},</span>
-  <span class="c1">// Environment targets</span>
-  <span class="nx">development</span><span class="o">:</span> <span class="p">[{</span>
-    <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;&lt;%= yeoman.app %&gt;/scripts/config.js&#39;</span><span class="p">,</span>
+    <span class="nx">space</span><span class="o">:</span> <span class="s1">&#39;  &#39;</span><span class="p">,</span>
     <span class="nx">wrap</span><span class="o">:</span> <span class="s1">&#39;&quot;use strict&quot;;\n\n &lt;%= __ngModule %&gt;&#39;</span><span class="p">,</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="c1">// Environment targets</span>
+  <span class="nx">development</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;&lt;%= yeoman.app %&gt;/scripts/config.js&#39;</span>
+    <span class="p">},</span>
     <span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">ENV</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">,</span>
         <span class="nx">apiEndpoint</span><span class="o">:</span> <span class="s1">&#39;http://your-development.api.endpoint:3000&#39;</span>
       <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">}],</span>
-  <span class="nx">production</span><span class="o">:</span> <span class="p">[{</span>
-    <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;&lt;%= yeoman.dist %&gt;/scripts/config.js&#39;</span><span class="p">,</span>
-    <span class="nx">wrap</span><span class="o">:</span> <span class="s1">&#39;&quot;use strict&quot;;\n\n &lt;%= __ngModule %&gt;&#39;</span><span class="p">,</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">production</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;&lt;%= yeoman.dist %&gt;/scripts/config.js&#39;</span>
+    <span class="p">},</span>
     <span class="nx">constants</span><span class="o">:</span> <span class="p">{</span>
       <span class="nx">ENV</span><span class="o">:</span> <span class="s1">&#39;production&#39;</span><span class="p">,</span>
       <span class="nx">apiEndpoint</span><span class="o">:</span> <span class="s1">&#39;http://api.livesite.com&#39;</span>
     <span class="p">}</span>
-  <span class="p">}]</span>
+  <span class="p">}</span>
 <span class="p">},</span>
 </pre></div>
 </code></pre>
