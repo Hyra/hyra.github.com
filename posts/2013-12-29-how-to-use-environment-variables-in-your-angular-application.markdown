@@ -14,6 +14,9 @@ For instance, you might have a seperate API you're talking to for your content, 
 
 In this post I'll show you how to set this up automagically using Grunt and ngConstant.
 
+### UPDATE
+[Malte](http://werk85.de/) was so kind as to provide an updated configuration for the *ngconstant 0.5.0* version. The example code in the post has been updated accordingly.
+
 ## The ingredients
 
 ### Grunt
@@ -31,30 +34,33 @@ This Grunt plugin takes care of the dynamic generation of your constants. Grab i
 Now that you have all you need, let's set it up! Open up your `Gruntfile.js`, and inside the `grunt.initConfig` section add the following:
 
     ngconstant: {
+      // Options for all targets
       options: {
-        space: '  '
-      },
-      // Environment targets
-      development: [{
-        dest: '<%= yeoman.app %>/scripts/config.js',
+        space: '  ',
         wrap: '"use strict";\n\n <%= __ngModule %>',
         name: 'config',
+      },
+      // Environment targets
+      development: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
         constants: {
           ENV: {
             name: 'development',
             apiEndpoint: 'http://your-development.api.endpoint:3000'
           }
         }
-      }],
-      production: [{
-        dest: '<%= yeoman.dist %>/scripts/config.js',
-        wrap: '"use strict";\n\n <%= __ngModule %>',
-        name: 'config',
+      },
+      production: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
         constants: {
           ENV: 'production',
           apiEndpoint: 'http://api.livesite.com'
         }
-      }]
+      }
     },
 
 This tells Grunt about your environments. Each target is told where to write the config file to, and inside `constants` you define your environmental variables you wish to use in your Angular App.
