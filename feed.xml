@@ -1,5 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Mon, 05 May 2014 08:19:47 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Mon, 05 May 2014 08:19:47 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[How to use environment variables in your Angular application]]></title><description><![CDATA[<p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Mon, 05 May 2014 13:33:32 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Mon, 05 May 2014 13:33:32 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[Let's build: An AngularJS app with Browserify and Gulp]]></title><description><![CDATA[<p>Today I want to show a generic workflow and setup I have used a lot lately when working on building apps with Angular. It uses Gulp as a CI system and Browserify to minimize code clutter and maximize awesomeness. So let&#39;s jump in.</p>
+<p>Instead of starting from a cloned code repository let&#39;s build our setup together. From scratch. This way you know what each piece does, and allows you to tweak it to your liking. Of course, the final product can be found <a href="https://github.com/Hyra/angular-gulp-browserify-livereload-boilerplate">here</a> at Github, but it might be better to use it as a reference rather than a starting point.</p>
+<h2><a name="folder-structure" class="anchor" href="#folder-structure"><span class="header-link"></span></a>Folder structure</h2>
+<p>When building a web application I tend to have an <code>app</code> folder for the original source files, and a <code>dist</code> folder which contains all the processed files and will serve as the root directory for the webserver. So let&#39;s create the following folder structure:</p>
+<pre><code><div class="highlight"><pre><span class="nx">app</span>
+  <span class="nx">index</span><span class="p">.</span><span class="nx">html</span>
+  <span class="nx">images</span>            <span class="c1">// Visual assets</span>
+  <span class="nx">scripts</span>           <span class="c1">// Your javascript</span>
+     <span class="nx">controllers</span>
+     <span class="nx">directives</span>
+     <span class="nx">services</span>
+     <span class="nx">main</span><span class="p">.</span><span class="nx">js</span>        <span class="c1">// Single main entry point</span>
+  <span class="nx">styles</span>            <span class="c1">// SCSS or LESS or CSS files</span>
+  <span class="nx">views</span>             <span class="c1">// Templates</span>
+<span class="nx">dist</span>                <span class="c1">// The target and &#39;www&#39; folder</span>
+<span class="nx">Gulpfile</span><span class="p">.</span><span class="nx">js</span>         <span class="c1">// Gulp instructions file</span>
+<span class="kr">package</span><span class="p">.</span><span class="nx">json</span>        <span class="c1">// Package file with installation references</span>
+</pre></div>
+</code></pre>
+<h2><a name="getting-some-modules" class="anchor" href="#getting-some-modules"><span class="header-link"></span></a>Getting some modules</h2>
+<p>To get everything up and running, let&#39;s first get some NPM modules we want to work with. Depending on your personal preferences you might want to replace some of them or add other ones to suit your specific needs. The modules I usually install are:</p>
+<h3><a name="gulp" class="anchor" href="#gulp"><span class="header-link"></span></a>Gulp</h3>
+<p>This is the workhorse of our setup.</p>
+<h3><a name="angular" class="anchor" href="#angular"><span class="header-link"></span></a>Angular</h3>
+<p>We will install Angular through NPM so we can require it with browserify.</p>
+<h3><a name="browserify" class="anchor" href="#browserify"><span class="header-link"></span></a>Browserify</h3>
+<p>Browserify allows us to utilize the <code>require()</code> syntax we love in NodeJS in our front-end. Can you spell u.n.i.c.o.r.n.s ?</p>
+<h3><a name="gulp-browserify" class="anchor" href="#gulp-browserify"><span class="header-link"></span></a>gulp-browserify</h3>
+<p>This allows us to run Browserify from within our Gulpfile.</p>
+<h3><a name="gulp-clean" class="anchor" href="#gulp-clean"><span class="header-link"></span></a>gulp-clean</h3>
+<p>Allows us to clean (empty) a folder or file, which is nice to make sure we don&#39;t end up with any artifacts.</p>
+<h3><a name="gulp-concat" class="anchor" href="#gulp-concat"><span class="header-link"></span></a>gulp-concat</h3>
+<p>When using browserify for our code we want to concat it to a single bundled javascript file. This plugin allows us to do just that.</p>
+<h3><a name="gulp-jshint" class="anchor" href="#gulp-jshint"><span class="header-link"></span></a>gulp-jshint</h3>
+<p>We all love syntactically correct code, don&#39;t we? This plugin checks your javascript files and tells you when something is wrong. Or not pretty enough.</p>
+<h3><a name="gulp-util" class="anchor" href="#gulp-util"><span class="header-link"></span></a>gulp-util</h3>
+<p>General gulp utilities, such as colour in your <code>gutil.log()</code> calls, and handy methods for common operations such as <code>replaceExtension()</code> and <code>noop()</code>.</p>
+<h3><a name="gulp-embedlr-gulp-livereload-tiny-lr-connect-livereload-express" class="anchor" href="#gulp-embedlr-gulp-livereload-tiny-lr-connect-livereload-express"><span class="header-link"></span></a>gulp-embedlr, gulp-livereload, tiny-lr, connect-livereload, express</h3>
+<p>These I use so I can run a local webserver and support live reloading of the app as we save files.</p>
+<p>And this will do fine for now. So! Let&#39;s install all these babies, and save them to our <code>package.json</code> by adding <code>--save-dev</code></p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="nv">$ </span>npm install gulp browserify gulp-browserify gulp-clean gulp-concat gulp-jshint gulp-util gulp-embedlr gulp-livereload tiny-lr connect-livereload express --save-dev
+</pre></div>
+</code></pre>
+<h2><a name="configuring-our-gulpfile" class="anchor" href="#configuring-our-gulpfile"><span class="header-link"></span></a>Configuring our Gulpfile</h2>
+<p>Now we have all the components in place it&#39;s time to write our Gulpfile. Let&#39;s start small and expand as we go along.</p>
+<p>First, let&#39;s make sure we can <code>watch</code> our javascript files, and as they change, run them through JSHint and have Browserify bundle the code into a single file:</p>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">),</span>
+    <span class="nx">gutil</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-util&#39;</span><span class="p">),</span>
+    <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-jshint&#39;</span><span class="p">),</span>
+    <span class="nx">browserify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-browserify&#39;</span><span class="p">),</span>
+    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-concat&#39;</span><span class="p">),</span>
+    <span class="nx">clean</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-clean&#39;</span><span class="p">);</span>
+
+<span class="c1">// JSHint task</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;lint&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./app/scripts/*.js&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+  <span class="c1">// You can look into pretty reporters as well, but that&#39;s another story</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// Browserify task</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;browserify&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="s1">&#39;app/scripts/main.js&#39;</span><span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">browserify</span><span class="p">({</span>
+    <span class="nx">insertGlobals</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">debug</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}))</span>
+  <span class="c1">// Bundle to a single file</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;bundle.js&#39;</span><span class="p">))</span>
+  <span class="c1">// Output it to our dist folder</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist/js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;watch&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;lint&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Watch our scripts</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">([</span><span class="s1">&#39;app/scripts/*.js&#39;</span><span class="p">,</span> <span class="s1">&#39;app/scripts/**/*.js&#39;</span><span class="p">],[</span>
+    <span class="s1">&#39;lint&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;browserify&#39;</span>
+  <span class="p">]);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>So far so good! Whenever we change code in our javascript files a fresh bundle.js is created for us to use in our site.</p>
+<h2><a name="set-up-our-index-html-file" class="anchor" href="#set-up-our-index-html-file"><span class="header-link"></span></a>Set up our index.html file</h2>
+<p>Let&#39;s create a simple <code>index.html</code> file so we can see our work in the browser. Open up <code>index.html</code> and add something like the following:</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span> <span class="na">ng-app=</span><span class="s">&quot;myApp&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>My Awesome App<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body</span> <span class="na">ng-controller=</span><span class="s">&#39;WelcomeCtrl&#39;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>My Awesome App<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;p&gt;</span>{{testVar}}<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/bundle.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</code></pre>
+<p>The above should look familiar. We include our bundle.js file we created earlier at the bottom, initiate a ng-app by adding the directive to the html tag, attach a controller to the body and have a simple variable in the body so we can see if things work. Which at this point is a NO. Let&#39;s fix that.</p>
+<p>First of all, we want this index.html file to be added to our <code>dist</code> folder so we can actually serve it. We can do this by adding an extra task:</p>
+<pre><code><div class="highlight"><pre><span class="c1">// Views task</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Get our index.html</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;app/index.html&#39;</span><span class="p">)</span>
+  <span class="c1">// And put it in the dist folder</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist/&#39;</span><span class="p">));</span>
+
+  <span class="c1">// Any other view files from app/views</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./app/views/**/*&#39;</span><span class="p">)</span>
+  <span class="c1">// Will be put in the dist/views folder</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist/views/&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>We can also set up another watcher in the watch task to pick up any changes as we build:</p>
+<pre><code><div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">([</span><span class="s1">&#39;app/index.html&#39;</span><span class="p">,</span> <span class="s1">&#39;app/views/**/*.html&#39;</span><span class="p">],</span> <span class="p">[</span>
+  <span class="s1">&#39;views&#39;</span>
+<span class="p">]);</span>
+</pre></div>
+</code></pre>
+<p>At the moment we pretty much have a working app. We just can&#39;t see it. Let&#39;s change this by adding a self contained webserver, straight from our Gulp.</p>
+<h2><a name="webserver-with-live-reload" class="anchor" href="#webserver-with-live-reload"><span class="header-link"></span></a>Webserver with live reload</h2>
+<p>First of all, we need to add some modules to our Gulpfile that allows us to run a mini express server.</p>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">embedlr</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-embedlr&#39;</span><span class="p">),</span>
+    <span class="nx">refresh</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-livereload&#39;</span><span class="p">),</span>
+    <span class="nx">lrserver</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tiny-lr&#39;</span><span class="p">)(),</span>
+    <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">),</span>
+    <span class="nx">livereload</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;connect-livereload&#39;</span><span class="p">),</span>
+    <span class="nx">livereloadport</span> <span class="o">=</span> <span class="mi">35729</span><span class="p">,</span>
+    <span class="nx">serverport</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span>
+
+<span class="c1">// Set up an express server (but not starting it yet)</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="c1">// Add live reload</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">livereload</span><span class="p">({</span><span class="nx">port</span><span class="o">:</span> <span class="nx">livereloadport</span><span class="p">}));</span>
+<span class="c1">// Use our &#39;dist&#39; folder as rootfolder</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="s1">&#39;./dist&#39;</span><span class="p">));</span>
+<span class="c1">// Because I like HTML5 pushstate .. this redirects everything back to our index.html</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">&#39;/*&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">sendfile</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">root</span><span class="o">:</span> <span class="s1">&#39;dist&#39;</span> <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>Next, let&#39;s start the server. You can do this from any task, but let&#39;s create a <code>dev</code> task for the fun of it.</p>
+<pre><code><div class="highlight"><pre><span class="c1">// Dev task</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Start webserver</span>
+  <span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">serverport</span><span class="p">);</span>
+  <span class="c1">// Start live reload</span>
+  <span class="nx">lrserver</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">livereloadport</span><span class="p">);</span>
+  <span class="c1">// Run the watch task, to keep taps on changes</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;watch&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>Now, when you run <code>gulp dev</code> it will kickstart our internal webserver with our <code>dist</code> folder as root. You can verify everything is working by navigating to <a href="http://localhost:5000">http://localhost:5000</a></p>
+<p>If all is well you should see the <code>index.html</code> show up. Whenever you change a file however, the changes won&#39;t automatically show up in the browser. This is because we have to manually invoke the server refresh from within our task. Let&#39;s modify our <code>views</code> task to automatically refresh the browser after it has done its work:</p>
+<pre><code><div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./app/index.html&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist/&#39;</span><span class="p">));</span>
+
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./app/views/**/*&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist/views/&#39;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">refresh</span><span class="p">(</span><span class="nx">lrserver</span><span class="p">));</span> <span class="c1">// Tell the lrserver to refresh</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>Now, whenever you change a view file, the server will reload. Of course, you can do this whenever you want. So feel free to add it in the <code>browserify</code> task as well.</p>
+<h2><a name="add-some-angular" class="anchor" href="#add-some-angular"><span class="header-link"></span></a>Add some Angular</h2>
+<p>We are getting somewhere. All that&#39;s missing is some actual Angular code. So let&#39;s add some. Open up the <code>main.js</code> file and put in the following:</p>
+<pre><code><div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">angular</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;angular&#39;</span><span class="p">);</span> <span class="c1">// That&#39;s right! We can just require angular as if we were in node</span>
+
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;HelloCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;Test varretjes&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>In main.js we can now use Node&#39;s <code>require()</code> way to include modules we want. This is not limited to our own code, we can use most of the ~50k published modules on mpjs.org. When we run <code>gulp browserify</code> Browserify will figure out what code to pull in, and will bundle it in our <code>bundle.js</code>. Good stuff.</p>
+<p>Of course, the controller code should move to a file of its own in the controllers directory so we can actually use the <code>require</code> technique. So let&#39;s do just that.</p>
+<p>Create a new file <code>controllers/WelcomeCtrl.js</code> and add in the following:</p>
+<pre><code><div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">WelcomeCtrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$scope</span><span class="p">.</span><span class="nx">testVar</span> <span class="o">=</span> <span class="s1">&#39;We are up and running from a required module!&#39;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">WelcomeCtrl</span><span class="p">;</span>
+</pre></div>
+</code></pre>
+<p>Notice we use <code>module.exports</code> to expose (parts of) our code, as you do with modules. This way we can <code>require</code> them from our <code>main.js</code> file and use it as a module. Let&#39;s change <code>main.js</code> to use our fresh module:</p>
+<pre><code><div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">angular</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;angular&#39;</span><span class="p">);</span> <span class="c1">// That&#39;s right! We can just require angular as if we were in node</span>
+
+<span class="kd">var</span> <span class="nx">WelcomeCtrl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./controllers/WelcomeCtrl&#39;</span><span class="p">);</span> <span class="c1">// We can use our WelcomeCtrl.js as a module. Rainbows.</span>
+
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;WelcomeCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="nx">WelcomeCtrl</span><span class="p">]);</span>
+</pre></div>
+</code></pre>
+<p>This is obviously a very bare example, but you can see how using simple <code>require</code> calls will save a lot of script tags in your index.html, and having your files behave as modules helps you write re-usable code.</p>
+<h2><a name="jshint-rc" class="anchor" href="#jshint-rc"><span class="header-link"></span></a>JSHint.rc</h2>
+<p>You might have noticed <code>gulp lint</code> gives us some errors. That&#39;s because it needs some guidance, as it doesn&#39;t know about our <code>require</code> and preferences. Let&#39;s add a file called <code>.jshintrc</code> and add in the following configuration:</p>
+<pre><code><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;node&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;browser&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;esnext&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;bitwise&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;camelcase&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;curly&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;eqeqeq&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;immed&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;indent&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;latedef&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;newcap&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;noarg&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;quotmark&quot;</span><span class="o">:</span> <span class="s2">&quot;single&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;regexp&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;undef&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;unused&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;strict&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;trailing&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;smarttabs&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+<p>You may or may not agree with any of these settings, so feel free to tweak them.</p>
+<h2><a name="sass-support" class="anchor" href="#sass-support"><span class="header-link"></span></a>SASS Support</h2>
+<p>You may have a CSS pre-processor of choice, so let&#39;s add support for this. I usually go with SASS, but of course this is adaptable to your liking. Let&#39;s install a new module named <code>gulp-sass</code> and include it in our Gulpfile.</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="nv">$ </span>npm install gulp-sass gulp-autoprefixer --save-dev
+</pre></div>
+</code></pre>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sass&#39;</span><span class="p">);</span>
+<span class="c1">// Not necessary, but I like this one, it automatically adds prefixes for all browsers</span>
+<span class="kd">var</span> <span class="nx">autoprefixer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-autoprefixer&#39;</span><span class="p">);</span>
+</pre></div>
+</code></pre>
+<p>Next, let&#39;s write a task for it:</p>
+<pre><code><div class="highlight"><pre><span class="c1">// Styles task</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;styles&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;app/styles/*.scss&#39;</span><span class="p">)</span>
+  <span class="c1">// The onerror handler prevents Gulp from crashing when you make a mistake in your SASS</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">({</span><span class="nx">onError</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="p">}</span> <span class="p">}))</span>
+  <span class="c1">// Optionally add autoprefixer</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">autoprefixer</span><span class="p">(</span><span class="s2">&quot;last 2 versions&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt; 1%&quot;</span><span class="p">,</span> <span class="s2">&quot;ie 8&quot;</span><span class="p">))</span>
+  <span class="c1">// These last two should look familiar now :)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist/css/&#39;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">refresh</span><span class="p">(</span><span class="nx">lrserver</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>And add another watcher.</p>
+<pre><code><div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">([</span><span class="s1">&#39;app/styles/**/*.scss&#39;</span><span class="p">],</span> <span class="p">[</span>
+  <span class="s1">&#39;styles&#39;</span>
+<span class="p">]);</span>
+</pre></div>
+</code></pre>
+<p>Now, whenever you make changes to your SASS files it will compile it to CSS and live-reload our webserver. Good times.</p>
+<h2><a name="wrapping-up" class="anchor" href="#wrapping-up"><span class="header-link"></span></a>Wrapping up</h2>
+<p>We&#39;ve done quite a lot. We have set up a webserver, added Gulp to automate all our tasks, added live reloading for easy developing, sass processing, and added support for Browserify so we can script in style.</p>
+<p>I created a repository with the above so you can check the finished project, which you can find <a href="https://github.com/Hyra/angular-gulp-browserify-livereload-boilerplate">here</a>.</p>
+<p>I hope the above was of some help, and if you have any questions feel free to find me on <a href="http://twitter.com/stefvdham">Twitter</a>, or leave a comment below.</p>
+<p>Happy coding.</p>
+]]></description><link>lets-build-an-angularjs-app-with-browserify-and-gulp/</link><guid isPermaLink="true">lets-build-an-angularjs-app-with-browserify-and-gulp/</guid><category><![CDATA[angularjs]]></category><category><![CDATA[gulp]]></category><category><![CDATA[angular]]></category><category><![CDATA[browserify]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Mon, 05 May 2014 08:30:00 GMT</pubDate></item><item><title><![CDATA[How to use environment variables in your Angular application]]></title><description><![CDATA[<p>If you develop a website that uses multiple environments such as <strong>development</strong>, <strong>staging</strong> and <strong>production</strong> you probably have a configuration file of sorts to handle things like database settings, mail server credentials, and so on for your backend system.</p>
 <p>But how do you handle such variables in the front-end? Specifically, in an AngularJS App?</p>
 <p>For instance, you might have a seperate API you&#39;re talking to for your content, which has a different location locally, than on your production server. Or you might want to do some debugging or verbose output, based on what environment you&#39;re on.</p>
 <p>In this post I&#39;ll show you how to set this up automagically using Grunt and ngConstant.</p>
@@ -354,82 +623,4 @@ What? Well, it&#39;s simple really .. whenever I was trying out Vim and found my
 <li>Make the loadSection and Sammy integration a bit more seamless and less explicit</li>
 <li>Spend more time documenting and writing how-to&#39;s</li>
 </ul>
-]]></description><link>spotify-boilerplate-app/</link><guid isPermaLink="true">spotify-boilerplate-app/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 18 Sep 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Good times with Watchr, Coffeescript and LESS]]></title><description><![CDATA[<p>I have been working on a pure HTML front-end for one of the pet projects I&#39;m doing. A lot of fun, but while developing, running the terminal commands to compile both the .less and .coffee files gets a tad tedious. <a href="https://github.com/mynyml/watchr">&quot;Watchr&quot;</a> to the rescue! With this little gem you can watch specific folders or file extensions and run commands based on the files you watch.</p>
-<p>Here is how I got it set up now ..</p>
-<!--more-->
-
-<h2><a name="installing-watchr" class="anchor" href="#installing-watchr"><span class="header-link"></span></a>Installing watchr</h2>
-<p>First of all we need to get the Watchr gem installed. Assuming you have a Mac and got XCode (or at least the tools) installed, this is pretty simple:</p>
-<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">gem</span> <span class="nx">install</span> <span class="nx">watchr</span>
-</pre></div>
-</code></pre>
-<h2><a name="installing-coffeescript" class="anchor" href="#installing-coffeescript"><span class="header-link"></span></a>Installing coffeescript</h2>
-<p>Another easy one ..</p>
-<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">coffee</span><span class="o">-</span><span class="nx">script</span>
-</pre></div>
-</code></pre>
-<p>Don&#39;t forget the <code>-g</code> flag as you (probably) want it to be installed globally.</p>
-<h2><a name="installing-the-less-compiler" class="anchor" href="#installing-the-less-compiler"><span class="header-link"></span></a>Installing the LESS compiler</h2>
-<p>You got the hang of it now, it&#39;s as easy as ..</p>
-<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">less</span>
-</pre></div>
-</code></pre>
-<h2><a name="the-fun-part" class="anchor" href="#the-fun-part"><span class="header-link"></span></a>The fun part!</h2>
-<p>Now we&#39;re ready for the fun bit, setting up watchr to do some automagic stuff.</p>
-<p>I have a typical folder structure, with the exception of a new <code>_src</code> folder which will contain all the raw coffeescript and less files.</p>
-<pre><code><div class="highlight"><pre><span class="err">/index.html</span>
-<span class="o">/</span><span class="nx">css</span>
-<span class="o">/</span><span class="nx">js</span>
-<span class="o">/</span><span class="nx">img</span>
-<span class="o">/</span><span class="nx">_src</span>
-    <span class="o">/</span><span class="nx">less</span>
-    <span class="o">/</span><span class="nx">coffee</span>
-</pre></div>
-</code></pre>
-<p>Watchr works with a config file, which basically tells it what to watch for, and what to do if it finds any changes. I placed the file inside the <code>_src</code> folder and named it <code>watchr.rb</code></p>
-<p>Here&#39;s my config file at the moment:</p>
-<pre><code><div class="highlight"><pre><span class="nx">def</span> <span class="nx">compile_less</span>
-    <span class="o">%</span><span class="nx">x</span><span class="p">[</span><span class="nx">lessc</span> <span class="nx">less</span><span class="o">/</span><span class="nx">bootstrap</span><span class="o">/</span><span class="nx">bootstrap</span><span class="p">.</span><span class="nx">less</span> <span class="p">..</span><span class="o">/</span><span class="nx">css</span><span class="o">/</span><span class="nx">main</span><span class="p">.</span><span class="nx">css</span> <span class="o">--</span><span class="nx">yui</span><span class="o">-</span><span class="nx">compress</span><span class="p">]</span>
-<span class="nx">end</span>
-
-<span class="nx">def</span> <span class="nx">compile_coffee</span>
-    <span class="o">%</span><span class="nx">x</span><span class="p">[</span><span class="nx">coffee</span> <span class="o">-</span><span class="nx">c</span> <span class="o">-</span><span class="nx">j</span> <span class="p">..</span><span class="o">/</span><span class="nx">js</span><span class="o">/</span><span class="nx">app</span><span class="p">.</span><span class="nx">js</span> <span class="nx">coffee</span><span class="o">/</span><span class="p">]</span>
-<span class="nx">end</span>
-
-<span class="nx">def</span> <span class="nx">do_growl</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
-    <span class="nx">growlnotify</span> <span class="o">=</span> <span class="err">`</span><span class="nx">which</span> <span class="nx">growlnotify</span><span class="err">`</span><span class="p">.</span><span class="nx">chomp</span>
-  <span class="nx">title</span> <span class="o">=</span> <span class="s2">&quot;Watchr Message&quot;</span>
-  <span class="nx">passed</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">include</span><span class="o">?</span><span class="p">(</span><span class="s1">&#39;0 failures, 0 errors&#39;</span><span class="p">)</span>
-  <span class="nx">image</span> <span class="o">=</span> <span class="nx">passed</span> <span class="o">?</span> <span class="s2">&quot;~/.watchr_images/passed.png&quot;</span> <span class="o">:</span> <span class="s2">&quot;~/.watchr_images/failed.png&quot;</span>
-  <span class="nx">severity</span> <span class="o">=</span> <span class="nx">passed</span> <span class="o">?</span> <span class="s2">&quot;-1&quot;</span> <span class="o">:</span> <span class="s2">&quot;1&quot;</span>
-  <span class="nx">options</span> <span class="o">=</span> <span class="s2">&quot;-w -n Watchr --image &#39;#{File.expand_path(image)}&#39;&quot;</span>
-  <span class="nx">options</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; -m &#39;#{message}&#39; &#39;#{title}&#39; -p #{severity}&quot;</span>
-  <span class="nx">system</span> <span class="o">%</span><span class="p">(</span><span class="err">#</span><span class="p">{</span><span class="nx">growlnotify</span><span class="p">}</span> <span class="err">#</span><span class="p">{</span><span class="nx">options</span><span class="p">}</span> <span class="o">&amp;</span><span class="p">)</span>
-<span class="nx">end</span>
-
-<span class="nx">do_growl</span> <span class="s2">&quot;Watching folders and waiting for changes ..&quot;</span>
-
-<span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;less/*&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="nx">m</span><span class="o">|</span>
-    <span class="err">#</span> <span class="nx">Recompile</span> <span class="nx">LESS</span> <span class="nx">files</span>
-    <span class="nx">compile_less</span>
-    <span class="nx">do_growl</span> <span class="s2">&quot;LESS Compiled and Compressed!&quot;</span>
-<span class="p">}</span>
-
-<span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;coffee/*&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="nx">m</span><span class="o">|</span>
-    <span class="err">#</span> <span class="nx">Recompile</span> <span class="nx">Coffeescripts</span>
-    <span class="nx">compile_coffee</span>
-    <span class="nx">do_growl</span> <span class="s2">&quot;Coffeescripts compiled and concatenated!&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</code></pre>
-<p>As you can see at the bottom I&#39;m watching the 2 folders seperately, as I want to run different commands for them. For the project I&#39;m working on I&#39;m using Twitter Bootstrap, so rather than compiling all the .less files to seperate .css files I just want to compiled bootstrap.less as that @imports all the things it needs. When it&#39;s done with that it yui-compresses the lot and writes the output to <code>css/main.css</code>. Pretty cool!</p>
-<p>The compile_coffee command does something pretty similar. Whenever a .coffee file in the coffee folder changes it will compile them all and combine the output (notice the <code>-j</code> flag) and write it to <code>js/app.js</code>.</p>
-<p>To get the show on the road, cd to the <code>_src</code> folder, and run:</p>
-<pre><code><div class="highlight"><pre><span class="nx">$</span> <span class="nx">watchr</span> <span class="nx">watchr</span><span class="p">.</span><span class="nx">rb</span>
-</pre></div>
-</code></pre>
-<p>You may have noticed the <code>do_growl</code> function, which doesn&#39;t really add value except that it&#39;s just cool to get a Growl message whenever it has done it&#39;s thing. To get that bit working you have to install <a href="http://growl.info/extras.php#growlnotify">&quot;Growl Notify&quot;</a>.</p>
-<p>If you&#39;re not that interested, or you don&#39;t have a Mac with Growl simply remove the function and the do_growl calls from the watch patterns.</p>
-<p>I&#39;m sure I could optimize this a bit, and add variables for output folders and options, but for now it&#39;s simple, working, and pretty damn cool.</p>
-<p>Let me know how you get your watchr set up!</p>
-]]></description><link>good-times-with-watchr-coffeescript-and-less/</link><guid isPermaLink="true">good-times-with-watchr-coffeescript-and-less/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Wed, 16 May 2012 00:00:00 GMT</pubDate></item></channel></rss>
+]]></description><link>spotify-boilerplate-app/</link><guid isPermaLink="true">spotify-boilerplate-app/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 18 Sep 2012 00:00:00 GMT</pubDate></item></channel></rss>
