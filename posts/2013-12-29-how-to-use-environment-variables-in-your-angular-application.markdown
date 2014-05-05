@@ -37,7 +37,7 @@ Now that you have all you need, let's set it up! Open up your `Gruntfile.js`, an
       // Options for all targets
       options: {
         space: '  ',
-        wrap: '"use strict";\n\n <%= __ngModule %>',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
         name: 'config',
       },
       // Environment targets
@@ -57,8 +57,10 @@ Now that you have all you need, let's set it up! Open up your `Gruntfile.js`, an
           dest: '<%= yeoman.dist %>/scripts/config.js'
         },
         constants: {
-          ENV: 'production',
-          apiEndpoint: 'http://api.livesite.com'
+          ENV: {
+            name: 'production',
+            apiEndpoint: 'http://api.livesite.com'
+          }
         }
       }
     },
