@@ -17,4 +17,14 @@ $(function() {
       $navBar.removeClass('nav-show');
     }
   });
+
+  window.onscroll = function(e) {
+    if(window.pageYOffset < 325) {
+      $('.follow_block').removeClass('visible');
+    }
+    if(window.pageYOffset >= 325) {
+      $('.follow_block').addClass('visible');
+    }
+  };
+
 });
