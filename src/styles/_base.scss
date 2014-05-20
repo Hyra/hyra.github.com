@@ -195,7 +195,7 @@ body {
 
 .content {
   &.topped {
-    margin-top: 370px;
+    margin-top: 365px;
     @include breakpoint(small-phone) {  
       margin-top: 0;
     }
