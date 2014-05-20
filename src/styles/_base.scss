@@ -72,11 +72,12 @@ body {
     height: 200px;
   }
   .bg {
-    background-image: url(/images/hdr.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-image: url(/images/hdr.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center top;
+    background: url(/images/hdr.jpg) 50% 0 repeat fixed;
     height: 320px;
-    background-position: center top;
     width: 100%;
     left: 0;
     position: absolute;
