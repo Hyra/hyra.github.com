@@ -25,6 +25,12 @@ $(function() {
     if(window.pageYOffset >= 325) {
       $('.follow_block').addClass('visible');
     }
+
+    var $bgobj = $('.bg');
+    var yPos = -($(window).scrollTop() / 5); 
+		var coords = '50% '+ yPos + 'px';
+		console.log(coords);
+		$bgobj.css({ backgroundPosition: coords });
   };
 
 });
