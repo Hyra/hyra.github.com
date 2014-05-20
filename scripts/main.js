@@ -19,19 +19,6 @@ $(function() {
   });
 
   window.onscroll = function(e) {
-    if(window.pageYOffset < 325) {
-      // $('.follow_block').removeClass('visible');
-    }
-    if(window.pageYOffset >= 325) {
-      // $('.follow_block').addClass('visible');
-      // $('.badge').css('position', 'fixed');
-      // $('.badge').css('top', '10px');
-      // $('.header').css({
-      // 	'position': 'fixed',
-      // 	'width': '100%',
-      // 	'top': '-290px'
-      // });
-    }
     if(window.pageYOffset < 270) {
       // $('.badge').removeClass('fixed');
       $('.header').removeClass('fixed');
