@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Tue, 20 May 2014 07:37:32 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Tue, 20 May 2014 07:37:32 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[Let's build: An AngularJS app with Browserify and Gulp]]></title><description><![CDATA[<p>Today I want to show a generic workflow and setup I have used a lot lately when working on building apps with Angular. It uses Gulp as a CI system and Browserify to minimize code clutter and maximize awesomeness. So let&#39;s jump in.</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mindthecode Feed]]></title><description><![CDATA[Mindthecode Feed]]></description><link>feed.xml</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 May 2014 07:18:01 GMT</lastBuildDate><atom:link href="feed.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Stef van den Ham]]></author><pubDate>Mon, 26 May 2014 07:18:01 GMT</pubDate><copyright><![CDATA[2014 Stef van den Ham]]></copyright><language><![CDATA[en]]></language><managingEditor><![CDATA[Stef van den Ham]]></managingEditor><webMaster><![CDATA[Stef van den Ham]]></webMaster><ttl>60</ttl><item><title><![CDATA[Recording a website with PhantomJS and FFMpeg]]></title><description><![CDATA[<p>When I realised you could easily generate screenshots from a site with PhantomJS I just needed to know if I could take it one step further, and record a video. </p>
+<h2><a name="the-goal" class="anchor" href="#the-goal"><span class="header-link"></span></a>The goal</h2>
+<p>What I wanted was to record 10 seconds of video from a random website and output it as a .mp4. For this short demo I decided we should go with one of the fun examples on Pixi.JS as they&#39;re interesting to capture.</p>
+<p>Here it is, a <a href="http://www.goodboydigital.com/pixijs/examples/12-2/" target="_blank">Pixi dragon</a></p>
+<h2><a name="the-ingredients" class="anchor" href="#the-ingredients"><span class="header-link"></span></a>The ingredients</h2>
+<h3><a name="phantomjs" class="anchor" href="#phantomjs"><span class="header-link"></span></a>PhantomJS</h3>
+<p>In case you&#39;ve been hiding, <a href="http://phantomjs.org/">PhantomJS</a> is a headless scriptable webkit browser with a Javascript API. We will use it to generate screenshots of a site.</p>
+<h3><a name="ffmpeg" class="anchor" href="#ffmpeg"><span class="header-link"></span></a>FFMPeg</h3>
+<p><a href="http://www.ffmpeg.org/">FFMPeg</a> is our all purpose video and audio toolbox to record, convert and stream on the command line. </p>
+<p>With these two tools installed we are ready to create a video.</p>
+<h2><a name="from-the-top" class="anchor" href="#from-the-top"><span class="header-link"></span></a>From the top</h2>
+<p>Capturing a webpage as an image with PhantomJS is easy stuff. They have a example on how to do this <a href="https://github.com/ariya/phantomjs/blob/master/examples/technews.js">over here</a>, so let&#39;s strip it down to what we need and save it as <code>runner.js</code></p>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpage&#39;</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">viewportSize</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span> <span class="p">};</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;http://www.goodboydigital.com/pixijs/examples/12-2/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">page</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;dragon.png&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s2">&quot;png&quot;</span> <span class="p">});</span>
+  <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>We can now run this with:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="nv">$ </span>phantomjs runner.js
+</pre></div>
+</code></pre>
+<p>After a few moments PhantomJS will have booted up and rendered an image. But .. it&#39;s white! That&#39;s because PhantomJS takes the image before the <code>&lt;canvas&gt;</code> has actually fully loaded and started the animation. Let&#39;s add a little delay before we write the image.</p>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpage&#39;</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">viewportSize</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span> <span class="p">};</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;http://www.goodboydigital.com/pixijs/examples/12-2/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Add a little delay before capturing the image</span>
+    <span class="nx">page</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;dragon.png&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s2">&quot;png&quot;</span> <span class="p">});</span>
+    <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+  <span class="p">},</span> <span class="mi">666</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>This time, you should end up with an image of .. a dragon!</p>
+<p><img src="/images/screenshots/dragon01.png" alt="Pixi Dragon"></p>
+<h2><a name="rendering-multiple-images" class="anchor" href="#rendering-multiple-images"><span class="header-link"></span></a>Rendering multiple images</h2>
+<p>From here it&#39;s easy enough to render multiple images with an interval. Create a folder <code>frames</code> and modify the runner code to capture 50 images:</p>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpage&#39;</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">viewportSize</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span> <span class="p">};</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;http://www.goodboydigital.com/pixijs/examples/12-2/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initial frame</span>
+    <span class="kd">var</span> <span class="nx">frame</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// Add an interval every 25th second</span>
+    <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// Render an image with the frame name</span>
+      <span class="nx">page</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;frames/dragon&#39;</span><span class="o">+</span><span class="p">(</span><span class="nx">frame</span><span class="o">++</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s2">&quot;png&quot;</span> <span class="p">});</span>
+      <span class="c1">// Exit after 50 images</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">frame</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">25</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">666</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>Sweet, we end up with 50 frames of the dragon. When flicking through them it looks like it&#39;s flying, so we&#39;re almost there!</p>
+<h2><a name="rendering-a-movie" class="anchor" href="#rendering-a-movie"><span class="header-link"></span></a>Rendering a movie</h2>
+<p>Now we know how to get the frames we want, we need to figure out how to feed them to ffmpeg. Traditionally, one would first render all the frames and then use an ffmpeg command to stitch the images to a movie. This would look a bit like this:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="nv">$ </span>ffmpeg -start_number 10 -i frames/dragon%02d.png -c:v libx264 -r 25 -pix_fmt yuv420p out.mp4
+</pre></div>
+</code></pre>
+<p>Notice I added a <code>-start_number</code> parameter because the frames we generated don&#39;t have a leading 0.</p>
+<p>So, at this point we have a movie from the site we wanted. Good stuff, but we can do better. Wouldn&#39;t it be nice if we could squeeze it all in one command? We can! If we modify the runner code to output images to the terminal, we can pipe it as food to ffmpeg, which accepts the <code>image2pipe</code> parameter.</p>
+<p>Let&#39;s alter the render method a bit:</p>
+<pre><code><div class="highlight"><pre><span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpage&#39;</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">viewportSize</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span> <span class="p">};</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;http://www.goodboydigital.com/pixijs/examples/12-2/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">page</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;/dev/stdout&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s2">&quot;png&quot;</span> <span class="p">});</span>
+  <span class="p">},</span> <span class="mi">25</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</code></pre>
+<p>We have removed the timeout as we don&#39;t need it anymore and we took out the frame counting code as we will tell ffmpeg how long to record for.</p>
+<p>Now, when we run the runner again, the CLI will throw raw image data at us, so don&#39;t! :)</p>
+<p>Instead, let&#39;s add a pipe to it and feed that juicy image data to ffmpeg instead, who can devour it much better than we can:</p>
+<pre><code class="lang-bash"><div class="highlight"><pre><span class="nv">$ </span>phantomjs runner.js <span class="p">|</span> ffmpeg -y -c:v png -f image2pipe -r 25 -t 10  -i - -c:v libx264 -pix_fmt yuv420p -movflags +faststart dragon.mp4
+</pre></div>
+</code></pre>
+<p>This might take a while, but eventually you will end up with a file <code>dragon.mp4</code> that&#39;s a lot smoother than our first attempt. This is because we feed a lot more images to ffmpeg.</p>
+<p>The important flags to notice in the ffmpeg command is <code>-t 10</code> which tells it to limit the capture to 10 seconds, and <code>-f image2pipe</code> because it tells ffmpeg to listen to the image stream we created.</p>
+<p><img src="/images/screenshots/dragon.gif" alt="Pixi Dragon"></p>
+<h2><a name="wrapping-it-up" class="anchor" href="#wrapping-it-up"><span class="header-link"></span></a>Wrapping it up</h2>
+<p>And there we go. We can stream images through PhantomJS and feed them to ffmpeg to create a movie. I haven&#39;t thought of a practical purpose for this, but maybe someone else will.</p>
+<p>I hope you like the proof of concept.</p>
+<p>Happy coding!</p>
+]]></description><link>recording-a-website-with-phantomjs-and-ffmpeg/</link><guid isPermaLink="true">recording-a-website-with-phantomjs-and-ffmpeg/</guid><category><![CDATA[phantomjs]]></category><category><![CDATA[node]]></category><category><![CDATA[ffmpeg]]></category><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Sun, 25 May 2014 11:50:00 GMT</pubDate></item><item><title><![CDATA[Let's build: An AngularJS app with Browserify and Gulp]]></title><description><![CDATA[<p>Today I want to show a generic workflow and setup I have used a lot lately when working on building apps with Angular. It uses Gulp as a CI system and Browserify to minimize code clutter and maximize awesomeness. So let&#39;s jump in.</p>
 <p>Instead of starting from a cloned code repository let&#39;s build our setup together. From scratch. This way you know what each piece does, and allows you to tweak it to your liking. Of course, the final product can be found <a href="https://github.com/Hyra/angular-gulp-browserify-livereload-boilerplate">here</a> at Github, but it might be better to use it as a reference rather than a starting point.</p>
 <h2><a name="folder-structure" class="anchor" href="#folder-structure"><span class="header-link"></span></a>Folder structure</h2>
 <p>When building a web application I tend to have an <code>app</code> folder for the original source files, and a <code>dist</code> folder which contains all the processed files and will serve as the root directory for the webserver. So let&#39;s create the following folder structure:</p>
@@ -561,66 +654,4 @@ What? Well, it&#39;s simple really .. whenever I was trying out Vim and found my
 </ul>
 <p>Now, the deploy function is very awesome. It automatically generate the site to a <code>public</code> folder, commits the whole thing to your git repository, and pushes it. When linked to a Github Pages site it will auto update your site.</p>
 <p>So yeah, this is good stuff, as I can just write my plain text files like I want to, and without any further webinterfacing and option clicking I can publish new articles.</p>
-]]></description><link>blogging-with-octopress/</link><guid isPermaLink="true">blogging-with-octopress/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Fri, 26 Oct 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Spotify Boilerplate App]]></title><description><![CDATA[<p>A while ago we were proud to be releasing 2 of the very first Spotify Apps in the Netherlands at <a href="http://noprotocol.nl" title="NoProtocol" target="_blank">NoProtocol</a>. For a long time since I&#39;ve been planning on creating a Boilerplate in which we could put all the best practices and redo some stuff in hindsight.</p>
-<p>And finally, it&#39;s here! You can grab it at <a href="https://github.com/Hyra/Spotify-Boilerplate" title="https://github.com/Hyra/Spotify-Boilerplate" target="_blank"><a href="https://github.com/Hyra/Spotify-Boilerplate">https://github.com/Hyra/Spotify-Boilerplate</a></a></p>
-<p>For a bit more in-depth information, read on ..</p>
-<!--more-->
-
-<p>The Boilerplate project aims to provide a foundation upon which you can start building Spotify Apps. It takes away the hassle of writing the necessary boilerplate code and is structured so you can start developing straight away.</p>
-<p>I will add to it as I stumble upon free time, but feel free to open a Pull Request or submit an issue for a suggestion</p>
-<h2><a name="some-of-the-features" class="anchor" href="#some-of-the-features"><span class="header-link"></span></a>Some of the features</h2>
-<ul>
-<li>Small footprint</li>
-<li>Automatic Tab Handling</li>
-<li>Automatic Deeplink handling</li>
-<li>Automatic Cover Loading for playlists (mosaics)</li>
-<li>Online/offline status tracking and content switching</li>
-</ul>
-<h2><a name="how-to-set-it-up-on-your-mac" class="anchor" href="#how-to-set-it-up-on-your-mac"><span class="header-link"></span></a>How to set it up (on your Mac)</h2>
-<ol>
-<li>Sign up for a developer account on Spotify</li>
-<li>Open Terminal, and if it doesn&#39;t exist yet <code>mkdir ~/Spotify</code></li>
-<li>cd ~/Spotify</li>
-<li>git clone git@github.com:Hyra/Spotify-Boilerplate.git</li>
-<li>Download the latest version of Spotify</li>
-<li>Open Spotify and type <code>spotify:app:boilerplate</code> in the search bar</li>
-</ol>
-<h2><a name="whats-in-the-boilerplate" class="anchor" href="#whats-in-the-boilerplate"><span class="header-link"></span></a>What&#39;s in the Boilerplate</h2>
-<p>The aim is to keep the Boilerplate as clean as possible, while giving all the tools to quickly develop your app.</p>
-<h3><a name="how-to-work-with-it-the-short-version" class="anchor" href="#how-to-work-with-it-the-short-version"><span class="header-link"></span></a>How to work with it (the short version)</h3>
-<p>What you want to look for is <code>js/app.js</code>. Once index.html has been loaded by Spotify it will fire off our Sammy instance:</p>
-<pre><code><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">app</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;/home&#39;</span><span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-</code></pre>
-<p>Here you can also handle any other bootstrapping you might want to do.</p>
-<p>Next up, the Sammy route gets invoked:</p>
-<pre><code><div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="nx">loadSection</span><span class="p">(</span><span class="nx">ctxt</span><span class="p">,</span> <span class="s2">&quot;news&quot;</span><span class="p">,</span> <span class="s2">&quot;/templates/home.html&quot;</span><span class="p">,</span> <span class="s2">&quot;js/_example_data.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// Callback actions</span>
-    <span class="p">});</span>
-
-<span class="p">});</span>
-</pre></div>
-</code></pre>
-<p>This is what you will most likely expand on for your app. The route loads a Mustache template into the DOM, parses it, asynch-y fill in the Spotify details, and cache it. After that it will run your callback actions, should you need to.</p>
-<p><code>loadSection</code> takes 5 parameters at the moment:</p>
-<p><strong>ctxt</strong> A reference to the <code>Sammy.Context</code> which was passed to the route</p>
-<p><strong>ID</strong> A unique identifier for the content which is used as a cache-key</p>
-<p><strong>Template File</strong> location to the Mustache template</p>
-<p><strong>JSON Location</strong> location to the JSON you want to use. This is useful if you want to connect your app with a (RESTful) web service to feed content to your app. NOTE: If you use absolute URLs here you should add the domains to your <code>manifest.json</code></p>
-<p><strong>Callback</strong> This callback function you can use to do your post-processing</p>
-<h3><a name="dependencies" class="anchor" href="#dependencies"><span class="header-link"></span></a>Dependencies</h3>
-<p>The boilerplate relies on a couple of libraries:</p>
-<p>Sammy.js for the routing, templating parsing and content swapping. It&#39;s just an awesome little tool</p>
-<p>jQuery as we&#39;ve all become used to it at some point</p>
-<p>Mustache as a template handler. This can just as well be any of the other gazillion templating engines out there, so feel free to hack your favourite in.</p>
-<h3><a name="roadmap" class="anchor" href="#roadmap"><span class="header-link"></span></a>Roadmap</h3>
-<ul>
-<li>Add more features/functionality regarding the Spotify API</li>
-<li>Make the loadSection and Sammy integration a bit more seamless and less explicit</li>
-<li>Spend more time documenting and writing how-to&#39;s</li>
-</ul>
-]]></description><link>spotify-boilerplate-app/</link><guid isPermaLink="true">spotify-boilerplate-app/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Tue, 18 Sep 2012 00:00:00 GMT</pubDate></item></channel></rss>
+]]></description><link>blogging-with-octopress/</link><guid isPermaLink="true">blogging-with-octopress/</guid><dc:creator><![CDATA[Stef van den Ham]]></dc:creator><pubDate>Fri, 26 Oct 2012 00:00:00 GMT</pubDate></item></channel></rss>
