@@ -20,14 +20,12 @@ $(function() {
 
   window.onscroll = function(e) {
     if(window.pageYOffset < 270) {
-      // $('.badge').removeClass('fixed');
-      $('.header').removeClass('fixed');
-      $('.content').removeClass('topped');
+      // $('.header').removeClass('fixed');
+      // $('.content').removeClass('topped');
     }
     if(window.pageYOffset >= 270) {
-      // $('.badge').addClass('fixed');
-      $('.header').addClass('fixed');
-      $('.content').addClass('topped');
+      // $('.header').addClass('fixed');
+      // $('.content').addClass('topped');
     }
 
     var $bgobj = $('.bg');
