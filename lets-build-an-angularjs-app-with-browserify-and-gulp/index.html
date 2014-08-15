@@ -181,7 +181,7 @@
 <span class="p">});</span>
 </pre></div>
 </code></pre>
-<p>In main.js we can now use Node&#39;s <code>require()</code> way to include modules we want. This is not limited to our own code, we can use most of the ~50k published modules on mpjs.org. When we run <code>gulp browserify</code> Browserify will figure out what code to pull in, and will bundle it in our <code>bundle.js</code>. Good stuff.</p>
+<p>In main.js we can now use Node&#39;s <code>require()</code> way to include modules we want. This is not limited to our own code, we can use most of the ~50k published modules on npmjs.org. When we run <code>gulp browserify</code> Browserify will figure out what code to pull in, and will bundle it in our <code>bundle.js</code>. Good stuff.</p>
 <p>Of course, the controller code should move to a file of its own in the controllers directory so we can actually use the <code>require</code> technique. So let&#39;s do just that.</p>
 <p>Create a new file <code>controllers/WelcomeCtrl.js</code> and add in the following:</p>
 <pre><code><div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
