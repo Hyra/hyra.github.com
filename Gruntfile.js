@@ -17,7 +17,7 @@ module.exports = function (grunt) {
           rss: {
             author: 'Stef van den Ham',
             title: 'Mindthecode Feed',
-            url: 'feed.xml'
+            url: 'http://mindthecode.com/'
           },
           pageSrc: 'src/pages',
           data: {
