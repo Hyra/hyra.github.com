@@ -226,7 +226,7 @@ We are getting somewhere. All that's missing is some actual Angular code. So let
       $scope.test = 'Test varretjes';
     });
 
-In main.js we can now use Node's `require()` way to include modules we want. This is not limited to our own code, we can use most of the ~50k published modules on mpjs.org. When we run `gulp browserify` Browserify will figure out what code to pull in, and will bundle it in our `bundle.js`. Good stuff.
+In main.js we can now use Node's `require()` way to include modules we want. This is not limited to our own code, we can use most of the ~50k published modules on npmjs.org. When we run `gulp browserify` Browserify will figure out what code to pull in, and will bundle it in our `bundle.js`. Good stuff.
 
 Of course, the controller code should move to a file of its own in the controllers directory so we can actually use the `require` technique. So let's do just that.
 
