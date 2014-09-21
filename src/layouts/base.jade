@@ -14,10 +14,10 @@ mixin postHead(post)
   - month[10] = 'November';
   - month[11] = 'December';
   .post-head.group
-    a(href="#{data.baseUrl}#{post.url}")
-      h1.post-title= post.title
-      if post.subtitle
-        h2.post-subtitle= post.subtitle
+    //- a(href="#{data.baseUrl}#{post.url}")
+    h1.post-title= post.title
+    if post.subtitle
+      h2.post-subtitle= post.subtitle
     h4.postDate
       span!= [month[post.date.getUTCMonth()], post.date.getUTCDate() + ',', post.date.getUTCFullYear()].join(' ')
 
@@ -85,33 +85,40 @@ html
       meta(property="og:description",content="Rambling about all things web.")
       meta(property="og:url",content="http://mindthecode.com/")
       meta(name="twitter:title",content="Mindthecode")
-      meta(name="twitter:description",content="Rambling about all things web.")// Twitter
+      meta(name="twitter:description",content="Rambling about all things web.")
   body
     header.header(role="header")
       div.container
         .bg
-        .contents(style="position: relative;")
+        .contents
           .logo
             a(href='/')
               img(src="/images/logo_trans.png")
           p.tagline Blogging about all things web, solving the web one pixel at the time.
-          .nav
-            ul
-              li
-                a(href="/") Blog
-                a(href="/about.html") About
-          #yoggrt
-            script(src="http://cdn.yoggrt.com/yoggrt.js?legacyid=1296349&zoneid=1353&key=1f38bbf962ef9784f7733343a37f39b0&serve=C6SD52Y&placement=mindthecode",id="_yoggrt_js")
       .badge
         a(href="/")
           img(src="/images/badge.png")
+    .top
+      .container
+        .badge
+          a(href='/')
+            img(src="/images/badge.png")
+        .logo
+          a(href='/')
+            img(src="/images/logo.png")
+        .navlinks
+          ul
+            li
+              a(href='/') Archive
+            li
+              a(href='/about.html') About
+            li.twitter
+              a(href="https://twitter.com/stefvdham", class="twitter-follow-button", data-show-count="false", data-show-screen-name="true") Follow @stefvdham
     .container
       .content
-        block content
-    .follow_block
-      //- img(src="/images/follow_pic.png")
-      <a href="https://twitter.com/stefvdham" class="twitter-follow-button" data-show-count="false" data-show-screen-name="true">Follow @stefvdham</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        block content      
+    #yoggrt
+      script(src="http://cdn.yoggrt.com/yoggrt.js?legacyid=1296349&zoneid=1353&key=1f38bbf962ef9784f7733343a37f39b0&serve=C6SD52Y&placement=mindthecode",id="_yoggrt_js")
     footer
       a(href="/")
         img(src="/images/logo_small.png")
@@ -132,8 +139,20 @@ html
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+    script.
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     script(src="/scripts/jquery.readingTime.js")
     script.
       $(document).ready(function(){
+        var userAgent = window.navigator.userAgent;
+        if (!userAgent.match(/iPad/i) && ! userAgent.match(/iPhone/i)) {
+          $('.bg').css('background-attachment', 'fixed');
+        }
         $('.post-body').readingTime();
       });
+    if post
+      if post.header
+        script.
+          $(document).ready(function(){
+            $('.bg').css('background-image', 'url(/images/headers/#{post.header})');
+          });

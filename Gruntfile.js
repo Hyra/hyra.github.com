@@ -52,6 +52,7 @@ module.exports = function (grunt) {
             'google1f3078fb72c283c6.html',
             'googlef03de932be2bb371.html',
             'images/**',
+            'images/headers/**',
             'scripts/**',
             'styles/**.css',
             'styles/fonts/**',

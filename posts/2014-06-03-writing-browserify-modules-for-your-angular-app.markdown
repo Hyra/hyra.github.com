@@ -3,7 +3,8 @@
   date: "2014-06-03 13:50",
   categories: ["nodejs", "phantomjs"],
   tags: ["phantomjs", "node", "ffmpeg"],
-  description: "Following up on my previous Let's Build an angular app with browserify post I got a few questions on how to create modules for your app. Let me show you."
+  description: "Following up on my previous Let's Build an angular app with browserify post I got a few questions on how to create modules for your app. Let me show you.",
+  header: "music.jpg"
 }
 
 Following up on my previous [Let's Build an angular app with Browserify](/lets-build-an-angularjs-app-with-browserify-and-gulp/) post I got a few questions on how to create modules for your app. Let me show you.

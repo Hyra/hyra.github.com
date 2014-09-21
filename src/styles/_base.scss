@@ -72,11 +72,12 @@ body {
     height: 200px;
   }
   .bg {
-    // background-image: url(/images/hdr.jpg);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-position: center top;
-    background: url(/images/hdr.jpg) 50% 0 repeat fixed;
+    background-image: url(/images/headers/default.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: normal;
+    overflow: auto;
     height: 320px;
     width: 100%;
     left: 0;
@@ -98,7 +99,7 @@ body {
     // float: left;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
     @include breakpoint(small-phone) {
-      top: 20px;
+      top: 60px;
       img {
         width: 250px;
       }
@@ -113,7 +114,8 @@ body {
     font-style: italic;
     // text-shadow: 0px 0px 3px #333;
     @include breakpoint(small-phone) {
-      display: none;
+      // display: none;
+      top: 50px;
     }
   }
   .nav {
@@ -155,6 +157,7 @@ body {
     top: 285px;
     left: 50%;
     margin-left: -32px;
+    z-index: 100;
     @include breakpoint(small-phone) { 
       display: none;
     }
@@ -190,6 +193,118 @@ body {
   @include breakpoint(small-phone) {
     width: auto;
     padding: 0 20px;
+  }
+}
+
+.contents {
+  -webkit-transition: .2s height ease-in-out, .2s top ease-in-out, .2s opacity ease-in-out, .2s background ease-in-out;
+  width: 100%;
+  max-width: 100%;
+  background: rgba(255, 0, 0, 0.4);
+  background: transparent;
+  height: 100px;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.top {
+  -webkit-transition: .2s background ease-in-out, .2s height ease-in-out;
+  background: transparent;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 100px;
+  z-index: 100;
+  .container {
+    position: relative;
+  }
+  .badge {
+    -webkit-transition: .2s top ease-in-out;
+    position: absolute;
+    top: -110px;
+    left: 7px;
+    img {
+      width: 35px;
+    }
+  }
+  .logo {
+    -webkit-transition: .3s top ease-in-out;
+    position: absolute;
+    left: 50px;
+    top: -113px;
+  }
+  .navlinks {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    @include breakpoint(small-phone) {
+      right: 10px;
+      font-size: 13px;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        float: left;
+        margin-left: 20px;
+        a {
+          -webkit-transition: .2s color ease-in-out;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  &.active {
+    -webkit-transition: .2s background ease-in-out, .2s height ease-in-out;
+    background: white;
+    height: 60px;
+    box-shadow: 0 2px 0 0 rgba(53, 58, 61, 0.05);
+    @include breakpoint(small-phone) { 
+      height: 70px;
+    }
+    .badge {
+      -webkit-transition: .2s top ease-in-out;
+      top: 10px;
+      @include breakpoint(small-phone) {
+        img {
+          width: 25px;
+        }
+      }
+    }
+    .logo {
+      -webkit-transition: .3s top ease-in-out;
+      top: 13px;
+      @include breakpoint(small-phone) {
+        left: 40px;
+        top: 12px;
+        img {
+          width: 100px;
+        }
+      }
+    }
+    .navlinks {
+      a {
+        -webkit-transition: .2s color ease-in-out;
+        color: black;
+      }
+      @include breakpoint(small-phone) {
+        font-size: 13px;
+        left: 20px;
+        top: 40px;
+        .twitter {
+          @include breakpoint(small-phone) {
+            position: absolute;
+            top: -25px;
+            right: 10px;
+          }
+        }
+      }
+    }
   }
 }
 
